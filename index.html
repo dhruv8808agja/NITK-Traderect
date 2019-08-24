@@ -7,11 +7,95 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="public/css/searchbar.css">
 </head>
 <body>
-<pre>
-Hello from the traderect Side...........
-                        - Not Adele
-</pre>
+
+<!--  HEADER   -->
+<header>
+<div class="container-fluid">
+    <div  class="row align-bottom jumbotron">
+        <div class="col-12 col-lg-3 " >
+            <img src="public/images/logo/traderect.png" alt="Traderect" style="border: maroon solid 2px;">
+        </div>
+        <div class="col-12 col-lg-3">Hello</div>
+        <div class="col-12 col-lg-3">Hello</div>
+        <div class="col-12 col-lg-3 text-right ">
+            <a href="https://www.google.com"><button type="button" class="btn btn-outline-secondary btn-lg">Login</button></a>
+        </div>
+    </div>
+</div>
+</header>
+<hr>
+
+<!--  Search bar   -->
+
+<div class="container-fluid" style="background-color: cadetblue">
+    <br/>
+    <div class="row">
+        <div class="col-12 col-md-10 col-lg-5">
+            <form class="card card-sm">
+                <div class="card-body row no-gutters align-items-center">
+                    <div class="col-auto">
+                        <i class="fas fa-search h4 text-body"></i>
+                    </div>
+                    <!--end of col-->
+                    <div class="col">
+                        <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search topics or keywords">
+                    </div>
+                    <!--end of col-->
+                    <div class="col-auto">
+                        <button class="btn btn-lg btn-success" type="submit">Search</button>
+                    </div>
+                    <!--end of col-->
+                </div>
+            </form>
+        </div>
+        <div class="col-12 col-md-10 col-lg-7 text-right">
+            <div class="btn-group">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Action
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    <div class="dropdown-divider"></div>
+                    <!--a class="dropdown-item" href="#">Separated link</a-->
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sort
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    <div class="dropdown-divider"></div>
+                    <!--a class="dropdown-item" href="#">Separated link</a-->
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    filters
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    <div class="dropdown-divider"></div>
+                    <!--a class="dropdown-item" href="#">Separated link</a-->
+                </div>
+            </div>
+        </div>
+        <!--end of col-->
+    </div>
+</div>
+<hr>
+
+<!--  CONTENT  -->
 </body>
 </html>
