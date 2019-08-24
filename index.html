@@ -7,51 +7,68 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
     <link rel="stylesheet" href="public/css/searchbar.css">
 </head>
 <body>
 
 <!--  HEADER   -->
 <header>
-<div class="container-fluid">
-    <div  class="row align-bottom jumbotron">
-        <div class="col-12 col-lg-3 " >
+<div class="container-fluid setRed">
+    <div class="row">
+        <div class="col-6 text-center my-auto" >
             <img src="public/images/logo/traderect.png" alt="Traderect" style="border: maroon solid 2px;">
         </div>
-        <div class="col-12 col-lg-3">Hello</div>
-        <div class="col-12 col-lg-3">Hello</div>
-        <div class="col-12 col-lg-3 text-right ">
-            <a href="https://www.google.com"><button type="button" class="btn btn-outline-secondary btn-lg">Login</button></a>
+        <!-- <div class="col-12 col-lg-3">Hello</div>
+        <div class="col-12 col-lg-3">Hello</div> -->
+        <div class="col-6 text-right my-auto">
+                <div class="btn-group">
+                        <button type="button" class="btn btn-danger dropdown-toggle btn-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Categories
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                            <div class="dropdown-divider"></div>
+                            <!--a class="dropdown-item" href="#">Separated link</a-->
+                        </div>
+                </div>
+            <a href="https://www.google.com"><button type="button" class="btn btn-danger btn-lg">WishList</button></a>
+            <a href="https://www.google.com"><button type="button" class="btn btn-danger btn-lg">Login</button></a>
         </div>
     </div>
-</div>
+<div>
 </header>
 <hr>
-
 <!--  Search bar   -->
 
-<div class="container-fluid" style="background-color: cadetblue">
-    <br/>
+<div class="container-fluid mx-auto" >
     <div class="row">
-        <div class="col-12 col-md-10 col-lg-5">
-            <form class="card card-sm">
-                <div class="card-body row no-gutters align-items-center">
-                    <div class="col-auto">
-                        <i class="fas fa-search h4 text-body"></i>
-                    </div>
-                    <!--end of col-->
-                    <div class="col">
-                        <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search topics or keywords">
-                    </div>
-                    <!--end of col-->
-                    <div class="col-auto">
-                        <button class="btn btn-lg btn-success" type="submit">Search</button>
-                    </div>
-                    <!--end of col-->
-                </div>
-            </form>
+        <div class="col-12 col-lg-7">
+        <!--Navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark blue lighten-2 mb-4">
+
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      
+          <form class="form-inline">
+            <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+            <!-- <button class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2" type="submit">Search</button> -->
+            <i class="fas fa-search text-danger ml-3" aria-hidden="true"></i>
+          </form>
+      
         </div>
-        <div class="col-12 col-md-10 col-lg-7 text-right">
+        <!-- Collapsible content -->
+      
+        <!-- Navbar brand -->
+        <a class="navbar-brand" href="#">Navbar</a>
+      
+        </nav>
+        <!--/.Navbar-->
+        </div>
+        <div class="col-12 col-lg-5 text-right">
             <div class="btn-group">
                 <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Action
@@ -94,8 +111,86 @@
         <!--end of col-->
     </div>
 </div>
-<hr>
 
 <!--  CONTENT  -->
+<div class="container-fluid padding">
+	<div class="row padding">
+		<div class="col-md-4">
+			<div class="card">
+				<img class="card-img-top" src="img/team1.png">
+				<div class="card-body">
+					<h4 class="card-title">Jogn Doe</h4>
+					<p>John is really an Internet entrepreneur with almost 20 years of experience</p>
+					<a href="#" class="btn btn-outline-secodary">See Profile</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+				<div class="card">
+					<img class="card-img-top" src="img/team2.png">
+					<div class="card-body">
+						<h4 class="card-title">Dhruv's bae</h4>
+						<p>John is really an Internet entrepreneur with almost 20 years of experience</p>
+						<a href="#" class="btn btn-outline-secodary">See Profile</a>
+					</div>
+				</div>
+		</div>
+		<div class="col-md-4">
+				<div class="card">
+					<img class="card-img-top" src="img/team3.png">
+					<div class="card-body">
+						<h4 class="card-title">Chaddi me katta</h4>
+						<p>John is really an Internet entrepreneur with almost 20 years of experience</p>
+						<a href="#" class="btn btn-outline-secodary">See Profile</a>
+					</div>
+				</div>
+		</div>
+	</div>
+</div>
+
+<!-- Footer -->
+<footer>
+<div class="container-fluid">
+	<div class="row text-center">
+		<div class="col-12">
+			<h2>Connect</h2>
+		</div>
+		<div class="col-12 social padding">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+			<a href="#"><i class="fab fa-twitter"></i></a>
+			<a href="#"><i class="fab fa-google-plus-g"></i></a>
+			
+		</div>
+
+	</div>
+</div>
+
+
+	<div class="container-fluid padding">
+		<div class="row text-center">
+			<div class="col-md-6">
+                <hr class="light">
+                <h5>ABOUT US</h5>
+                <p>About Traderect Group</p>
+                <p>Contact Us</p>
+			</div>
+			<div class="col-md-6">
+				<hr class="light">
+				<h5>Traderect</h5>
+				<p>Help</p>
+				<p>Sitemap</p>
+				<p>Legal & Privacy Information</p>
+			</div>
+		
+			<div class="col-12">
+				<hr class="light-100">
+				<h5>&copy; traderect.com</h5>
+			</div>
+
+		</div>
+	</div>
+</footer>
 </body>
 </html>
