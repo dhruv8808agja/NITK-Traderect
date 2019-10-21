@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Material Design Bootstrap</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <!-- Django Begin >
+  {% load static %}
+  <link href="{% static 'main_app/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'main_app/css/mdb.min.css' %}" rel="stylesheet">
+  <link href="{% static 'main_app/css/style.min.css' %}" rel="stylesheet">
+  <!Django End-->
+
+  <!--Debug-->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/mdb.min.css" rel="stylesheet">
+  <link href="css/style.min.css" rel="stylesheet">
+<!--Debug-->
+<style>
+.thumb-post img {
+  object-fit: contain;
+  /* Do not scale the image */
+  object-position: center;
+  /* Center the image within the element */
+  width: 100%;
+  height: 350px;
+  max-height: 300px;
+  max-width: 300px;
+  margin-bottom: 1rem;
+}
+</style>
+  <style type="text/css">
+    html,
+    body,
+    header,
+    .carousel {
+      height: 60vh;
+    }
+
+    @media (max-width: 740px) {
+
+      html,
+      body,
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+
+    @media (min-width: 800px) and (max-width: 850px) {
+
+      html,
+      body,
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+    <div class="container">
+
+      <!-- Brand -->
+      <a class="navbar-brand waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">
+        <strong class="blue-text">T R A D E R E C T</strong>
+      </a>
+
+      <!-- Collapse -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Links -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <!-- Left -->
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link waves-effect" href="#">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">Wishlist</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank">Add Need</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">My Products</a>
+          </li>
+        </ul>
+
+        <!-- Right -->
+        <ul class="navbar-nav nav-flex-icons">
+          <!--li class="nav-item">
+            <a class="nav-link waves-effect">
+              <span class="badge red z-depth-1 mr-1"> 1 </span>
+              <i class="fas fa-shopping-cart"></i>
+              <span class="clearfix d-none d-sm-inline-block"> Cart </span>
+            </a>
+          </li-->
+          <li class="nav-item">
+            <a class="nav-link border border-light rounded waves-effect" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">Notification</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link border border-light rounded waves-effect" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">Login</a>
+          </li>
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+  <!-- Navbar -->
+
+  <!--Carousel Wrapper-->
+  <div id="carousel-example-1z" class="carousel slide carousel-fade pt-4" data-ride="carousel">
+
+    <!--Indicators-->
+    <ol class="carousel-indicators">
+      <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+      <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+    </ol>
+    <!--/.Indicators-->
+
+    <!--Slides-->
+    <div class="row">
+      <div class="col-12">
+        <p>\n\n\n\n\n</p>
+      </div>
+    </div>
+    <!--/.Carousel Wrapper-->
+
+    <div class="alert" role="alert">
+      <marquee>
+        <p style="font-family: font-family: " sans serif"; font-size: 18pt">Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor!</p>
+      </marquee>
+    </div>
+    <!--Main layout-->
+    <main>
+      <div class="container">
+        <!--Navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5">
+          <!-- Navbar brand -->
+          <span class="navbar-brand">Categories:</span>
+
+          <!-- Collapse button -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Collapsible content -->
+          <div class="collapse navbar-collapse" id="basicExampleNav">
+
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">All
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Shirts</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Sport wears</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Outwears</a>
+              </li>
+
+            </ul>
+            <!-- Links -->
+
+            <form class="form-inline">
+              <div class="md-form my-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+              </div>
+            </form>
+          </div>
+          <!-- Collapsible content -->
+
+        </nav>
+        <!--/.Navbar-->
+
+        <!--Section: Products v.3-->
+        <section class="text-center mb-4">
+
+          <!--Grid row-->
+          <div class="row wow fadeIn">
+
+            <!--Grid column-->
+            <div class="col-lg-3 col-md-6 mb-4">
+
+              <!--Card-->
+              <div class="card">
+
+                <!--Card image-->
+                <div class="view overlay">
+                  <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg" class="card-img-top" alt="">
+                  <a>
+                    <div class="mask rgba-white-slight"></div>
+                  </a>
+                </div>
+                <!--Card image-->
+
+                <!--Card content-->
+                <div class="card-body text-center">
+                  <!--Category & Title-->
+                  <a href="" class="grey-text">
+                    <h5>Shirt</h5>
+                  </a>
+                  <h5>
+                    <strong>
+                      <a href="" class="dark-grey-text">Denim shirt
+                        <span class="badge badge-pill danger-color">SELL</span>
+                      </a>
+                    </strong>
+                  </h5>
+
+                  <h4 class="font-weight-bold blue-text">
+                    <strong>120$</strong>
+                  </h4>
+
+                </div>
+                <!--Card content-->
+
+              </div>
+              <!--Card-->
+
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-lg-3 col-md-6 mb-4">
+            <div class=" card bg-transparent mb-4">
+          <div class="card-body thumb-post">
+            <h5>Product Name <span <span class="badge badge-success">Rent</span></h5>
+            <h7>By <span style="color:rgb(37, 113, 201)" class="font-weight-bold">@Owner_name<span></h7>
+              <div style="background: rgb(255,255,255)">
+                <img src="https://image.shutterstock.com/image-photo/singapore-december-26-2017-minion-600w-1483265900.jpg" class="card-img-top mt-0 mb-0" style="background:rgb(255,255,255)" alt="">            </div>
+                </div>
+              <!--p>Here is some description about this product writen by writer, I don't want to write this but for just checking purpose i am writting this much long.</p-->
+
+              <div class=" row">
+              <div class="col-4">
+                <h6 class="font-weight-bold text-center ml-1" style="color: rgb(31, 82, 157)">
+                  <strong>139$</strong>
+                </h6>
+              </div>
+              <div class="col-8">
+                <h6 class="font-weight-bold text-center" style="color:rgb(54, 9, 119)">
+                  <strong><img src="https://image.flaticon.com/icons/svg/616/616489.svg" style="width:20px;height:20px;"> (4.5/5)</strong>
+                </h6>
+              </div>
+            </div>
+          </div>
+        </div>
+            <!--Grid column-->
+            <div class="col-lg-3 col-md-6 mb-4">
+                    <div class=" card bg-transparent mb-4">
+                  <div class="card-body thumb-post">
+                    <h5>Product Name <span class="badge badge-primary">Sell</span></h5>
+                    <h7>By <span style="color:rgb(37, 113, 201)" class="font-weight-bold">@Owner_name<span></h7>
+                    <div style="background: rgb(255,255,255)">
+                      <img src="https://image.shutterstock.com/image-illustration/illustration-goggle-two-eyes-on-600w-788919178.jpg" class="card-img-top mt-0 mb-0" style="background:rgb(255,255,255)" alt="">            </div>
+                      </div>
+                      <!--p>Here is some description about this product writen by writer, I don't want to write this but for just checking purpose i am writting this much long.</p-->
+
+                      <div class=" row">
+                      <div class="col-12">
+                        <h6 class="font-weight-bold text-center ml-3" style="color: rgb(31, 82, 157)">
+                          <strong>139$</strong>
+                        </h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class=" card bg-transparent mb-4">
+                  <div class="card-body thumb-post">
+                    <h5>Product Name <span <span class="badge badge-success">Rent</span></h5>
+                    <h7>By <span style="color:rgb(37, 113, 201)" class="font-weight-bold">@Owner_name<span></h7>
+                    <div style="background: rgb(255,255,255)">
+                      <img src="https://image.shutterstock.com/image-photo/singapore-december-26-2017-minion-600w-1483265900.jpg" class="card-img-top mt-0 mb-0" style="background:rgb(255,255,255)" alt="">            </div>
+                      </div>
+                      <!--p>Here is some description about this product writen by writer, I don't want to write this but for just checking purpose i am writting this much long.</p-->
+
+                      <div class=" row">
+                      <div class="col-4">
+                        <h6 class="font-weight-bold text-center ml-1" style="color: rgb(31, 82, 157)">
+                          <strong>139$</strong>
+                        </h6>
+                      </div>
+                      <div class="col-8">
+                        <h6 class="font-weight-bold text-center" style="color:rgb(54, 9, 119)">
+                          <strong><img src="https://image.flaticon.com/icons/svg/616/616489.svg" style="width:20px;height:20px;"> (4.5/5)</strong>
+                        </h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class=" card bg-transparent mb-4">
+                  <div class="card-body thumb-post">
+                    <h5>Product Name <span class="badge badge-primary">Sale</span></h5>
+                    <h7>By <span style="color:rgb(37, 113, 201)" class="font-weight-bold">@Owner_name<span></h7>
+                    <div style="background: rgb(255,255,255)">
+                      <img src="https://image.shutterstock.com/image-photo/kiev-ukraine-september-28-2017-600w-725087752.jpg" class="card-img-top mt-0 mb-0" style="background:rgb(255,255,255)" alt="">            </div>
+                      </div>
+                      <!--p>Here is some description about this product writen by writer, I don't want to write this but for just checking purpose i am writting this much long.</p-->
+
+                      <div class=" row">
+                      <div class="col-12">
+                        <h6 class="font-weight-bold text-center ml-3" style="color: rgb(31, 82, 157)">
+                          <strong>139$</strong>
+                        </h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+          </div>
+          <!--Grid row-->
+
+        </section>
+        <!--Section: Products v.3-->
+
+        <!--Pagination-->
+        <nav class="d-flex justify-content-center wow fadeIn">
+          <ul class="pagination pg-blue">
+
+            <!--Arrow left-->
+            <li class="page-item disabled">
+              <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+              </a>
+            </li>
+
+            <li class="page-item active">
+              <a class="page-link" href="#">1
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#">2</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#">3</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#">4</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#">5</a>
+            </li>
+
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!--Pagination-->
+
+      </div>
+    </main>
+    <!--Main layout-->
+
+    <!--Footer-->
+    <footer class="page-footer text-center font-small mt-4 wow fadeIn">
+
+
+
+      <hr class="my-4">
+
+
+
+<!--EDITOR Mode-->
+    </footer>
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <script type="text/javascript">
+      new WOW().init();
+    </script>
+<!--Django Mode>
+href="{% static 'main_app/css/style.min.css' %}"
+</footer>
+<script type="text/javascript" src="{% static 'main_app/js/jquery-3.4.1.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'main_app/js/popper.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'main_app/js/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'main_app/js/mdb.min.js' %}"></script>
+<script type="text/javascript">
+  new WOW().init();
+</script>
+<!Django Mode END-->
+
+
+
+</body>
+
+</html>
