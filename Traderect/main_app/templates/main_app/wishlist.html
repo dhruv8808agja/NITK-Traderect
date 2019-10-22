@@ -20,20 +20,20 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/mdb.min.css" rel="stylesheet">
   <link href="css/style.min.css" rel="stylesheet">
-<!--Debug-->
-<style>
-.thumb-post img {
-  object-fit: contain;
-  /* Do not scale the image */
-  object-position: center;
-  /* Center the image within the element */
-  width: 100%;
-  height: 350px;
-  max-height: 300px;
-  max-width: 300px;
-  margin-bottom: 1rem;
-}
-</style>
+  <!--Debug-->
+  <style>
+    .thumb-post img {
+      object-fit: contain;
+      /* Do not scale the image */
+      object-position: center;
+      /* Center the image within the element */
+      width: 100%;
+      height: 100%;
+      max-height: 300px;
+      max-width: 300px;
+      margin-bottom: 1rem;
+    }
+  </style>
   <style type="text/css">
     html,
     body,
@@ -85,12 +85,12 @@
 
         <!-- Left -->
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link waves-effect" href="#">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">Wishlist</a>
           </li>
           <li class="nav-item">
@@ -123,9 +123,115 @@
     </div>
   </nav>
   <!-- Navbar -->
-<!--main-->
-<main><br><br><br><br>
-  <p>hello </p>
+  <!--main-->
+  <main><br><br><br>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12 border border-info rounded" style="box-shadow: 2px 2px rgb(161, 240, 225)">
+          <h3 class="h3" style="text-align: center;color: rgb(21, 91, 226);text-shadow: 2px 2px rgb(218, 176, 233);">Wishlist</h3>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <!--Add elements-->
+        <!--An Element-->
+        <div class="col-lg-4 col-md-6 sm-12 mb-1">
+          <div class=" card bg-transparent mb-1">
+            <div class="card-body thumb-post">
+              <h5>Product Name</h5>
+              <h7>By <span style="color:rgb(37, 113, 201)" class="font-weight-bold">@Owner_name<span></h7>
+              <div style="background: rgb(255,255,255)">
+                <img src="https://image.shutterstock.com/image-photo/singapore-december-26-2017-minion-600w-1483265900.jpg" class="card-img-top mt-0 mb-0" style="background:rgb(255,255,255)" alt="">
+              </div>
+              <div class="container" align="center">
+              <div class="row">
+                <div class="col-6" align="center">
+                  <button type="button" class="btn btn-success py-1">View</button>
+                </div>
+                <div class="col-6" align="center">
+                  <button type="button" class="btn btn-warning py-1">Delete</button>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <!--An Element ends here-->
+
+        <!--An Element-->
+        <div class="col-lg-4 col-md-6 sm-12 mb-1">
+          <div class=" card bg-transparent mb-1">
+            <div class="card-body thumb-post">
+              <h5>Product Name</h5>
+              <h7>By <span style="color:rgb(37, 113, 201)" class="font-weight-bold">@Owner_name<span></h7>
+              <div style="background: rgb(255,255,255)">
+                <img src="https://image.shutterstock.com/image-photo/singapore-december-26-2017-minion-600w-1483265900.jpg" class="card-img-top mt-0 mb-0" style="background:rgb(255,255,255)" alt="">
+              </div>
+              <div class="container" align="center">
+              <div class="row">
+                <div class="col-6" align="center">
+                  <button type="button" class="btn btn-success py-1">View</button>
+                </div>
+                <div class="col-6" align="center">
+                  <button type="button" class="btn btn-warning py-1">Delete</button>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <!--An Element ends here-->
+        <!--An Element-->
+        <div class="col-lg-4 col-md-6 sm-12 mb-1">
+          <div class=" card bg-transparent mb-1">
+            <div class="card-body thumb-post">
+              <h5>Product Name</h5>
+              <h7>By <span style="color:rgb(37, 113, 201)" class="font-weight-bold">@Owner_name<span></h7>
+              <div style="background: rgb(255,255,255)">
+                <img src="https://image.shutterstock.com/image-photo/kiev-ukraine-september-28-2017-600w-725087752.jpg" class="card-img-top mt-0 mb-0" style="background:rgb(255,255,255)" alt="">
+              </div>
+              <div class="container" align="center">
+              <div class="row">
+                <div class="col-6" align="center">
+                  <button type="button" class="btn btn-success py-1">View</button>
+                </div>
+                <div class="col-6" align="center">
+                  <button type="button" class="btn btn-warning py-1">Delete</button>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <!--An Element ends here-->
+        <!--An Element-->
+        <div class="col-lg-4 col-md-6 sm-12 mb-1">
+          <div class=" card bg-transparent mb-1">
+            <div class="card-body thumb-post">
+              <h5>Product Name</h5>
+              <h7>By <span style="color:rgb(37, 113, 201)" class="font-weight-bold">@Owner_name<span></h7>
+              <div style="background: rgb(255,255,255)">
+                <img src="https://image.shutterstock.com/image-photo/singapore-december-26-2017-minion-600w-1483265900.jpg" class="card-img-top mt-0 mb-0" style="background:rgb(255,255,255)" alt="">
+              </div>
+              <div class="container" align="center">
+              <div class="row">
+                <div class="col-6" align="center">
+                  <button type="button" class="btn btn-success py-1">View</button>
+                </div>
+                <div class="col-6" align="center">
+                  <button type="button" class="btn btn-warning py-1">Delete</button>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <!--An Element ends here-->
+
+        <!--END Add elements-->
+      </div>
+    </div>
 
 
 
@@ -134,16 +240,16 @@
 
 
 
-</main>
-<!--/main-->
+  </main>
+  <!--/main-->
   <!--EDITOR Mode-->
-      <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-      <script type="text/javascript" src="js/popper.min.js"></script>
-      <script type="text/javascript" src="js/bootstrap.min.js"></script>
-      <script type="text/javascript" src="js/mdb.min.js"></script>
-      <script type="text/javascript">
-        new WOW().init();
-      </script>
+  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/mdb.min.js"></script>
+  <script type="text/javascript">
+    new WOW().init();
+  </script>
   <!--Django Mode>
   href="{% static 'main_app/css/style.min.css' %}"
   </footer>
@@ -156,6 +262,6 @@
   </script>
   <!Django Mode END-->
 
-  </body>
+</body>
 
-  </html>
+</html>
