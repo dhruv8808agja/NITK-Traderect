@@ -20,20 +20,20 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/mdb.min.css" rel="stylesheet">
   <link href="css/style.min.css" rel="stylesheet">
-<!--Debug-->
-<style>
-.thumb-post img {
-  object-fit: contain;
-  /* Do not scale the image */
-  object-position: center;
-  /* Center the image within the element */
-  width: 100%;
-  height: 350px;
-  max-height: 300px;
-  max-width: 300px;
-  margin-bottom: 1rem;
-}
-</style>
+  <!--Debug-->
+  <style>
+    .thumb-post img {
+      object-fit: contain;
+      /* Do not scale the image */
+      object-position: center;
+      /* Center the image within the element */
+      width: 100%;
+      height: 350px;
+      max-height: 300px;
+      max-width: 300px;
+      margin-bottom: 1rem;
+    }
+  </style>
   <style type="text/css">
     html,
     body,
@@ -85,7 +85,7 @@
 
         <!-- Left -->
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link waves-effect" href="#">Home
               <span class="sr-only">(current)</span>
             </a>
@@ -96,7 +96,7 @@
           <li class="nav-item">
             <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank">Add Product</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank">Add Need</a>
           </li>
           <li class="nav-item">
@@ -126,24 +126,52 @@
     </div>
   </nav>
   <!-- Navbar -->
-<!--main-->
-<main><br><br><br>
-  <div class="container">
-    <div class="col-12">
-      <h4 class="h4" style="color:rgb(8, 65, 212);text-shadow: 2px 2px rgb(153, 238, 177)">Add Need</h4>
+  <!--main-->
+  <main><br><br><br>
+    <div class="container">
+      <div class="col-12">
+        <h4 class="h4" style="color:rgb(8, 65, 212);text-shadow: 2px 2px rgb(153, 238, 177)">Add Need</h4>
+      </div>
+      <div class="col-lg-6">
+        <hr>
+        <form action="">
+          <div class="form-group">
+            <label for="pname">Product Name :</label>
+            <input type="text" class="form-control" id="pname">
+          </div>
+          <div class="form-group">
+            <label for="description">Description :</label>
+            <textarea name="message" class="form-control" id="description" rows="5" cols="30">
+          </textarea>
+          </div>
+          <div class="form-group">
+            <select name="cars" class="custom-select">
+              <option selected>Custom Select Menu</option>
+              <option value="volvo">Stationary</option>
+              <option value="fiat">Vehicle</option>
+              <option value="audi">Whatever</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="customFile">
+              <label class="custom-file-label" for="customFile">Choose file</label>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
     </div>
-    
-  </div>
-</main>
-<!--/main-->
+  </main>
+  <!--/main-->
   <!--EDITOR Mode-->
-      <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-      <script type="text/javascript" src="js/popper.min.js"></script>
-      <script type="text/javascript" src="js/bootstrap.min.js"></script>
-      <script type="text/javascript" src="js/mdb.min.js"></script>
-      <script type="text/javascript">
-        new WOW().init();
-      </script>
+  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/mdb.min.js"></script>
+  <script type="text/javascript">
+    new WOW().init();
+  </script>
   <!--Django Mode>
   href="{% static 'main_app/css/style.min.css' %}"
   </footer>
@@ -156,6 +184,6 @@
   </script>
   <!Django Mode END-->
 
-  </body>
+</body>
 
-  </html>
+</html>
