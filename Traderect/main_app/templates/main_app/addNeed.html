@@ -145,17 +145,19 @@
           </textarea>
           </div>
           <div class="form-group">
-            <select name="cars" class="custom-select">
-              <option selected>Custom Select Menu</option>
+            <label for="Category">Category :</label>
+            <select name="cars" id="Category" class="custom-select">
+              <option selected>Select category</option>
               <option value="volvo">Stationary</option>
               <option value="fiat">Vehicle</option>
               <option value="audi">Whatever</option>
             </select>
           </div>
           <div class="form-group">
-            <div class="custom-file">
+            <label for="photo">Photo :</label>
+            <div class="custom-file" id="photo">
               <input type="file" class="custom-file-input" id="customFile">
-              <label class="custom-file-label" for="customFile">Choose file</label>
+              <label class="custom-file-label" for="customFile">Choose photo file</label>
             </div>
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
