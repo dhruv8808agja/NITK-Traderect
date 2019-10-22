@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -8,12 +9,59 @@
   <title>Material Design Bootstrap</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-  <!-- Bootstrap core CSS -->
+  <!-- Django Begin >
+  {% load static %}
+  <link href="{% static 'main_app/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'main_app/css/mdb.min.css' %}" rel="stylesheet">
+  <link href="{% static 'main_app/css/style.min.css' %}" rel="stylesheet">
+  <!Django End-->
+
+  <!--Debug-->
   <link href="css/bootstrap.min.css" rel="stylesheet">
-  <!-- Material Design Bootstrap -->
   <link href="css/mdb.min.css" rel="stylesheet">
-  <!-- Your custom styles (optional) -->
   <link href="css/style.min.css" rel="stylesheet">
+  <!--Debug-->
+  <style>
+    .thumb-post img {
+      object-fit: contain;
+      /* Do not scale the image */
+      object-position: center;
+      /* Center the image within the element */
+      width: 100%;
+      height: 100%;
+      max-height: 300px;
+      max-width: 300px;
+      margin-bottom: 1rem;
+    }
+  </style>
+  <style type="text/css">
+    html,
+    body,
+    header,
+    .carousel {
+      height: 60vh;
+    }
+
+    @media (max-width: 740px) {
+
+      html,
+      body,
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+
+    @media (min-width: 800px) and (max-width: 850px) {
+
+      html,
+      body,
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -37,7 +85,7 @@
 
         <!-- Left -->
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link waves-effect" href="#">Home
               <span class="sr-only">(current)</span>
             </a>
@@ -46,12 +94,9 @@
             <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">Wishlist</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank">Add Product</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank">Add Need</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link waves-effect" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">My Products</a>
           </li>
         </ul>
@@ -78,93 +123,68 @@
     </div>
   </nav>
   <!-- Navbar -->
-  <br><br><br>
-
-  <div class="container">
-    <h6 class="col h6">Product ID : #829739273</h6>
-    <h2 class=" h2 text-center mb-0">Minions</h2>
-    <h5 align="center" class="mt-0">by <span style="color:blue;font-weight: bold;">@user_name</span></h5>
-  </div>
-
-
-  <!--Main layout-->
-  <main class="mt-2 pt-4">
-    <div class="container dark-grey-text mt-5">
-
-      <!--Grid row-->
-      <div class="row wow fadeIn">
-        <!--Grid column-->
-        <div class="col-4"></div>
-        <div class="col-4 bg-success" style="align-content:center">
-          <img src="https://image.shutterstock.com/image-photo/singapore-december-26-2017-minion-600w-1483265900.jpg" class="mt-0 mb-0"
-            style="object-fit: contain;background:rgb(255,255,255);  width: 100%;height: 350px;max-height: 300px;max-width: 300px;margin-bottom: 1rem;" alt="">
+  <!--main-->
+  <main><br><br><br>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 border border-info rounded" style="box-shadow: 2px 2px rgb(161, 240, 225)">
+          <h3 class="h3" style="text-align: center;color: rgb(21, 91, 226);text-shadow: 2px 2px rgb(218, 176, 233);">My Products</h3>
         </div>
-        <div class="col-4"></div>
-
-        <!--Grid column-->
-        <div class="col-md-12">
-
-          <!--Content-->
-          <div class="p-4">
-
-            <div class="mb-3">
-              <a href="">
-                <span class="badge purple mr-1">Category 2</span>
-              </a>
-              <a href="">
-                <span class="badge blue mr-1">New</span>
-              </a>
-              <a href="">
-                <span class="badge red mr-1">Bestseller</span>
-              </a>
-            </div>
-
-            <p class="lead bg-info">
-              Status Over here
-            </p>
-
-            <div class="row">
-              <div class="col-lg-12 ">
-                <span class="fa fa-star" id="star1"></span>
-                <span class="fa fa-star" id="star2"></span>
-                <span class="fa fa-star" id="star3"></span>
-                <span class="fa fa-star" id="star4"></span>
-                <span class="fa fa-star" id="star5"></span>
-                <h7 class="h7">(276)</h7>
+      </div>
+      <br>
+      <div class="row">
+        <!--Add elements-->
+        <!--An Element-->
+        <div class="col-lg-4 col-md-6 sm-12 mb-1">
+          <div class=" card bg-transparent mb-1">
+            <div class="card-body thumb-post">
+              <h5>Product Name</h5>
+              <div style="background: rgb(255,255,255)" align="center">
+                <img src="https://image.shutterstock.com/image-photo/singapore-december-26-2017-minion-600w-1483265900.jpg" class="card-img-top mt-0 mb-0" style="background:rgb(255,255,255)" alt="">
+              </div>
+              <div class="container" align="center">
+              <div class="row">
+                <div class="col-6" align="center">
+                  <button type="button" class="btn btn-success py-1">View</button>
+                </div>
+                <div class="col-6" align="center">
+                  <button type="button" class="btn btn-warning py-1">EDIT</button>
+                </div>
               </div>
             </div>
-            <br>
-            <p class="lead font-weight-bold">Description</p>
-
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolor suscipit libero eos atque quia ipsa
-              sint voluptatibus!
-              Beatae sit assumenda asperiores iure at maxime atque repellendus maiores quia sapiente.</p>
-            <br>
-            <h5>Price : <span class="font-weight-bold" style="color: rgb(33, 22, 242)">300$</span></h5>
-            <p>Contact : <img style="height:30px;width:30px;" src="/home/student/NITK-Traderect/Traderect/main_app/templates/main_app/img/whatsapp.png"> <img style="height:30px;width:30px;" src="/home/student/NITK-Traderect/Traderect/main_app/templates/main_app/img/email.png"></p>
+            </div>
           </div>
-          <!--Content-->
         </div>
-        <!--Grid column-->
+        <!--An Element ends here-->
+        <!--END Add elements-->
       </div>
-
-      <hr>
     </div>
-  </main>
 
-  <!-- JQuery -->
+
+
+
+  </main>
+  <!--/main-->
+  <!--EDITOR Mode-->
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-  <!-- Bootstrap tooltips -->
   <script type="text/javascript" src="js/popper.min.js"></script>
-  <!-- Bootstrap core JavaScript -->
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
-  <!-- MDB core JavaScript -->
   <script type="text/javascript" src="js/mdb.min.js"></script>
-  <!-- Initializations -->
   <script type="text/javascript">
-    // Animations initialization
     new WOW().init();
   </script>
+  <!--Django Mode>
+  href="{% static 'main_app/css/style.min.css' %}"
+  </footer>
+  <script type="text/javascript" src="{% static 'main_app/js/jquery-3.4.1.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'main_app/js/popper.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'main_app/js/bootstrap.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'main_app/js/mdb.min.js' %}"></script>
+  <script type="text/javascript">
+    new WOW().init();
+  </script>
+  <!Django Mode END-->
+
 </body>
 
 </html>
