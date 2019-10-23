@@ -116,13 +116,3 @@ class DjangoSession(models.Model):
     class Meta:
         managed = False
         db_table = 'django_session'
-
-
-class User(models.Model):
-    pid = models.CharField(primary_key=True, max_length=20)
-    name = models.CharField(max_length=20, blank=True, null=True)
-    email = models.CharField(max_length=30, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'user'
