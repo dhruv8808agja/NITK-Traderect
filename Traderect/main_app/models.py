@@ -116,3 +116,105 @@ class DjangoSession(models.Model):
     class Meta:
         managed = False
         db_table = 'django_session'
+
+
+class Need(models.Model):
+    nid = models.IntegerField(primary_key=True)
+    productname = models.CharField(db_column='productName', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    description = models.TextField(blank=True, null=True)
+    category = models.CharField(max_length=20, blank=True, null=True)
+    email = models.ForeignKey('Users', models.DO_NOTHING, db_column='email', blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'need'
+
+
+class Photos(models.Model):
+    photoid = models.IntegerField(primary_key=True)
+    photofile = models.ImageField(upload_to='main_app/img/',db_column='photoFile', blank=True, null=True)  # Field name made lowercase.
+    description = models.CharField(max_length=60, blank=True, null=True)
+    ownerid = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'photos'
+
+
+class Products(models.Model):
+    pid = models.IntegerField(primary_key=True)
+    pname = models.CharField(max_length=50, blank=True, null=True)
+    category = models.CharField(max_length=20, blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    status = models.CharField(max_length=20, blank=True, null=True)
+    noofratings = models.IntegerField(db_column='noOfRatings', blank=True, null=True)  # Field name made lowercase.
+    avgrating = models.FloatField(db_column='avgRating', blank=True, null=True)  # Field name made lowercase.
+    owner = models.ForeignKey('Users', models.DO_NOTHING, db_column='owner', blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'products'
+
+
+class Renttransaction(models.Model):
+    transid = models.IntegerField(db_column='transId', primary_key=True)  # Field name made lowercase.
+    rentid = models.ForeignKey('Rentad', models.DO_NOTHING, db_column='rentid', blank=True, null=True)
+    email = models.ForeignKey('Users', models.DO_NOTHING, db_column='email', blank=True, null=True)
+    startdate = models.DateField(db_column='startDate', blank=True, null=True)  # Field name made lowercase.
+    starttime = models.TimeField(db_column='startTime', blank=True, null=True)  # Field name made lowercase.
+    enddate = models.DateField(db_column='endDate', blank=True, null=True)  # Field name made lowercase.
+    endtime = models.TimeField(db_column='endTime', blank=True, null=True)  # Field name made lowercase.
+    rating = models.FloatField(blank=True, null=True)
+    review = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'rentTransaction'
+
+
+class Rentad(models.Model):
+    rentid = models.IntegerField(primary_key=True)
+    pid = models.ForeignKey(Products, models.DO_NOTHING, db_column='pid', blank=True, null=True)
+    price = models.IntegerField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    adddate = models.DateField(db_column='addDate', blank=True, null=True)  # Field name made lowercase.
+    expirydate = models.DateField(db_column='expiryDate', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'rentad'
+
+
+class Sellad(models.Model):
+    sellid = models.IntegerField(primary_key=True)
+    pid = models.ForeignKey(Products, models.DO_NOTHING, db_column='pid', blank=True, null=True)
+    price = models.IntegerField(blank=True, null=True)
+    adddate = models.DateField(db_column='addDate', blank=True, null=True)  # Field name made lowercase.
+    expirydate = models.DateField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'sellad'
+
+
+class Users(models.Model):
+    email = models.CharField(primary_key=True, max_length=40)
+    name = models.CharField(max_length=50, blank=True, null=True)
+    profilephoto = models.ImageField(upload_to='main_app/img/',db_column='profilePhoto', blank=True, null=True)  # Field name made lowercase.
+    phnumber = models.CharField(db_column='phNumber', max_length=15, blank=True, null=True)  # Field name made lowercase.
+    whnumber = models.CharField(db_column='whNumber', max_length=15, blank=True, null=True)  # Field name made lowercase.
+    address = models.CharField(max_length=200, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'users'
+
+
+class Wishes(models.Model):
+    email = models.ForeignKey(Users, models.DO_NOTHING, db_column='email', primary_key=True)
+    pid = models.ForeignKey(Products, models.DO_NOTHING, db_column='pid')
+
+    class Meta:
+        managed = False
+        db_table = 'wishes'
+        unique_together = (('email', 'pid'),)
