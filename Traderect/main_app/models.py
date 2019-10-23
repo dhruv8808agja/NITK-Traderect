@@ -155,6 +155,9 @@ class Products(models.Model):
         managed = False
         db_table = 'products'
 
+    def __str__(self):
+        return self.pname
+
 
 class Renttransaction(models.Model):
     transid = models.IntegerField(db_column='transId', primary_key=True)  # Field name made lowercase.

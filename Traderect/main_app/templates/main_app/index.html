@@ -9,18 +9,18 @@
   <title>Material Design Bootstrap</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-  <!-- Django Begin >
+  <!-- Django Begin -->
   {% load static %}
   <link href="{% static 'main_app/css/bootstrap.min.css' %}" rel="stylesheet">
   <link href="{% static 'main_app/css/mdb.min.css' %}" rel="stylesheet">
   <link href="{% static 'main_app/css/style.min.css' %}" rel="stylesheet">
-  <!Django End-->
+  <!--Django End-->
 
-  <!--Debug-->
+  <!--Debug>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/mdb.min.css" rel="stylesheet">
   <link href="css/style.min.css" rel="stylesheet">
-  <!--Debug-->
+<!Debug-->
   <style>
     .thumb-post img {
       object-fit: contain;
@@ -310,11 +310,13 @@
               </div>
             </div>
           </div>
+
+          {% for e in a %}
           <div class="col-lg-3 col-md-6 mb-4">
             <div class=" card bg-transparent mb-4">
               <div class="card-body thumb-post">
-                <h5>Product Name <span <span class="badge badge-success">Rent</span></h5>
-                <h7>By <span style="color:rgb(37, 113, 201)" class="font-weight-bold">@Owner_name<span></h7>
+                <h5> {{ e.4 }} <span <span class="badge badge-success">Rent</span></h5>
+                <h7>By <span style="color:rgb(37, 113, 201)" class="font-weight-bold">@{{ e.5 }}<span></h7>
                 <div style="background: rgb(255,255,255)">
                   <img src="https://image.shutterstock.com/image-photo/singapore-december-26-2017-minion-600w-1483265900.jpg" class="card-img-top mt-0 mb-0" style="background:rgb(255,255,255)" alt=""> </div>
               </div>
@@ -323,7 +325,7 @@
               <div class=" row">
                 <div class="col-4">
                   <h6 class="font-weight-bold text-center ml-1" style="color: rgb(31, 82, 157)">
-                    <strong>139$</strong>
+                    <strong>{{ e.2 }}</strong>
                   </h6>
                 </div>
                 <div class="col-8">
@@ -334,6 +336,9 @@
               </div>
             </div>
           </div>
+          {% endfor %}
+
+
           <div class="col-lg-3 col-md-6 mb-4">
             <div class=" card bg-transparent mb-4">
               <div class="card-body thumb-post">
@@ -414,7 +419,7 @@
 
 
 
-    <!--EDITOR Mode-->
+    <!--EDITOR Mode>
   </footer>
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="js/popper.min.js"></script>
@@ -423,7 +428,8 @@
   <script type="text/javascript">
     new WOW().init();
   </script>
-  <!--Django Mode>
+  <! END EDITOR Mode-->
+  <!--Django Mode-->
 href="{% static 'main_app/css/style.min.css' %}"
 </footer>
 <script type="text/javascript" src="{% static 'main_app/js/jquery-3.4.1.min.js' %}"></script>
@@ -433,7 +439,7 @@ href="{% static 'main_app/css/style.min.css' %}"
 <script type="text/javascript">
   new WOW().init();
 </script>
-<!Django Mode END-->
+<!--Django Mode END-->
 
 
 
