@@ -13,6 +13,9 @@
   <link href="{% static 'main_app/css/bootstrap.min.css' %}" rel="stylesheet">
   <link href="{% static 'main_app/css/mdb.min.css' %}" rel="stylesheet">
   <link href="{% static 'main_app/css/style.min.css' %}" rel="stylesheet">
+  <script src="{% static 'main_app/js/jssor.slider-27.5.0.min.js' %}" type="text/javascript"></script>
+  <script src="{% static 'main_app/js/slider.js' %}" type="text/javascript"></script>
+  <link href="{% static 'main_app/css/slider.css' %}" rel="stylesheet">
   <!--Django End-->
 
   <!--Debug>
@@ -43,7 +46,7 @@
 
         <!-- Left -->
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link waves-effect" href="#">Home
               <span class="sr-only">(current)</span>
             </a>
@@ -129,15 +132,63 @@
 
       <!--Grid row-->
       <div class="row wow fadeIn">
-        <!--Grid column-->
-        <div class="col-4"></div>
-        <div class="col-4 bg-success" style="align-content:center">
-          <img src="https://image.shutterstock.com/image-photo/singapore-december-26-2017-minion-600w-1483265900.jpg" class="mt-0 mb-0"
-            style="object-fit: contain;background:rgb(255,255,255);  width: 100%;height: 350px;max-height: 300px;max-width: 300px;margin-bottom: 1rem;" alt="">
-        </div>
-        <div class="col-4"></div>
+        <!-- S L I D E R-->
 
-        <!--Grid column-->
+        <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:600px;height:500px;overflow:hidden;visibility:hidden;">
+                <!-- Loading Screen -->
+                <div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
+                    <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="{% static 'main_app/img/spin.svg' %}" />
+                </div>
+                <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:600px;height:500px;overflow:hidden;">
+                    <div>
+                        <img data-u="image" src="{% static 'main_app/img/002.jpg' %}" />
+                    </div>
+                    <div>
+                        <img data-u="image" src="{% static 'main_app/img/001.jpg' %}" />
+                    </div>
+                    <div>
+                        <img data-u="image" src="{% static 'main_app/img/001_1.jpg' %}" />
+                    </div>
+                    <div>
+                        <img data-u="image" src="{% static 'main_app/img/001_2.jpg' %}" />
+                    </div>
+                    <div>
+                        <img data-u="image" src="{% static 'main_app/img/005.jpg' %}" />
+                    </div>
+                    <div>
+                        <img data-u="image" src="{% static 'main_app/img/001.jpg' %}" />
+                    </div>
+                    <div>
+                        <img data-u="image" src="{% static 'main_app/img/002_1.jpg' %}" />
+                    </div>
+                    <div>
+                        <img data-u="image" src="{% static 'main_app/img/001_2.jpg' %}" />
+                    </div>
+                </div>
+                <!-- Bullet Navigator -->
+                <div data-u="navigator" class="jssorb072" style="position:absolute;bottom:12px;right:12px;" data-autocenter="1" data-scale="0.5" data-scale-bottom="0.75">
+                    <div data-u="prototype" class="i" style="width:24px;height:24px;font-size:12px;line-height:24px;">
+                        <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1;">
+                            <circle class="b" cx="8000" cy="8000" r="6666.7"></circle>
+                        </svg>
+                        <div data-u="numbertemplate" class="n"></div>
+                    </div>
+                </div>
+                <!-- Arrow Navigator -->
+                <div data-u="arrowleft" class="jssora073" style="width:40px;height:50px;top:0px;left:30px;" data-autocenter="2" data-scale="0.75" data-scale-left="0.75">
+                    <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+                        <path class="a" d="M4037.7,8357.3l5891.8,5891.8c100.6,100.6,219.7,150.9,357.3,150.9s256.7-50.3,357.3-150.9 l1318.1-1318.1c100.6-100.6,150.9-219.7,150.9-357.3c0-137.6-50.3-256.7-150.9-357.3L7745.9,8000l4216.4-4216.4 c100.6-100.6,150.9-219.7,150.9-357.3c0-137.6-50.3-256.7-150.9-357.3l-1318.1-1318.1c-100.6-100.6-219.7-150.9-357.3-150.9 s-256.7,50.3-357.3,150.9L4037.7,7642.7c-100.6,100.6-150.9,219.7-150.9,357.3C3886.8,8137.6,3937.1,8256.7,4037.7,8357.3 L4037.7,8357.3z"></path>
+                    </svg>
+                </div>
+                <div data-u="arrowright" class="jssora073" style="width:40px;height:50px;top:0px;right:30px;" data-autocenter="2" data-scale="0.75" data-scale-right="0.75">
+                    <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+                        <path class="a" d="M11962.3,8357.3l-5891.8,5891.8c-100.6,100.6-219.7,150.9-357.3,150.9s-256.7-50.3-357.3-150.9 L4037.7,12931c-100.6-100.6-150.9-219.7-150.9-357.3c0-137.6,50.3-256.7,150.9-357.3L8254.1,8000L4037.7,3783.6 c-100.6-100.6-150.9-219.7-150.9-357.3c0-137.6,50.3-256.7,150.9-357.3l1318.1-1318.1c100.6-100.6,219.7-150.9,357.3-150.9 s256.7,50.3,357.3,150.9l5891.8,5891.8c100.6,100.6,150.9,219.7,150.9,357.3C12113.2,8137.6,12062.9,8256.7,11962.3,8357.3 L11962.3,8357.3z"></path>
+                    </svg>
+                </div>
+            </div>
+            <script type="text/javascript">jssor_1_slider_init();</script>
+            <!-- #endregion Jssor Slider End -->
+        <!-- E N D     S L I D E R-->
         <div class="col-md-12">
 
           <!--Content-->
@@ -145,6 +196,12 @@
             <div class="mb-1 py-2">
                 <span class="badge purple mr-1">{{product.category}}</span>
                 <span class="badge blue mr-1">{{product.status}}</span>
+                {% if a == 0 %}
+                <span class="badge grey mr-1">Not For Sale</span>
+                {% endif %}
+                {% if b == 0 %}
+                <span class="badge grey mr-1">Not For Rent</span>
+                {% endif %}
             </div>
 
             <div class="row">
@@ -159,22 +216,28 @@
             </div>
             <br>
             <p class="lead font-weight-bold">Description</p>
-            <p>{{product.description}}</p>
-            <p>Contact : <img style="height:30px;width:30px;" src="{% static 'main_app/img/whatsapp.png' %}"> <img style="height:30px;width:30px;"
-                src="{% static 'main_app/img/email.png' %}"></p>
+            <p style="max-width: 500px;">{{product.description}}</p>
+            <p class="lead font-weight-bold">Contact</p>
+            {% if product.owner.whnumber %}
+            <h6><img style="height:30px;width:30px;" class="mr-2" src="{% static 'main_app/img/whatsapp.png' %}">  {{product.owner.whnumber}}</h6>
+            {% endif %}
+            {% if product.owner.email %}
+            <h6><img style="height:30px;width:30px;" class="mr-2" src="{% static 'main_app/img/email.png' %}">  {{product.owner.email}}</h6>
+            {% endif %}
+            {% if product.owner.phnumber %}
+            <h6><img style="height:30px;width:30px;" class="mr-2" src="{% static 'main_app/img/phone.png' %}">  {{product.owner.phnumber}}</h6>
+            {% endif %}
             <br>
             {% if a == 1 %}
             <h5>Price : <span class="font-weight-bold" style="color: rgb(33, 22, 242)">{{sellad.price}}$</span></h5>
-            {% else %}<hr>
-            <h5>Not for <span class="font-weight-bold" style="color:rgb(17, 71, 236); ">SELL</span></h5>
             {% endif %}
 
           <!--Content-->
         </div>
         <!--Grid column-->
         <div class="col-md-12">
-          <hr>
           {% if b == 1 %}
+          <hr>
           <h5>Available for <span class="font-weight-bold" style="color:rgb(17, 71, 236); ">RENT</span></h5>
           <p>Price : <span style="color:rgb(25, 47, 242)">{{rentad.price}}$</span></p>
           <h6>Description: </h6>
@@ -182,13 +245,9 @@
 {{rentad.description}}
 </pre>
           <p>Add Date: {{rentad.adddate}}</p>
-          {% else %}
-          <h5>Not Available for <span class="font-weight-bold" style="color:rgb(17, 71, 236); ">RENT</span></h5>
           {% endif %}
         </div>
       </div>
-
-      <hr>
     </div>
   </main>
   <!--Footer-->

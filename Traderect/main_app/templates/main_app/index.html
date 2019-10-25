@@ -226,6 +226,7 @@
           {% for e in a %}
           {% if e.0 > 0 %}
           <div class="col-lg-3 col-md-6 mb-4">
+            <a  href="product/{{e.3.pid}}">
             <div class=" card bg-transparent mb-4">
               <div class="card-body thumb-post">
                 <h5> {{ e.4 }} <span <span class="badge badge-success">Rent</span></h5>
@@ -248,9 +249,11 @@
                 </div>
               </div>
             </div>
+          </a>
           </div>
           {% else %}
           <div class="col-lg-3 col-md-6 mb-4">
+            <a  href="product/{{e.3.pid}}">
             <div class=" card bg-transparent mb-4">
               <div class="card-body thumb-post">
                 <h5>{{ e.4 }} <span class="badge badge-primary">Sale</span></h5>
@@ -268,6 +271,7 @@
                 </div>
               </div>
             </div>
+          </a>
           </div>
           {% endif %}
           {% endfor %}
