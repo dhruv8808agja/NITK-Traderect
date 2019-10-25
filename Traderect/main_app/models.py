@@ -176,8 +176,8 @@ class Renttransaction(models.Model):
 
 
 class Rentad(models.Model):
-    rentid = models.IntegerField(primary_key=True)
-    pid = models.ForeignKey(Products, models.DO_NOTHING, db_column='pid', blank=True, null=True)
+    rentid = models.IntegerField()
+    pid = models.ForeignKey(Products, models.DO_NOTHING, db_column='pid',primary_key=True, blank=False, null=False)
     price = models.IntegerField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     adddate = models.DateField(db_column='addDate', blank=True, null=True)  # Field name made lowercase.
@@ -189,8 +189,8 @@ class Rentad(models.Model):
 
 
 class Sellad(models.Model):
-    sellid = models.IntegerField(primary_key=True)
-    pid = models.ForeignKey(Products, models.DO_NOTHING, db_column='pid', blank=True, null=True)
+    sellid = models.IntegerField()
+    pid = models.ForeignKey(Products, models.DO_NOTHING, db_column='pid', primary_key=True,blank=False, null=False)
     price = models.IntegerField(blank=True, null=True)
     adddate = models.DateField(db_column='addDate', blank=True, null=True)  # Field name made lowercase.
     expirydate = models.DateField(blank=True, null=True)

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
 from .models import *
 import random
@@ -21,3 +21,19 @@ def index(request):
                 i.append('main_app/img/default.jpeg')
     random.shuffle(a)
     return render(request, 'main_app/index.html',{'a':a,})
+
+def product(request,productID):
+        product=get_object_or_404(Products,pk=productID)
+        a=1
+        b=1
+        sellad=0
+        rentad=0
+        try:
+            sellad=Sellad.objects.get(pk=product)
+        except Sellad.DoesNotExist:
+            a=0
+        try:
+            rentad=Rentad.objects.get(pk=product)
+        except Rentad.DoesNotExist:
+            b=0
+        return render(request,'main_app/product-page.html',{'product':product,'sellad':sellad,'rentad':rentad,'a':a,'b':b})

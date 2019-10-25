@@ -8,18 +8,12 @@
   <title>Material Design Bootstrap</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-  <!-- Django Begin -->
-  {% load static %}
-  <link href="{% static 'main_app/css/bootstrap.min.css' %}" rel="stylesheet">
-  <link href="{% static 'main_app/css/mdb.min.css' %}" rel="stylesheet">
-  <link href="{% static 'main_app/css/style.min.css' %}" rel="stylesheet">
-  <!--Django End-->
-
-  <!--Debug>
+  <!-- Bootstrap core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
   <link href="css/mdb.min.css" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
   <link href="css/style.min.css" rel="stylesheet">
-<!Debug-->
 </head>
 
 <body>
@@ -77,7 +71,7 @@
             </button>
           </li>
           <li class="nav-item">
-            <button type="button" class="btn btn-md border" style="box-shadow: none;">Login</button>
+            <button type="button" class="btn btn-md border" style="box-shadow: none;" >Login</button>
           </li>
         </ul>
 
@@ -101,25 +95,25 @@
         <div class="modal-body">
           <div class="container-fluid border my-2 text-center">
             <div class="row">
-              <div class="col-8">
-                <p>review product #4847387</p>
-              </div>
-              <div class="col-4">
-                <button type="button" class="btn">review</button>
-              </div>
+            <div class="col-8">
+              <p>review product #4847387</p>
+            </div>
+            <div class="col-4">
+              <button type="button" class="btn">review</button>
             </div>
           </div>
+        </div>
         </div>
 
       </div>
     </div>
   </div>
-  <br><br><br><br>
+  <br><br><br>
 
   <div class="container">
-    <h6 class="col h6">Product ID : # {{product.pid}}</h6>
-    <h2 class=" h2 text-center mb-0">{{product.pname}}</h2>
-    <h5 align="center" class="mt-0">by <span style="color:blue;font-weight: bold;">@{{product.owner.name}}</span></h5>
+    <h6 class="col h6">Need ID : #829739273</h6>
+    <h2 class=" h2 text-center mb-0">Drugs</h2>
+    <h5 align="center" class="mt-0">for <span style="color:blue;font-weight: bold;">@user_name</span></h5>
   </div>
 
 
@@ -141,13 +135,25 @@
         <div class="col-md-12">
 
           <!--Content-->
+          <div class="p-4">
 
-            <div class="mb-1 py-2">
-                <span class="badge purple mr-1">{{product.category}}</span>
-                <span class="badge blue mr-1">{{product.status}}</span>
+            <div class="mb-3">
+              <a href="">
+                <span class="badge purple mr-1">Category 2</span>
+              </a>
+              <a href="">
+                <span class="badge blue mr-1">New</span>
+              </a>
+              <a href="">
+                <span class="badge red mr-1">Bestseller</span>
+              </a>
             </div>
 
-            <div class="row">
+            <!-- <p class="lead bg-info">
+              Status Over here
+            </p> -->
+
+            <!-- <div class="row">
               <div class="col-lg-12 ">
                 <span class="fa fa-star" id="star1"></span>
                 <span class="fa fa-star" id="star2"></span>
@@ -157,69 +163,38 @@
                 <h7 class="h7">(276)</h7>
               </div>
             </div>
-            <br>
+            <br> -->
             <p class="lead font-weight-bold">Description</p>
-            <p>{{product.description}}</p>
-            <p>Contact : <img style="height:30px;width:30px;" src="{% static 'main_app/img/whatsapp.png' %}"> <img style="height:30px;width:30px;"
-                src="{% static 'main_app/img/email.png' %}"></p>
-            <br>
-            {% if a == 1 %}
-            <h5>Price : <span class="font-weight-bold" style="color: rgb(33, 22, 242)">{{sellad.price}}$</span></h5>
-            {% else %}<hr>
-            <h5>Not for <span class="font-weight-bold" style="color:rgb(17, 71, 236); ">SELL</span></h5>
-            {% endif %}
 
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolor suscipit libero eos atque quia ipsa
+              sint voluptatibus!
+              Beatae sit assumenda asperiores iure at maxime atque repellendus maiores quia sapiente.</p>
+            <br>
+            <!-- <h5>Price : <span class="font-weight-bold" style="color: rgb(33, 22, 242)">300$</span></h5> -->
+            <p>Contact : <img style="height:30px;width:30px;" src="/home/student/NITK-Traderect/Traderect/main_app/templates/main_app/img/whatsapp.png"> <img style="height:30px;width:30px;" src="/home/student/NITK-Traderect/Traderect/main_app/templates/main_app/img/email.png"></p>
+          </div>
           <!--Content-->
         </div>
         <!--Grid column-->
-        <div class="col-md-12">
-          <hr>
-          {% if b == 1 %}
-          <h5>Available for <span class="font-weight-bold" style="color:rgb(17, 71, 236); ">RENT</span></h5>
-          <p>Price : <span style="color:rgb(25, 47, 242)">{{rentad.price}}$</span></p>
-          <h6>Description: </h6>
-          <pre>
-{{rentad.description}}
-</pre>
-          <p>Add Date: {{rentad.adddate}}</p>
-          {% else %}
-          <h5>Not Available for <span class="font-weight-bold" style="color:rgb(17, 71, 236); ">RENT</span></h5>
-          {% endif %}
-        </div>
       </div>
 
       <hr>
     </div>
   </main>
-  <!--Footer-->
-  <footer class="page-footer text-center font-small mt-4 wow fadeIn">
 
-
-
-    <hr class="my-4">
-
-
-
-    <!--EDITOR Mode>
-  </footer>
+  <!-- JQuery -->
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <!-- Bootstrap tooltips -->
   <script type="text/javascript" src="js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
   <script type="text/javascript" src="js/mdb.min.js"></script>
+  <!-- Initializations -->
   <script type="text/javascript">
+    // Animations initialization
     new WOW().init();
   </script>
-  <! END EDITOR Mode-->
-    <!--Django Mode-->
-  </footer>
-  <script type="text/javascript" src="{% static 'main_app/js/jquery-3.4.1.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'main_app/js/popper.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'main_app/js/bootstrap.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'main_app/js/mdb.min.js' %}"></script>
-  <script type="text/javascript">
-    new WOW().init();
-  </script>
-  <!--Django Mode END-->
 </body>
 
 </html>
