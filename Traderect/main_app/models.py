@@ -132,7 +132,7 @@ class Need(models.Model):
 
 class Photos(models.Model):
     photoid = models.IntegerField(primary_key=True)
-    photofile = models.ImageField(upload_to='main_app/img/',db_column='photoFile', blank=True, null=True)  # Field name made lowercase.
+    photofile = models.ImageField(upload_to='main_app/static/main_app/img',db_column='photoFile', blank=True, null=True)  # Field name made lowercase.
     description = models.CharField(max_length=60, blank=True, null=True)
     ownerid = models.IntegerField(blank=True, null=True)
 
@@ -203,7 +203,7 @@ class Sellad(models.Model):
 class Users(models.Model):
     email = models.CharField(primary_key=True, max_length=40)
     name = models.CharField(max_length=50, blank=True, null=True)
-    profilephoto = models.ImageField(upload_to='main_app/img/',db_column='profilePhoto', blank=True, null=True)  # Field name made lowercase.
+    profilephoto = models.ImageField(upload_to='main_app/static/main_app/img',db_column='profilePhoto', blank=True, null=True)  # Field name made lowercase.
     phnumber = models.CharField(db_column='phNumber', max_length=15, blank=True, null=True)  # Field name made lowercase.
     whnumber = models.CharField(db_column='whNumber', max_length=15, blank=True, null=True)  # Field name made lowercase.
     address = models.CharField(max_length=200, blank=True, null=True)

@@ -119,7 +119,7 @@
             </button>
           </li>
           <li class="nav-item">
-            <button type="button" class="btn btn-md border" style="box-shadow: none;" >Login</button>
+            <button type="button" class="btn btn-md border" style="box-shadow: none;">Login</button>
           </li>
         </ul>
 
@@ -143,14 +143,14 @@
         <div class="modal-body">
           <div class="container-fluid border my-2 text-center">
             <div class="row">
-            <div class="col-8">
-              <p>review product #4847387</p>
-            </div>
-            <div class="col-4">
-              <button type="button" class="btn">review</button>
+              <div class="col-8">
+                <p>review product #4847387</p>
+              </div>
+              <div class="col-4">
+                <button type="button" class="btn">review</button>
+              </div>
             </div>
           </div>
-        </div>
         </div>
 
       </div>
@@ -223,103 +223,15 @@
         <!--Grid row-->
         <div class="row wow fadeIn">
 
-          <!--Grid column-->
-          <div class="col-lg-3 col-md-6 mb-4">
-
-            <!--Card-->
-            <div class="card">
-
-              <!--Card image-->
-              <div class="view overlay">
-                <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg" class="card-img-top" alt="">
-                <a>
-                  <div class="mask rgba-white-slight"></div>
-                </a>
-              </div>
-              <!--Card image-->
-
-              <!--Card content-->
-              <div class="card-body text-center">
-                <!--Category & Title-->
-                <a href="" class="grey-text">
-                  <h5>Shirt</h5>
-                </a>
-                <h5>
-                  <strong>
-                    <a href="" class="dark-grey-text">Denim shirt
-                      <span class="badge badge-pill danger-color">SELL</span>
-                    </a>
-                  </strong>
-                </h5>
-
-                <h4 class="font-weight-bold blue-text">
-                  <strong>120$</strong>
-                </h4>
-
-              </div>
-              <!--Card content-->
-
-            </div>
-            <!--Card-->
-
-          </div>
-          <!--Grid column-->
-
-          <!--Grid column-->
-          <div class="col-lg-3 col-md-6 mb-4">
-            <div class=" card bg-transparent mb-4">
-              <div class="card-body thumb-post">
-                <h5>Product Name <span <span class="badge badge-success">Rent</span></h5>
-                <h7>By <span style="color:rgb(37, 113, 201)" class="font-weight-bold">@Owner_name<span></h7>
-                <div style="background: rgb(255,255,255)">
-                  <img src="https://image.shutterstock.com/image-photo/singapore-december-26-2017-minion-600w-1483265900.jpg" class="card-img-top mt-0 mb-0" style="background:rgb(255,255,255)" alt=""> </div>
-              </div>
-              <!--p>Here is some description about this product writen by writer, I don't want to write this but for just checking purpose i am writting this much long.</p-->
-
-              <div class=" row">
-                <div class="col-4">
-                  <h6 class="font-weight-bold text-center ml-1" style="color: rgb(31, 82, 157)">
-                    <strong>139$</strong>
-                  </h6>
-                </div>
-                <div class="col-8">
-                  <h6 class="font-weight-bold text-center" style="color:rgb(54, 9, 119)">
-                    <strong><img src="https://image.flaticon.com/icons/svg/616/616489.svg" style="width:20px;height:20px;"> (4.5/5)</strong>
-                  </h6>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--Grid column-->
-          <div class="col-lg-3 col-md-6 mb-4">
-            <div class=" card bg-transparent mb-4">
-              <div class="card-body thumb-post">
-                <h5>Product Name <span class="badge badge-primary">Sell</span></h5>
-                <h7>By <span style="color:rgb(37, 113, 201)" class="font-weight-bold">@Owner_name<span></h7>
-                <div style="background: rgb(255,255,255)">
-                  <img src="https://image.shutterstock.com/image-illustration/illustration-goggle-two-eyes-on-600w-788919178.jpg" class="card-img-top mt-0 mb-0" style="background:rgb(255,255,255)" alt=""> </div>
-              </div>
-              <!--p>Here is some description about this product writen by writer, I don't want to write this but for just checking purpose i am writting this much long.</p-->
-
-              <div class=" row">
-                <div class="col-12">
-                  <h6 class="font-weight-bold text-center ml-3" style="color: rgb(31, 82, 157)">
-                    <strong>139$</strong>
-                  </h6>
-                </div>
-              </div>
-            </div>
-          </div>
-
           {% for e in a %}
-          {% e.0 > 0 %}
+          {% if e.0 > 0 %}
           <div class="col-lg-3 col-md-6 mb-4">
             <div class=" card bg-transparent mb-4">
               <div class="card-body thumb-post">
                 <h5> {{ e.4 }} <span <span class="badge badge-success">Rent</span></h5>
                 <h7>By <span style="color:rgb(37, 113, 201)" class="font-weight-bold">@{{ e.5 }}<span></h7>
                 <div style="background: rgb(255,255,255)">
-                  <img src="https://image.shutterstock.com/image-photo/singapore-december-26-2017-minion-600w-1483265900.jpg" class="card-img-top mt-0 mb-0" style="background:rgb(255,255,255)" alt=""> </div>
+                  <img src="{% static e.7 %}" class="card-img-top mt-0 mb-0" style="background:rgb(255,255,255)" alt=""> </div>
               </div>
               <!--p>Here is some description about this product writen by writer, I don't want to write this but for just checking purpose i am writting this much long.</p-->
 
@@ -341,10 +253,10 @@
           <div class="col-lg-3 col-md-6 mb-4">
             <div class=" card bg-transparent mb-4">
               <div class="card-body thumb-post">
-                <h5>{{ e.4 }}  <span class="badge badge-primary">Sale</span></h5>
+                <h5>{{ e.4 }} <span class="badge badge-primary">Sale</span></h5>
                 <h7>By <span style="color:rgb(37, 113, 201)" class="font-weight-bold">@{{ e.5 }}<span></h7>
                 <div style="background: rgb(255,255,255)">
-                  <img src="https://image.shutterstock.com/image-photo/kiev-ukraine-september-28-2017-600w-725087752.jpg" class="card-img-top mt-0 mb-0" style="background:rgb(255,255,255)" alt=""> </div>
+                  <img src="{% static e.6 %}" class="card-img-top mt-0 mb-0" style="background:rgb(255,255,255)" alt=""> </div>
               </div>
               <!--p>Here is some description about this product writen by writer, I don't want to write this but for just checking purpose i am writting this much long.</p-->
 
@@ -359,28 +271,6 @@
           </div>
           {% endif %}
           {% endfor %}
-
-
-          <div class="col-lg-3 col-md-6 mb-4">
-            <div class=" card bg-transparent mb-4">
-              <div class="card-body thumb-post">
-                <h5>Product Name <span class="badge badge-primary">Sale</span></h5>
-                <h7>By <span style="color:rgb(37, 113, 201)" class="font-weight-bold">@Owner_name<span></h7>
-                <div style="background: rgb(255,255,255)">
-                  <img src="https://image.shutterstock.com/image-photo/kiev-ukraine-september-28-2017-600w-725087752.jpg" class="card-img-top mt-0 mb-0" style="background:rgb(255,255,255)" alt=""> </div>
-              </div>
-              <!--p>Here is some description about this product writen by writer, I don't want to write this but for just checking purpose i am writting this much long.</p-->
-
-              <div class=" row">
-                <div class="col-12">
-                  <h6 class="font-weight-bold text-center ml-3" style="color: rgb(31, 82, 157)">
-                    <strong>139$</strong>
-                  </h6>
-                </div>
-              </div>
-            </div>
-          </div>
-
 
         </div>
         <!--Grid row-->
@@ -451,17 +341,16 @@
     new WOW().init();
   </script>
   <! END EDITOR Mode-->
-  <!--Django Mode-->
-href="{% static 'main_app/css/style.min.css' %}"
-</footer>
-<script type="text/javascript" src="{% static 'main_app/js/jquery-3.4.1.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'main_app/js/popper.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'main_app/js/bootstrap.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'main_app/js/mdb.min.js' %}"></script>
-<script type="text/javascript">
-  new WOW().init();
-</script>
-<!--Django Mode END-->
+    <!--Django Mode-->
+  </footer>
+  <script type="text/javascript" src="{% static 'main_app/js/jquery-3.4.1.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'main_app/js/popper.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'main_app/js/bootstrap.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'main_app/js/mdb.min.js' %}"></script>
+  <script type="text/javascript">
+    new WOW().init();
+  </script>
+  <!--Django Mode END-->
 
 
 
