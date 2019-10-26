@@ -51,7 +51,7 @@ def login(request):
         user=authenticate(username=request.POST['email'],password=request.POST['password'])
         if user is not None:
             auth_login(request, user)
-            return redirect('home/')
+            return redirect('/home/')
         else:
             return render(request,'main_app/login.html')
 
@@ -64,3 +64,16 @@ def signup(request):
         u=Users.objects.create(email=request.POST['email'],name=request.POST['name'],phnumber=request.POST['phnumber'],whnumber=request.POST['whnumber'],address=request.POST['address'])
         u.save()
         return render(request,'main_app/login.html')
+
+def addNeed(request):
+    if request.method=='GET':
+        return render(request, 'main_app/addNeed.html')
+    if request.method=='POST':
+        print("baap se pehle")
+        print(request.user)
+        print(request.POST)
+        user = Users.objects.filter(email=request.user)[0]
+        need = Need.objects.create(productname=request.POST['productname'],description=request.POST['description'],category=request.POST['Category'],email=user)
+        need.save()
+        return redirect('/home/')
+        

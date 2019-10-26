@@ -1,4 +1,4 @@
-#!/home/dhruv/Projects/NITK-Traderect/Traderect/env/bin/python3
+#!/home/dhruv/Projects/env/bin/python3
 from django.core import management
 
 if __name__ == "__main__":
