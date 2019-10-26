@@ -61,6 +61,6 @@ def signup(request):
     if request.method=='POST':
         user = User.objects.create_user(request.POST['email'], request.POST['email'], request.POST['password'])
         user.save()
-        u=Users.objects.create_user(email=request.POST['email'],name=request.POST['name'],phnumber=request.POST['phnumber'],whnumber=request.POST['whnumber'],address=request.POST['address'])
+        u=Users.objects.create(email=request.POST['email'],name=request.POST['name'],phnumber=request.POST['phnumber'],whnumber=request.POST['whnumber'],address=request.POST['address'])
         u.save()
         return render(request,'main_app/login.html')
