@@ -65,15 +65,14 @@ def signup(request):
         u.save()
         return render(request,'main_app/login.html')
 
+@login_required
 def addNeed(request):
     if request.method=='GET':
         return render(request, 'main_app/addNeed.html')
     if request.method=='POST':
-        print("baap se pehle")
-        print(request.user)
         print(request.POST)
+        print(request.FILES)
         user = Users.objects.filter(email=request.user)[0]
         need = Need.objects.create(productname=request.POST['productname'],description=request.POST['description'],category=request.POST['Category'],email=user)
         need.save()
         return redirect('/home/')
-        
