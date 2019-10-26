@@ -1,8 +1,14 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404, redirect
 from django.http import HttpResponse
 from .models import *
 import random
+from django.contrib.auth.models import User
+from django.contrib.auth import login as auth_login
+from django.contrib.auth import authenticate
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
+@login_required
 def index(request):
     a=[[1,e.rentid,e.price,e.pid,e.pid.pname,e.pid.owner.name,e.pid.avgrating] for e in Rentad.objects.all()]
     for i in a:
@@ -37,3 +43,24 @@ def product(request,productID):
         except Rentad.DoesNotExist:
             b=0
         return render(request,'main_app/product-page.html',{'product':product,'sellad':sellad,'rentad':rentad,'a':a,'b':b})
+
+def login(request):
+    if request.method=='GET':
+        return render(request,'main_app/login.html')
+    if request.method=='POST':
+        user=authenticate(username=request.POST['email'],password=request.POST['password'])
+        if user is not None:
+            auth_login(request, user)
+            return redirect('home/')
+        else:
+            return render(request,'main_app/login.html')
+
+def signup(request):
+    if request.method=='GET':
+        return render(request,'main_app/signup.html')
+    if request.method=='POST':
+        user = User.objects.create_user(request.POST['email'], request.POST['email'], request.POST['password'])
+        user.save()
+        u=Users.objects.create_user(email=request.POST['email'],name=request.POST['name'],phnumber=request.POST['phnumber'],whnumber=request.POST['whnumber'],address=request.POST['address'])
+        u.save()
+        return render(request,'main_app/login.html')

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Material Design Bootstrap</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <!-- Django Begin-->
+  {% load static %}
+  <link href="{% static 'main_app/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'main_app/css/mdb.min.css' %}" rel="stylesheet">
+  <link href="{% static 'main_app/css/style.min.css' %}" rel="stylesheet">
+  <link href="{% static 'main_app/css/login_page.css' %}" rel="stylesheet">
+  <!--Django End-->
+
+  <!--Debug>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/mdb.min.css" rel="stylesheet">
+  <link href="css/style.min.css" rel="stylesheet">
+  <link href="css/login_page.css" rel="stylesheet">
+<Debug-->
+</head>
+
+<body>
+
+
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <h3 class="font-weight-bold h3" style="color:rgb(83, 194, 223);text-align: center;">T R A D E R E C T</h3>
+
+      <!-- Login Form -->
+      <form method="POST" action="{% url 'signup' %}">
+        {% csrf_token %}
+        <input type="text" id="name" class="fadeIn second" name="name" placeholder="name">
+        <input type="text" id="login" class="fadeIn second" name="email" placeholder="email">
+        <input type="password" id="password" class="fadeIn third" name="password" placeholder="new password">
+        <input type="password" id="confirmpass" class="fadeIn third" name="confirmpass" placeholder="confirm new password">
+        <input type="text" id="name" class="fadeIn second" name="whnumber" placeholder="WhatsApp number">
+        <input type="text" id="name" class="fadeIn second" name="phnumber" placeholder="Phone Number">
+        <input type="textarea" id="name" class="fadeIn second" name="address" placeholder="address">
+        <input type="submit" class="fadeIn fourth" value="SIGN UP">
+      </form>
+
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+        <a class="underlineHover" href="{% url 'login' %}">LOG IN!</a>
+      </div>
+
+    </div>
+  </div>
+
+
+<!--/main-->
+  <!--EDITOR Mode>
+      <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+      <script type="text/javascript" src="js/popper.min.js"></script>
+      <script type="text/javascript" src="js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="js/mdb.min.js"></script>
+      <script type="text/javascript">
+        new WOW().init();
+      </script>
+  <Django Mode-->
+  <script type="text/javascript" src="{% static 'main_app/js/jquery-3.4.1.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'main_app/js/popper.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'main_app/js/bootstrap.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'main_app/js/mdb.min.js' %}"></script>
+  <script type="text/javascript">
+    new WOW().init();
+  </script>
+  <!--Django Mode END-->
+
+  </body>
+
+  </html>
