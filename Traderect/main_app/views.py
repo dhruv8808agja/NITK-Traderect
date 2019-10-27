@@ -78,18 +78,18 @@ def addNeed(request):
         user = Users.objects.filter(email=request.user)[0]
         need = Need.objects.create(productname=request.POST['productname'], description=request.POST['description'], category=request.POST['Category'], email=user)
         need.save()
-        return redirect('/home/')
+        return redirect('/myNeed/')
 
 
 def allNeed(request):
-    a = [[n.nid, n.productname, n.category] for n in Need.objects.all()]
+    a = [[n.nid, n.productname, n.category] for n in Need.objects.all() if n.email.email!=request.user.email]
     random.shuffle(a)
     return render(request, 'main_app/allNeed.html', {'a': a})
 
 def myNeed(request):
-    a = [[n.nid, n.productname, n.category] for n in Need.objects.all()]
+    a = [[n.nid, n.productname, n.category] for n in Need.objects.all() if n.email.email==request.user.email]
     random.shuffle(a)
-    return render(request, 'main_app/allNeed.html', {'a': a})
+    return render(request, 'main_app/myNeeds.html', {'a': a})
 
 
 def addProduct(request):
@@ -135,6 +135,7 @@ def edit_product_page(request, productID):
         #left to finish
 
 
-def needDetail(request, nid):
+
+def needDetail(request,nid):
     need=get_object_or_404(Need, pk=nid)
     return render(request, 'main_app/needDetails.html', {'need': need})
