@@ -34,15 +34,21 @@ def product(request, productID):
         b=1
         sellad=0
         rentad=0
+        flag=0
+        t=1
         try:
             sellad=Sellad.objects.get(pk=product)
         except Sellad.DoesNotExist:
             a=0
         try:
             rentad=Rentad.objects.get(pk=product)
+            t=[[str(i.startdate)+" "+str(i.starttime),str(i.enddate)+" "+str(i.endtime)] for i in Renttransaction.objects.select_related().filter(rentid=rentad)]
+            if len(t)!=0:
+                flag=1
+            print(flag)
         except Rentad.DoesNotExist:
             b=0
-        return render(request, 'main_app/product-page.html', {'product': product, 'sellad': sellad, 'rentad': rentad, 'a': a, 'b': b})
+        return render(request, 'main_app/product-page.html', {'product': product, 'sellad': sellad, 'rentad': rentad, 'a': a, 'b': b,'t':t,'flag':flag})
 
 
 def login(request):
@@ -143,7 +149,8 @@ def myProducts(request):
 
 def product_page(request, productID):
     this_product = Products.objects.filter(pid=productID)[0]
-    return render(request, 'main_app/product-page.html', {'product': this_product})
+    b=0
+    return render(request, 'main_app/product-page.html', {'product': this_product,'b':b})
 
 def product_delete(request, productID):
     instance = Products.objects.get(pk=productID)
@@ -181,3 +188,9 @@ def new_rent(request,productID):
     rentad = Rentad.objects.filter(pid=productID)[0]
     product= Products.objects.get(pk=productID)
     return render(request,'main_app/new_rent.html',{'rentad':rentad,'product':product})
+
+def new_rent_post(request):
+    print(request.POST)
+    str=request.POST['pid']+"+"+request.POST['startDate']+"+"+request.POST['startTime']+"+"+request.POST['endDate']+"+"+request.POST['endTime'];
+    inst=Renttransaction.objects.create(rentid=Rentad.objects.get(pk=request.POST['pid']),email=Users.objects.get(pk=request.POST['email']),startdate=request.POST['startDate'],starttime=request.POST['startTime'],enddate=request.POST['endDate'],endtime=request.POST['endTime'])
+    return redirect('/home')
