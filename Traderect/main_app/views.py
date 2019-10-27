@@ -25,7 +25,8 @@ def index(request):
             else:
                 i.append('main_app/img/default.jpeg')
     random.shuffle(a)
-    return render(request, 'main_app/index.html', {'a':a})
+    return render(request, 'main_app/index.html', {'a': a})
+
 
 def product(request, productID):
         product=get_object_or_404(Products, pk=productID)
@@ -43,6 +44,7 @@ def product(request, productID):
             b=0
         return render(request, 'main_app/product-page.html', {'product': product, 'sellad': sellad, 'rentad': rentad, 'a': a, 'b': b})
 
+
 def login(request):
     if request.method=='GET':
         return render(request,'main_app/login.html')
@@ -52,7 +54,8 @@ def login(request):
             auth_login(request, user)
             return redirect('/home/')
         else:
-            return render(request,'main_app/login.html')
+            return render(request, 'main_app/login.html')
+
 
 def signup(request):
     if request.method=='GET':
@@ -104,8 +107,10 @@ def addProduct(request):
         product.save()
         return redirect('/home/')
 
+
 def wishlist(request):
     return render(request,'main_app/wishlist.html')
+
 
 def myProducts(request):
     if request.method == 'GET':
@@ -126,11 +131,10 @@ def edit_product_page(request, productID):
         return render(request, 'main_app/editProduct.html', {'product': this_product})
     if request.method == 'POST':
         this_product = Products.object.filter(pid=productID)
-
         return redirect('home')
+        #left to finish
 
 
-      
-def needDetail(request,nid):
+def needDetail(request, nid):
     need=get_object_or_404(Need, pk=nid)
-    return render(request,'main_app/needDetails.html',{'need':need})
+    return render(request, 'main_app/needDetails.html', {'need': need})
