@@ -83,6 +83,11 @@ def allNeed(request):
     random.shuffle(a)
     return render(request, 'main_app/allNeed.html', {'a': a})
 
+def myNeed(request):
+    a = [[n.nid, n.productname, n.category] for n in Need.objects.all()]
+    random.shuffle(a)
+    return render(request, 'main_app/allNeed.html', {'a': a})
+
 
 def addProduct(request):
     if request.method == 'GET':
@@ -108,3 +113,7 @@ def myProducts(request):
         my_products = Products.objects.filter(owner=user)
         a = [[p.pname] for p in my_products]
         return render(request, 'main_app/myProducts.html', {'a': a})
+
+def needDetail(request,nid):
+    need=get_object_or_404(Need, pk=nid)
+    return render(request,'main_app/needDetails.html',{'need':need})
