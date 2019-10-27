@@ -21,5 +21,6 @@ urlpatterns = [
     path('edit_product_page/<int:productID>/', views.edit_product_page, name='edit_product_page'),
     path('edit_product_page/post/$/', views.edit_product_page_post, name='edit_product_page_post'),
     path('wishlist/', views.wishlist, name='wishlist'),
+    path('addToWish/<int:productID>/', views.addToWish, name='addToWish'),
     path('', views.login, name='login'),
 ]
