@@ -8,12 +8,58 @@
   <title>Material Design Bootstrap</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-  <!-- Bootstrap core CSS -->
+
+  {% load static %}
+  <link href="{% static 'main_app/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'main_app/css/mdb.min.css' %}" rel="stylesheet">
+  <link href="{% static 'main_app/css/style.min.css' %}" rel="stylesheet">
+
+  <!--Debug>
   <link href="css/bootstrap.min.css" rel="stylesheet">
-  <!-- Material Design Bootstrap -->
   <link href="css/mdb.min.css" rel="stylesheet">
-  <!-- Your custom styles (optional) -->
   <link href="css/style.min.css" rel="stylesheet">
+  <!Debug-->
+  <style>
+    .thumb-post img {
+      object-fit: contain;
+      /* Do not scale the image */
+      object-position: center;
+      /* Center the image within the element */
+      width: 100%;
+      height: 350px;
+      max-height: 300px;
+      max-width: 300px;
+      margin-bottom: 1rem;
+    }
+  </style>
+  <style type="text/css">
+    html,
+    body,
+    header,
+    .carousel {
+      height: 60vh;
+    }
+
+    @media (max-width: 740px) {
+
+      html,
+      body,
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+
+    @media (min-width: 800px) and (max-width: 850px) {
+
+      html,
+      body,
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -37,22 +83,25 @@
 
         <!-- Left -->
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link waves-effect" href="#">Home
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="/home/">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">Wishlist</a>
+            <a class="nav-link waves-effect" href="/wishlist/">Wishlist</a>
+          </li>
+          <!--li class="nav-item">
+            <a class="nav-link waves-effect" href="/addNeed/">Add Need</a>
+          </li-->
+          <li class="nav-item active">
+            <a class="nav-link waves-effect" href="/allNeed/">Needs</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank">Add Product</a>
+            <a class="nav-link waves-effect" href="/myProducts/">My Products </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank">Add Need</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-effect" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">My Products</a>
+            <a class="nav-link waves-effect" href="/addProduct/">Add Product</a>
           </li>
         </ul>
 
@@ -71,7 +120,7 @@
             </button>
           </li>
           <li class="nav-item">
-            <button type="button" class="btn btn-md border" style="box-shadow: none;" >Login</button>
+            <button type="button" class="btn btn-md border" style="box-shadow: none;">Login</button>
           </li>
         </ul>
 
@@ -108,12 +157,12 @@
       </div>
     </div>
   </div>
-  <br><br><br>
+  <br><br><br><br>
 
   <div class="container">
-    <h6 class="col h6">Need ID : #829739273</h6>
-    <h2 class=" h2 text-center mb-0">Drugs</h2>
-    <h5 align="center" class="mt-0">for <span style="color:blue;font-weight: bold;">@user_name</span></h5>
+    <h6 class="col h6">Need ID : #{{ need.nid }}</h6>
+    <h2 class=" h2 text-center mb-0">{{ need.productname }}</h2>
+    <h5 align="center" class="mt-0">for <span style="color:blue;font-weight: bold;">@{{ need.email.name }}</span></h5>
   </div>
 
 
@@ -139,13 +188,7 @@
 
             <div class="mb-3">
               <a href="">
-                <span class="badge purple mr-1">Category 2</span>
-              </a>
-              <a href="">
-                <span class="badge blue mr-1">New</span>
-              </a>
-              <a href="">
-                <span class="badge red mr-1">Bestseller</span>
+                <span class="badge blue mr-1">{{ need.category }}</span>
               </a>
             </div>
 
@@ -166,12 +209,23 @@
             <br> -->
             <p class="lead font-weight-bold">Description</p>
 
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolor suscipit libero eos atque quia ipsa
-              sint voluptatibus!
-              Beatae sit assumenda asperiores iure at maxime atque repellendus maiores quia sapiente.</p>
+            <p>{{ need.description }}</p>
             <br>
             <!-- <h5>Price : <span class="font-weight-bold" style="color: rgb(33, 22, 242)">300$</span></h5> -->
-            <p>Contact : <img style="height:30px;width:30px;" src="/home/student/NITK-Traderect/Traderect/main_app/templates/main_app/img/whatsapp.png"> <img style="height:30px;width:30px;" src="/home/student/NITK-Traderect/Traderect/main_app/templates/main_app/img/email.png"></p>
+            <p class="lead font-weight-bold">Contact</p>
+            {% if need.email.whnumber %}
+            <h6><img style="height:30px;width:30px;" class="mr-2" src="{% static 'main_app/img/whatsapp.png' %}">  {{need.email.whnumber}}</h6>
+            {% endif %}
+            {% if need.email.email %}
+            <h6><img style="height:30px;width:30px;" class="mr-2" src="{% static 'main_app/img/email.png' %}">  {{need.email.email}}</h6>
+            {% endif %}
+            {% if need.email.phnumber %}
+            <h6><img style="height:30px;width:30px;" class="mr-2" src="{% static 'main_app/img/phone.png' %}">  {{need.email.phnumber}}</h6>
+            {% endif %}
+            <br>
+            {% if a == 1 %}
+            <h5>Price : <span class="font-weight-bold" style="color: rgb(33, 22, 242)">{{sellad.price}}$</span></h5>
+            {% endif %}
           </div>
           <!--Content-->
         </div>
@@ -181,20 +235,26 @@
       <hr>
     </div>
   </main>
-
-  <!-- JQuery -->
+  <!--/main-->
+  <!--EDITOR Mode>
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-  <!-- Bootstrap tooltips -->
   <script type="text/javascript" src="js/popper.min.js"></script>
-  <!-- Bootstrap core JavaScript -->
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
-  <!-- MDB core JavaScript -->
   <script type="text/javascript" src="js/mdb.min.js"></script>
-  <!-- Initializations -->
   <script type="text/javascript">
-    // Animations initialization
+    new WOW().init();
+  </script-->
+  <!--Django Mode-->
+  href="{% static 'main_app/css/style.min.css' %}"
+  </footer>
+  <script type="text/javascript" src="{% static 'main_app/js/jquery-3.4.1.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'main_app/js/popper.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'main_app/js/bootstrap.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'main_app/js/mdb.min.js' %}"></script>
+  <script type="text/javascript">
     new WOW().init();
   </script>
+  <!--Django Mode END-->
 </body>
 
 </html>

@@ -83,6 +83,11 @@ def allNeed(request):
     random.shuffle(a)
     return render(request, 'main_app/allNeed.html', {'a': a})
 
+def myNeed(request):
+    a = [[n.nid, n.productname, n.category] for n in Need.objects.all()]
+    random.shuffle(a)
+    return render(request, 'main_app/allNeed.html', {'a': a})
+
 
 def addProduct(request):
     if request.method == 'GET':
@@ -99,6 +104,8 @@ def addProduct(request):
         product.save()
         return redirect('/home/')
 
+def wishlist(request):
+    return render(request,'main_app/wishlist.html')
 
 def myProducts(request):
     if request.method == 'GET':
@@ -123,4 +130,7 @@ def edit_product_page(request, productID):
         return redirect('home')
 
 
-
+      
+def needDetail(request,nid):
+    need=get_object_or_404(Need, pk=nid)
+    return render(request,'main_app/needDetails.html',{'need':need})

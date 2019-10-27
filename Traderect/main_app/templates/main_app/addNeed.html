@@ -9,7 +9,7 @@
   <title>Material Design Bootstrap</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
- 
+
   {% load static %}
   <link href="{% static 'main_app/css/bootstrap.min.css' %}" rel="stylesheet">
   <link href="{% static 'main_app/css/mdb.min.css' %}" rel="stylesheet">
@@ -85,21 +85,24 @@
         <!-- Left -->
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="#">Home
+            <a class="nav-link waves-effect" href="/home/">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">Wishlist</a>
+            <a class="nav-link waves-effect" href="/wishlist/">Wishlist</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank">Add Product</a>
-          </li>
+          <!--li class="nav-item">
+            <a class="nav-link waves-effect" href="/addNeed/">Add Need</a>
+          </li-->
           <li class="nav-item active">
-            <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank">Add Need</a>
+            <a class="nav-link waves-effect" href="/allNeed/">Needs</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">My Products</a>
+            <a class="nav-link waves-effect" href="/myProducts/">My Products </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="/addProduct/">Add Product</a>
           </li>
         </ul>
 
@@ -118,7 +121,7 @@
             </button>
           </li>
           <li class="nav-item">
-            <button type="button" class="btn btn-md border" style="box-shadow: none;" >Login</button>
+            <button type="button" class="btn btn-md border" style="box-shadow: none;">Login</button>
           </li>
         </ul>
 
@@ -156,7 +159,7 @@
     </div>
   </div>
   <!--main-->
-  <main><br><br><br>
+  <main><br><br><br><br>
     <div class="container">
       <div class="col-12">
         <h4 class="h4" style="color:rgb(8, 65, 212);text-shadow: 2px 2px rgb(153, 238, 177)">Add Need</h4>
@@ -168,7 +171,7 @@
           <!-- <div class="form-group"></div> -->
             <label for="pname">Product Name :</label>
             <input type="text" id="pname" class="form-control" name="productname">
-          
+
           <!-- <div class="form-group"> -->
             <label for="description">Description :</label>
             <input type="textarea" class="form-control" id="description" name = "description" rows="5" cols="30">

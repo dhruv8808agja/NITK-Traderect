@@ -81,18 +81,24 @@
         <!-- Left -->
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="/home">Home
+            <a class="nav-link waves-effect" href="/home/">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">Wishlist</a>
+            <a class="nav-link waves-effect" href="/wishlist/">Wishlist</a>
+          </li>
+          <!--li class="nav-item">
+            <a class="nav-link waves-effect" href="/addNeed/">Add Need</a>
+          </li-->
+          <li class="nav-item active">
+            <a class="nav-link waves-effect" href="/allNeed/">Needs</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank">Add Need</a>
+            <a class="nav-link waves-effect" href="/myProducts/">My Products </a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link waves-effect" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">My Products</a>
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="/addProduct/">Add Product</a>
           </li>
         </ul>
 
@@ -111,7 +117,7 @@
             </button>
           </li>
           <li class="nav-item">
-            <button type="button" class="btn btn-md border" style="box-shadow: none;" >Login</button>
+            <button type="button" class="btn btn-md border" style="box-shadow: none;">Login</button>
           </li>
         </ul>
 
@@ -135,14 +141,14 @@
         <div class="modal-body">
           <div class="container-fluid border my-2 text-center">
             <div class="row">
-            <div class="col-8">
-              <p>review product #4847387</p>
-            </div>
-            <div class="col-4">
-              <button type="button" class="btn">review</button>
+              <div class="col-8">
+                <p>review product #4847387</p>
+              </div>
+              <div class="col-4">
+                <button type="button" class="btn">review</button>
+              </div>
             </div>
           </div>
-        </div>
         </div>
 
       </div>
@@ -151,41 +157,60 @@
   <!--main-->
   <main><br><br><br><br>
     <div class="container">
-      <div class="row">
-        <div class="col-12 border border-info rounded" style="box-shadow: 2px 2px rgb(161, 240, 225)">
-          <h3 class="h3" style="text-align: center;color: rgb(21, 91, 226);text-shadow: 2px 2px rgb(218, 176, 233);">All Needs</h3>
-        </div>
-      </div>
-      <br>
+      <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3  mb-5">
+
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">All Needs
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">My Needs</a>
+          </li>
+
+        </ul>
+        <!-- Links -->
+        <a href={% url 'addNeed' %}>
+          <button type="button" class="btn ml-2" style="color:rgb(245, 247, 246)">
+            + ADD NEED
+          </button>
+        </a>
+      </nav>
 
       <div class="row">
-        <!--Add elements-->
-        <!--An Element-->
-        {% for i in a %}
-        <div class="col-lg-4 col-md-6 sm-12 mb-1">
-          <div class=" card bg-transparent mb-1">
-            <div class="card-body thumb-post">
-              <h5>Product: {{ i.1 }}</h5>
-              <h5>Category: {{ i.2 }}</h5>
-              <div style="background: rgb(255,255,255)" align="center">
-                <img src="https://image.shutterstock.com/image-photo/singapore-december-26-2017-minion-600w-1483265900.jpg" class="card-img-top mt-0 mb-0" style="background:rgb(255,255,255)" alt="">
-              </div>
-              
-              <div class="container" align="center">
-              <div class="row">
-                <div class="col-6" align="center">
-                  <button type="button" class="btn btn-success py-1">View</button>
+
+        <div class="row">
+          <!--Add elements-->
+          <!--An Element-->
+          {% for i in a %}
+          <div class="col-lg-4 col-md-6 sm-12 mb-1">
+            <div class=" card bg-transparent mb-1">
+              <div class="card-body thumb-post">
+                <h5>Product: {{ i.1 }}</h5>
+                <h5>Category: {{ i.2 }}</h5>
+                <div style="background: rgb(255,255,255)" align="center">
+                  <img src="https://image.shutterstock.com/image-photo/singapore-december-26-2017-minion-600w-1483265900.jpg" class="card-img-top mt-0 mb-0" style="background:rgb(255,255,255)" alt="">
+                </div>
+
+                <div class="container" align="center">
+                  <div class="row">
+                    <div class="col-6" align="center">
+                      <a href="{% url 'needDetail' i.0 %}">
+                      <button type="button" class="btn btn-success py-1">View</button>
+                    </a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            </div>
           </div>
+          {% endfor %}
+          <!--An Element ends here-->
+          <!--END Add elements-->
         </div>
-        {% endfor %}
-        <!--An Element ends here-->
-        <!--END Add elements-->
       </div>
-    </div>
   </main>
 
   <!--Django Mode -->
