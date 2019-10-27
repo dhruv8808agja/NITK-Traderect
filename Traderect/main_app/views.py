@@ -206,7 +206,7 @@ def edit_product_page_post(request):
             if last_id is None:
                 last_id = 1
             else:
-                last_id = last_id.pid + 1
+                last_id = last_id.pid.pid + 1
 
             selladinstance = Sellad.objects.create(sellid=last_id, pid=this_product,
                                                    price=request.POST['sell_price'],
@@ -231,7 +231,7 @@ def edit_product_page_post(request):
             if last_id is None:
                 last_id = 1
             else:
-                last_id = last_id.pid + 1
+                last_id = last_id.pid.pid + 1
 
             rentadinstance = Rentad.objects.create(rentid=last_id, pid=this_product, price=request.POST['rent_price'], description=request.POST['rent_description'],
                                                    adddate=datetime.date(datetime.now()),
@@ -281,5 +281,3 @@ def addToWish(request, productID):
     wishlist1 = Wishes.objects.create(email=user, pid=my_product)
     wishlist1.save()
     return render(request, 'main_app/product-page.html')
-
-
