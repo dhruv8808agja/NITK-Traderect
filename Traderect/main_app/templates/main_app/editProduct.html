@@ -166,7 +166,7 @@
           {% csrf_token %}
             <label for="pname">Product Name :</label>
             <input type="text" class="form-control" id="pname" name="pname" value="{{ product.pname }}">
-            <input type="hidden" name="pid" value="2"/>
+            <input type="hidden" name="pid" value="{{ product.pid }}"/>
 
 
             <label for="description">Description :</label>
