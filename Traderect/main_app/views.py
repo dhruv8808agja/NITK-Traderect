@@ -127,13 +127,19 @@ def product_page(request, productID):
 
 def edit_product_page(request, productID):
     if request.method == 'GET':
-        this_product = Products.objects.filter(pid=productID)
+        this_product = Products.objects.filter(pid=productID)[0]
         return render(request, 'main_app/editProduct.html', {'product': this_product})
-    if request.method == 'POST':
-        this_product = Products.object.filter(pid=productID)
-        return redirect('home')
-        #left to finish
 
+
+def edit_product_page_post(request):
+    this_product = Products.objects.filter(pid=request.POST['pid'])[0]
+    this_product.pname = request.POST['pname']
+    this_product.description = request.POST['description']
+    this_product.category = request.POST['category']
+    print(request.POST)
+    this_product.save()
+
+    return redirect('/myProducts/')
 
 def needDetail(request, nid):
     need=get_object_or_404(Need, pk=nid)
