@@ -9,18 +9,12 @@
   <title>Material Design Bootstrap</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-  <!-- Django Begin >
+  <!-- Django Begin -->
   {% load static %}
   <link href="{% static 'main_app/css/bootstrap.min.css' %}" rel="stylesheet">
   <link href="{% static 'main_app/css/mdb.min.css' %}" rel="stylesheet">
   <link href="{% static 'main_app/css/style.min.css' %}" rel="stylesheet">
-  <!Django End-->
-
-  <!--Debug-->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/mdb.min.css" rel="stylesheet">
-  <link href="css/style.min.css" rel="stylesheet">
-<!--Debug-->
+  <!-- Django End-->
 <style>
 .thumb-post img {
   object-fit: contain;
@@ -164,19 +158,20 @@
     </div>
     <div class="col-lg-6">
       <hr>
-      <form action="">
+      <form method = "POST" action="{% url 'addProduct' %}">
+        {% csrf_token %}
         <div class="form-group">
           <label for="pname">Product Name :</label>
-          <input type="text" class="form-control" id="pname">
+          <input type="text" class="form-control" id="pname" name="pname">
         </div>
         <div class="form-group">
           <label for="description">Description :</label>
-          <textarea name="message" class="form-control" id="description" rows="5" cols="30">
+          <textarea name="description" class="form-control" id="description" rows="5" cols="30">
         </textarea>
         </div>
         <div class="form-group">
           <label for="Category">Category :</label>
-          <select name="cars" id="Category" class="custom-select">
+          <select name="category" id="Category" class="custom-select">
             <option selected>Select category</option>
             <option value="volvo">Stationary</option>
             <option value="fiat">Vehicle</option>
@@ -201,17 +196,6 @@
 
 </main>
 <!--/main-->
-  <!--EDITOR Mode-->
-      <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-      <script type="text/javascript" src="js/popper.min.js"></script>
-      <script type="text/javascript" src="js/bootstrap.min.js"></script>
-      <script type="text/javascript" src="js/mdb.min.js"></script>
-      <script type="text/javascript">
-        new WOW().init();
-      </script>
-  <!--Django Mode>
-  href="{% static 'main_app/css/style.min.css' %}"
-  </footer>
   <script type="text/javascript" src="{% static 'main_app/js/jquery-3.4.1.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'main_app/js/popper.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'main_app/js/bootstrap.min.js' %}"></script>

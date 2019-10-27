@@ -165,10 +165,11 @@
       <div class="row">
         <!--Add elements-->
         <!--An Element-->
+        {% for i in a %}
         <div class="col-lg-4 col-md-6 sm-12 mb-1">
           <div class=" card bg-transparent mb-1">
             <div class="card-body thumb-post">
-              <h5>Product Name</h5>
+              <h5>{{ i.productname }}</h5>
               <div style="background: rgb(255,255,255)" align="center">
                 <img src="https://image.shutterstock.com/image-photo/singapore-december-26-2017-minion-600w-1483265900.jpg" class="card-img-top mt-0 mb-0" style="background:rgb(255,255,255)" alt="">
               </div>
@@ -185,6 +186,7 @@
             </div>
           </div>
         </div>
+
         <!--An Element ends here-->
         <!--END Add elements-->
       </div>

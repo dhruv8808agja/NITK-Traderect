@@ -9,18 +9,13 @@
   <title>Material Design Bootstrap</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-  <!-- Django Begin >
+  <!-- Django Begin -->
   {% load static %}
   <link href="{% static 'main_app/css/bootstrap.min.css' %}" rel="stylesheet">
   <link href="{% static 'main_app/css/mdb.min.css' %}" rel="stylesheet">
   <link href="{% static 'main_app/css/style.min.css' %}" rel="stylesheet">
-  <!Django End-->
+  <!-- !Django End-->
 
-  <!--Debug-->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/mdb.min.css" rel="stylesheet">
-  <link href="css/style.min.css" rel="stylesheet">
-  <!--Debug-->
   <style>
     .thumb-post img {
       object-fit: contain;
@@ -86,7 +81,7 @@
         <!-- Left -->
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="#">Home
+            <a class="nav-link waves-effect" href="/home">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
@@ -154,7 +149,7 @@
     </div>
   </div>
   <!--main-->
-  <main><br><br><br>
+  <main><br><br><br><br>
     <div class="container">
       <div class="row">
         <div class="col-12 border border-info rounded" style="box-shadow: 2px 2px rgb(161, 240, 225)">
@@ -162,14 +157,16 @@
         </div>
       </div>
       <br>
+
       <div class="row">
         <!--Add elements-->
         <!--An Element-->
+        {% for i in a %}
         <div class="col-lg-4 col-md-6 sm-12 mb-1">
           <div class=" card bg-transparent mb-1">
             <div class="card-body thumb-post">
-              <h5>Product: </h5>
-              <h5>Category: </h5>
+              <h5>Product: {{ i.1 }}</h5>
+              <h5>Category: {{ i.2 }}</h5>
               <div style="background: rgb(255,255,255)" align="center">
                 <img src="https://image.shutterstock.com/image-photo/singapore-december-26-2017-minion-600w-1483265900.jpg" class="card-img-top mt-0 mb-0" style="background:rgb(255,255,255)" alt="">
               </div>
@@ -184,26 +181,14 @@
             </div>
           </div>
         </div>
+        {% endfor %}
         <!--An Element ends here-->
         <!--END Add elements-->
       </div>
     </div>
-
-
-
-
   </main>
-  <!--/main-->
-  <!--EDITOR Mode-->
-  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-  <script type="text/javascript" src="js/popper.min.js"></script>
-  <script type="text/javascript" src="js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="js/mdb.min.js"></script>
-  <script type="text/javascript">
-    new WOW().init();
-  </script>
-  <!--Django Mode>
-  href="{% static 'main_app/css/style.min.css' %}"
+
+  <!--Django Mode -->
   </footer>
   <script type="text/javascript" src="{% static 'main_app/js/jquery-3.4.1.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'main_app/js/popper.min.js' %}"></script>
@@ -212,7 +197,7 @@
   <script type="text/javascript">
     new WOW().init();
   </script>
-  <!Django Mode END-->
+  <!-- Django Mode END-->
 
 </body>
 
