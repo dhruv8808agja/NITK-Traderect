@@ -99,6 +99,8 @@ def addProduct(request):
         product.save()
         return redirect('/home/')
 
+def wishlist(request):
+    return render(request,'main_app/wishlist.html')
 
 def myProducts(request):
     if request.method == 'GET':
@@ -106,4 +108,3 @@ def myProducts(request):
         my_products = Products.objects.filter(owner=user)
         a = [[p.pname] for p in my_products]
         return render(request, 'main_app/myProducts.html', {'a': a})
-
