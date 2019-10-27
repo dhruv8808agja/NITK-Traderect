@@ -101,8 +101,9 @@ def addProduct(request):
 
 
 def myProducts(request):
-    user = Users.objects.filter(email=request.user)[0]
-    my_products = Products.objects.filter(owner=user)
-    a = [[p.productname] for p in my_products]
-    return render(request, 'main_app/myProducts.html', {'a': a})
+    if request.method == 'GET':
+        user = Users.objects.filter(email=request.user)[0]
+        my_products = Products.objects.filter(owner=user)
+        a = [[p.pname] for p in my_products]
+        return render(request, 'main_app/myProducts.html', {'a': a})
 
