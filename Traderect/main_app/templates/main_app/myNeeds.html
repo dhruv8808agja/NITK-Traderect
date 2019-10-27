@@ -196,9 +196,19 @@
 
                 <div class="container" align="center">
                   <div class="row">
-                    <div class="col-6" align="center">
+                    <div class="col-4" align="center">
                       <a href="{% url 'needDetail' i.0 %}">
-                      <button type="button" class="btn btn-success py-1">View</button>
+                      <button type="button" class="btn btn-success btn-sm  py-1">View</button>
+                    </a>
+                    </div>
+                    <div class="col-4" align="center">
+                      <a href="{% url 'needDetail' i.0 %}">
+                      <button type="button" class="btn btn-warning btn-sm py-1">Edit</button>
+                    </a>
+                    </div>
+                    <div class="col-4" align="center">
+                      <a href="{% url 'needDetail' i.0 %}">
+                      <button type="button" class="btn btn-danger btn-sm py-1">Delete</button>
                     </a>
                     </div>
                   </div>
