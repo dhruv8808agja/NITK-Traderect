@@ -145,3 +145,8 @@ def edit_product_page_post(request):
 def needDetail(request,nid):
     need=get_object_or_404(Need, pk=nid)
     return render(request, 'main_app/needDetails.html', {'need': need})
+
+def deleteNeed(request,nid):
+    instance = Need.objects.get(pk=nid)
+    instance.delete()
+    return redirect('/myNeed/')

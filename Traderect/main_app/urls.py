@@ -10,6 +10,7 @@ urlpatterns = [
     path('needDetail/<int:nid>/', views.needDetail, name='needDetail'),
     path('allNeed/', views.allNeed, name='allNeed'),
     path('myNeed/', views.myNeed, name='myNeed'),
+    path('deleteNeed/<int:nid>/', views.deleteNeed, name='deleteNeed'),
     path('addProduct/', views.addProduct, name='addProduct'),
     path('myProducts/', views.myProducts, name='myProducts'),
     path('product-page/<int:productID>/', views.product_page, name='product_page'),
