@@ -111,9 +111,26 @@ def myProducts(request):
     if request.method == 'GET':
         user = Users.objects.filter(email=request.user)[0]
         my_products = Products.objects.filter(owner=user)
-        a = [[p.pname] for p in my_products]
+        a = [[p.pid, p.pname] for p in my_products]
         return render(request, 'main_app/myProducts.html', {'a': a})
 
+
+def product_page(request, productID):
+    this_product = Products.objects.filter(pid=productID)[0]
+    return render(request, 'main_app/product-page.html', {'product': this_product})
+
+
+def edit_product_page(request, productID):
+    if request.method == 'GET':
+        this_product = Products.objects.filter(pid=productID)
+        return render(request, 'main_app/editProduct.html', {'product': this_product})
+    if request.method == 'POST':
+        this_product = Products.object.filter(pid=productID)
+
+        return redirect('home')
+
+
+      
 def needDetail(request,nid):
     need=get_object_or_404(Need, pk=nid)
     return render(request,'main_app/needDetails.html',{'need':need})
