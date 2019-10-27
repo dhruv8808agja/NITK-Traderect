@@ -158,7 +158,7 @@
   <main><br><br><br><br>
     <div class="container">
       <div class="col-12">
-        <h4 class="h4" style="color:rgb(8, 65, 212);text-shadow: 2px 2px rgb(153, 238, 177)">Edit Product  <small>#{{ product.pid }}<small></h4>
+        <h4 class="h4" style="color:rgb(8, 65, 212);text-shadow: 2px 2px rgb(153, 238, 177)">Edit Product  <small>#{{ product.pid }}</small></h4>
       </div>
       <div class="col-lg-6">
         <hr>
@@ -186,22 +186,22 @@
               <input type="file" class="custom-file-input" id="customFile">
               <label class="custom-file-label" for="customFile">Choose photo file</label>
             </div>
-          <hr>
-
-          <label for="sell_check">Sell Ad :</label>
-              <input type="checkbox" value="" name="sell_check" id="sell_check"> Post Sell Ad</input><!-- <input type="text" class="form-control" id="sellAd"> -->
-
+          <hr><br>
+          <h4>SELL AD</h4>
+          <label for="sell_check">Post Sell Ad :</label>
+              <input type="checkbox" value="1" name="checks[]" id="sell_check"> <!-- <input type="text" class="form-control" id="sellAd"> -->
+                <br>
                 <label for="sell_price">Price :</label>
                 <input type="text" class="form-control" id="sell_price" name = "sell_price">
 
                 <label for="sell_expDate">Expiry Date :</label>
                 <input type="text" class="form-control" id="sell_expDate" name="sell_expDate">
 
-          <hr>
-
-          <label for="rent_check">Rent Ad :</label>
-          <input type="checkbox" value="" name="rent_check" id="rent_check"> Post Rent Ad</input>
-
+          <hr><br>
+          <h4>RENT AD</h4>
+          <label for="rent_check">Post Rent Ad :</label>
+          <input type="checkbox" value="2" name="checks[]" id="rent_check">
+                <br>
                 <label for="rent_price">Price :</label>
                 <input type="text" class="form-control" id="rent_price" name="rent_price">
 
@@ -212,7 +212,7 @@
                 <label for="rent_expDate">Expiry Date :</label>
                 <input type="text" class="form-control" id="rent_expDate" name="rent_expDate">
 
-
+          <br><br>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
