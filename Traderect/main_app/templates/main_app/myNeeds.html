@@ -179,8 +179,6 @@
         </a>
       </nav>
 
-      <div class="row">
-
         <div class="row">
           <!--Add elements-->
           <!--An Element-->
@@ -194,7 +192,7 @@
                   <img src="https://image.shutterstock.com/image-photo/singapore-december-26-2017-minion-600w-1483265900.jpg" class="card-img-top mt-0 mb-0" style="background:rgb(255,255,255)" alt="">
                 </div>
 
-                <div class="container" align="center">
+                <div class="container-fluid" align="center">
                   <div class="row">
                     <div class="col-4" align="center">
                       <a href="{% url 'needDetail' i.0 %}">
@@ -207,7 +205,7 @@
                     </a>
                     </div>
                     <div class="col-4" align="center">
-                      <a href="{% url 'needDetail' i.0 %}">
+                      <a href="{% url 'deleteNeed' i.0 %}">
                       <button type="button" class="btn btn-danger btn-sm py-1">Delete</button>
                     </a>
                     </div>
@@ -219,7 +217,6 @@
           {% endfor %}
           <!--An Element ends here-->
           <!--END Add elements-->
-        </div>
       </div>
   </main>
 
