@@ -158,7 +158,7 @@
     <div class="container">
       <div class="row">
         <div class="col-12 border border-info rounded" style="box-shadow: 2px 2px rgb(161, 240, 225)">
-          <h3 class="h3" style="text-align: center;color: rgb(21, 91, 226);text-shadow: 2px 2px rgb(218, 176, 233);">My Products</h3>
+          <h3 class="h3" style="text-align: center;color: rgb(21, 58, 171);text-shadow: 2px 2px rgb(218, 176, 233);">Manage Products</h3>
         </div>
       </div>
       <br>
@@ -173,14 +173,30 @@
               <div style="background: rgb(255,255,255)" align="center">
                 <img src="https://image.shutterstock.com/image-photo/singapore-december-26-2017-minion-600w-1483265900.jpg" class="card-img-top mt-0 mb-0" style="background:rgb(255,255,255)" alt="">
               </div>
-              <div class="container" align="center">
+            <div class="container-fluid" align="center">
               <div class="row">
                 <div class="col-6" align="center">
-                  <a  href="{% url 'product_page' i.0 %}"><button type="button" class="btn btn-success py-1">View</button></a>
+                  <a href="{% url 'product_page' i.0 %}">
+                  <button type="button" class="btn btn-success btn-sm py-1">View</button>
+                </a>
                 </div>
                 <div class="col-6" align="center">
-                  <a href="{% url 'edit_product_page' i.0 %}"><button type="button" class="btn btn-warning py-1">EDIT</button></a>
+                  <a href="{% url 'edit_product_page' i.0 %}">
+                  <button type="button" class="btn btn-warning btn-sm py-1">Edit</button>
+                </a>
                 </div>
+                <div class="col-6" align="center">
+                  <a href="{% url 'product_delete' i.0 %}">
+                  <button type="button" class="btn btn-danger btn-sm py-1">Sold/Delete</button>
+                </a>
+                </div>
+                {% if i.2 == 1 %}
+                <div class="col-6" align="center">
+                  <a href="{% url 'new_rent' i.0 %}">
+                  <button type="button" class="btn btn-info btn-sm py-1">new Rent</button>
+                </a>
+                </div>
+                {% endif %}
               </div>
             </div>
             </div>
