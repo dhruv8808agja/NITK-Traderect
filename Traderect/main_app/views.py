@@ -88,7 +88,6 @@ def allNeed(request):
 
 def myNeed(request):
     a = [[n.nid, n.productname, n.category] for n in Need.objects.all() if n.email.email==request.user.email]
-    random.shuffle(a)
     return render(request, 'main_app/myNeeds.html', {'a': a})
 
 
