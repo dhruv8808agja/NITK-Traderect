@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Material Design Bootstrap</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <!-- Django Begin -->
+  <!-- {% load static %}
+  <link href="{% static 'main_app/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'main_app/css/mdb.min.css' %}" rel="stylesheet">
+  <link href="{% static 'main_app/css/style.min.css' %}" rel="stylesheet">
+  <!--Django End-->
+  <!--Debug-->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/mdb.min.css" rel="stylesheet">
+  <link href="css/style.min.css" rel="stylesheet">
+  <!--Debug-->
+
+  <style>
+    .thumb-post img {
+      object-fit: contain;
+      /* Do not scale the image */
+      object-position: center;
+      /* Center the image within the element */
+      width: 100%;
+      height: 100%;
+      max-height: 300px;
+      max-width: 300px;
+      margin-bottom: 1rem;
+    }
+  </style>
+  <style type="text/css">
+    html,
+    body,
+    header,
+    .carousel {
+      height: 60vh;
+    }
+
+    @media (max-width: 740px) {
+
+      html,
+      body,
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+
+    @media (min-width: 800px) and (max-width: 850px) {
+
+      html,
+      body,
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <body>
+
+    <!-- Navbar -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+      <div class="container">
+
+        <!-- Brand -->
+        <a class="navbar-brand waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">
+          <strong class="blue-text">T R A D E R E C T</strong>
+        </a>
+
+        <!-- Collapse -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Links -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+          <!-- Left -->
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link waves-effect" href="/home/">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link waves-effect" href="/wishlist/">Wishlist</a>
+            </li>
+            <!--li class="nav-item">
+              <a class="nav-link waves-effect" href="/addNeed/">Add Need</a>
+            </li-->
+            <li class="nav-item">
+              <a class="nav-link waves-effect" href="/allNeed/">Needs</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link waves-effect" href="/myProducts/">My Products </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link waves-effect" href="/addProduct/">Add Product</a>
+            </li>
+          </ul>
+
+          <!-- Right -->
+          <ul class="navbar-nav nav-flex-icons">
+            <!--li class="nav-item">
+              <a class="nav-link waves-effect">
+                <span class="badge red z-depth-1 mr-1"> 1 </span>
+                <i class="fas fa-shopping-cart"></i>
+                <span class="clearfix d-none d-sm-inline-block"> Cart </span>
+              </a>
+            </li-->
+            <li class="nav-item">
+              <button type="button" class="btn btn-md border" style="box-shadow: none;" data-toggle="modal" data-target="#myModal">
+                Notification
+              </button>
+            </li>
+            <li class="nav-item">
+              <button type="button" class="btn btn-md border" style="box-shadow: none;">Login</button>
+            </li>
+          </ul>
+
+        </div>
+
+      </div>
+    </nav>
+    <!-- Navbar -->
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h6 class="modal-title">Notifications</h6>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            <div class="container-fluid border my-2 text-center">
+              <div class="row">
+                <div class="col-8">
+                  <p>review product #4847387</p>
+                </div>
+                <div class="col-4">
+                  <button type="button" class="btn">review</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!--main-->
+    <main><br><br><br><br>
+      <div class="container">
+        <div class="row">
+          <div class="col-12 border border-info rounded" style="box-shadow: 2px 2px rgb(161, 240, 225)">
+            <h3 class="h3" style="text-align: center;color: rgb(21, 58, 171);text-shadow: 2px 2px rgb(218, 176, 233);">New Rent Transaction</h3>
+          </div>
+          <div class="col-12">
+          <br><br>
+          <h4 class="h4 mt-5" style="color: rgb(16, 7, 120)">product :<span class="font-weight-bold"> {{ product.pname }}</span></h4>
+          <br>
+          </div>
+          <div class="col-12">
+          <div class="search-container">
+            <form method="post" action="{% url 'edit_product_page_post' %}">
+              <label for="description">Enter User's Email ID:</label>
+              <input type="text" name="description" class="form-control" id="description" rows="5" cols="30" value=""/>
+
+
+            </form>
+          </div>
+          </div>
+
+
+        </div>
+        <br>
+      </div>
+
+
+
+      <!--Django Mode-->
+      <!-- <script type="text/javascript" src="{% static 'main_app/js/jquery-3.4.1.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'main_app/js/popper.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'main_app/js/bootstrap.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'main_app/js/mdb.min.js' %}"></script>
+  <script type="text/javascript">
+    new WOW().init();
+  </script> -->
+      <!--Django Mode END-->
+    </main>
+    <!--EDITOR Mode-->
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <script type="text/javascript">
+      new WOW().init();
+    </script>
+  </body>
+
+</html>
