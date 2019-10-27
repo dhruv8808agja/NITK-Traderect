@@ -86,9 +86,25 @@ def allNeed(request):
     random.shuffle(a)
     return render(request, 'main_app/allNeed.html', {'a': a})
 
+
 def myNeed(request):
     a = [[n.nid, n.productname, n.category] for n in Need.objects.all() if n.email.email==request.user.email]
     return render(request, 'main_app/myNeeds.html', {'a': a})
+
+
+def editNeed(request, needID):
+    if request.method == 'GET':
+        this_need = Need.objects.filter(nid=needID)[0]
+        return render(request, 'main_app/editNeed.html', {'need': this_need})
+
+
+def editNeed_post(request):
+    this_need = Need.objects.filter(nid=request.POST['nid'])[0]
+    this_need.productname = request.POST['productname']
+    this_need.description = request.POST['description']
+    this_need.category = request.POST['category']
+    this_need.save()
+    return redirect('/myNeed/')
 
 
 def addProduct(request):
@@ -104,7 +120,7 @@ def addProduct(request):
         user = Users.objects.filter(email=request.user)[0]
         product = Products.objects.create(pid=last_id, pname=request.POST['pname'], category=request.POST['category'], description=request.POST['description'], owner=user)
         product.save()
-        return redirect('/home/')
+        return redirect('/myProducts/')
 
 
 def wishlist(request):
