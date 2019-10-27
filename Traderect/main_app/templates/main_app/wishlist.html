@@ -9,18 +9,18 @@
   <title>Material Design Bootstrap</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-  <!-- Django Begin >
+  <!-- Django Begin -->
   {% load static %}
   <link href="{% static 'main_app/css/bootstrap.min.css' %}" rel="stylesheet">
   <link href="{% static 'main_app/css/mdb.min.css' %}" rel="stylesheet">
   <link href="{% static 'main_app/css/style.min.css' %}" rel="stylesheet">
-  <!Django End-->
+  <!--Django End-->
 
-  <!--Debug-->
+  <!--Debug>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/mdb.min.css" rel="stylesheet">
   <link href="css/style.min.css" rel="stylesheet">
-  <!--Debug-->
+  <!Debug-->
   <style>
     .thumb-post img {
       object-fit: contain;
@@ -86,21 +86,24 @@
         <!-- Left -->
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="#">Home
+            <a class="nav-link waves-effect" href="/home/">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">Wishlist</a>
+            <a class="nav-link waves-effect" href="/wishlist/">Wishlist</a>
+          </li>
+          <!--li class="nav-item">
+            <a class="nav-link waves-effect" href="/addNeed/">Add Need</a>
+          </li-->
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="/allNeed/">Needs</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank">Add Product</a>
+            <a class="nav-link waves-effect" href="/myProducts/">My Products </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank">Add Need</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-effect" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">My Products</a>
+            <a class="nav-link waves-effect" href="/addProduct/">Add Product</a>
           </li>
         </ul>
 
@@ -119,7 +122,7 @@
             </button>
           </li>
           <li class="nav-item">
-            <button type="button" class="btn btn-md border" style="box-shadow: none;" >Login</button>
+            <button type="button" class="btn btn-md border" style="box-shadow: none;">Login</button>
           </li>
         </ul>
 
@@ -274,7 +277,7 @@
 
   </main>
   <!--/main-->
-  <!--EDITOR Mode-->
+  <!--EDITOR Mode>
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="js/popper.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -282,17 +285,16 @@
   <script type="text/javascript">
     new WOW().init();
   </script>
-  <!--Django Mode>
-  href="{% static 'main_app/css/style.min.css' %}"
-  </footer>
-  <script type="text/javascript" src="{% static 'main_app/js/jquery-3.4.1.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'main_app/js/popper.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'main_app/js/bootstrap.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'main_app/js/mdb.min.js' %}"></script>
-  <script type="text/javascript">
-    new WOW().init();
-  </script>
-  <!Django Mode END-->
+  <!Django Mode-->
+</footer>
+<script type="text/javascript" src="{% static 'main_app/js/jquery-3.4.1.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'main_app/js/popper.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'main_app/js/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'main_app/js/mdb.min.js' %}"></script>
+<script type="text/javascript">
+  new WOW().init();
+</script>
+  <!--Django Mode END-->
 
 </body>
 
