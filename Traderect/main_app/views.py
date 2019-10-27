@@ -139,6 +139,11 @@ def product_page(request, productID):
     this_product = Products.objects.filter(pid=productID)[0]
     return render(request, 'main_app/product-page.html', {'product': this_product})
 
+def product_delete(request, productID):
+    instance = Products.objects.get(pk=productID)
+    instance.delete()
+    return redirect('/myProducts/')
+
 
 def edit_product_page(request, productID):
     if request.method == 'GET':
