@@ -65,10 +65,13 @@ def signup(request):
         return render(request, 'main_app/login.html')
 
 
+@login_required
 def addNeed(request):
     if request.method == 'GET':
         return render(request, 'main_app/addNeed.html')
-    if request.method == 'POST':
+    if request.method=='POST':
+        print(request.POST)
+        print(request.FILES)
         user = Users.objects.filter(email=request.user)[0]
         need = Need.objects.create(productname=request.POST['productname'], description=request.POST['description'], category=request.POST['Category'], email=user)
         need.save()
@@ -102,5 +105,4 @@ def myProducts(request):
     my_products = Products.objects.filter(owner=user)
     a = [[p.productname] for p in my_products]
     return render(request, 'main_app/myProducts.html', {'a': a})
-
 

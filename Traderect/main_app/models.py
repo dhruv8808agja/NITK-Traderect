@@ -124,7 +124,7 @@ class Need(models.Model):
     description = models.TextField(blank=True, null=True)
     category = models.CharField(max_length=20, blank=True, null=True)
     email = models.ForeignKey('Users', models.DO_NOTHING, db_column='email', blank=True, null=True)
-
+    photofile = models.ImageField(upload_to='main_app/static/main_app/img/need',db_column='photoFile', blank=True, null=True)
     class Meta:
         managed = True
         db_table = 'need'
