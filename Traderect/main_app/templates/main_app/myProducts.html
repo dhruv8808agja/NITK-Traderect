@@ -190,11 +190,13 @@
                   <button type="button" class="btn btn-danger btn-sm py-1">Sold/Delete</button>
                 </a>
                 </div>
+                {% if i.2 == 1 %}
                 <div class="col-6" align="center">
-                  <a href="{% url 'product_page' i.0 %}">
+                  <a href="{% url 'new_rent' i.0 %}">
                   <button type="button" class="btn btn-info btn-sm py-1">new Rent</button>
                 </a>
                 </div>
+                {% endif %}
               </div>
             </div>
             </div>

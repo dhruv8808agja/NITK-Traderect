@@ -132,6 +132,12 @@ def myProducts(request):
         user = Users.objects.filter(email=request.user)[0]
         my_products = Products.objects.filter(owner=user)
         a = [[p.pid, p.pname] for p in my_products]
+        for i in a:
+            try:
+                ins= Rentad.objects.get(pk=i[0])
+                i.append(1)
+            except Rentad.DoesNotExist:
+                i.append(0)
         return render(request, 'main_app/myProducts.html', {'a': a})
 
 
@@ -170,3 +176,8 @@ def deleteNeed(request,nid):
     instance = Need.objects.get(pk=nid)
     instance.delete()
     return redirect('/myNeed/')
+
+def new_rent(request,productID):
+    rentad = Rentad.objects.filter(pid=productID)[0]
+    product= Products.objects.get(pk=productID)
+    return render(request,'main_app/new_rent.html',{'rentad':rentad,'product':product})
