@@ -130,13 +130,13 @@ def edit_product_page(request, productID):
         this_product = Products.objects.filter(pid=productID)[0]
         return render(request, 'main_app/editProduct.html', {'product': this_product})
 
-      
+
 def edit_product_page_post(request):
-    this_product = Products.objects.filter(pid=request.POST['pid'])[0]
+    print(request.POST)
+    this_product = Products.objects.get(pk=request.POST['pid'])
     this_product.pname = request.POST['pname']
     this_product.description = request.POST['description']
     this_product.category = request.POST['category']
-    print(request.POST)
     this_product.save()
 
     return redirect('/myProducts/')
