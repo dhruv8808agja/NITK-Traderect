@@ -9,18 +9,13 @@
   <title>Material Design Bootstrap</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-  <!-- Django Begin >
+  <!-- Django Begin -->
   {% load static %}
   <link href="{% static 'main_app/css/bootstrap.min.css' %}" rel="stylesheet">
   <link href="{% static 'main_app/css/mdb.min.css' %}" rel="stylesheet">
   <link href="{% static 'main_app/css/style.min.css' %}" rel="stylesheet">
-  <!Django End-->
+  <!-- Django End-->
 
-  <!--Debug-->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/mdb.min.css" rel="stylesheet">
-  <link href="css/style.min.css" rel="stylesheet">
-  <!--Debug-->
   <style>
     .thumb-post img {
       object-fit: contain;
@@ -160,18 +155,19 @@
   <main><br><br><br>
     <div class="container">
       <div class="col-12">
-        <h4 class="h4" style="color:rgb(8, 65, 212);text-shadow: 2px 2px rgb(153, 238, 177)">Edit Product : (Product ID)</h4>
+        <h4 class="h4" style="color:rgb(8, 65, 212);text-shadow: 2px 2px rgb(153, 238, 177)">Edit Product : {{ product.pid }}</h4>
       </div>
       <div class="col-lg-6">
         <hr>
-        <form action="">
+        <form method="post" action="{% url 'edit_product_page'+product.pid %}">
+          {% csrf_token %}
           <div class="form-group">
             <label for="pname">Product Name :</label>
-            <input type="text" class="form-control" id="pname">
+            <input type="text" class="form-control" id="pname" name="pname" placeholder="{{ product.name }}">
           </div>
           <div class="form-group">
             <label for="description">Description :</label>
-            <textarea name="message" class="form-control" id="description" rows="5" cols="30">
+            <textarea name="description" class="form-control" id="description" rows="5" cols="30">
           </textarea>
           </div>
           <div class="form-group">
@@ -192,38 +188,34 @@
           </div>
           <hr>
 
-            <label for="sellAd">Sell Ad :<div class="checkbox">
-                <label><input type="checkbox" value=""> Post Sell Ad</label>
-              </label>
-            <!-- <input type="text" class="form-control" id="sellAd"> -->
+            <label for="sell_check">Sell Ad :<div class="checkbox">
+                <label><input type="checkbox" value="" name="sell_check" id="sell_check"> Post Sell Ad</label><!-- <input type="text" class="form-control" id="sellAd"> -->
 
             <div class="form-group">
-                <label for="price">Price :</label>
-                <input type="text" class="form-control" id="price">
+                <label for="sell_price">Price :</label>
+                <input type="text" class="form-control" id="sell_price" name = "sell_price">
             </div>
             <div class="form-group">
-                <label for="expDate">Expiry Date :</label>
-                <input type="text" class="form-control" id="expDate">
+                <label for="sell_expDate">Expiry Date :</label>
+                <input type="text" class="form-control" id="sell_expDate" name="sell_expDate">
             </div>
 
           <hr>
 
-            <label for="rentAd">Rent Ad :<div class="checkbox">
-                <label><input type="checkbox" value=""> Post Rent Ad</label>
-              </label>
-            <input type="text" class="form-control" id="retnAd">
+            <label for="rent_check">Rent Ad :<div class="checkbox">
+                <label><input type="checkbox" value="" name="rent_check" id="rent_check"> Post Rent Ad</label>
 
             <div class="form-group">
-                <label for="price">Price :</label>
-                <input type="text" class="form-control" id="price">
+                <label for="rent_price">Price :</label>
+                <input type="text" class="form-control" id="rent_price" name="rent_price">
             </div>
             <div class="form-group">
-                <label for="description">Description :</label>
-                <textarea name="message" class="form-control" id="description" rows="5" cols="30"></textarea>
+                <label for="rent_description">Description :</label>
+                <textarea name="rent_description" class="form-control" id="rent_description" rows="5" cols="30"></textarea>
             </div>
             <div class="form-group">
-                <label for="expDate">Expiry Date :</label>
-                <input type="text" class="form-control" id="expDate">
+                <label for="rent_expDate">Expiry Date :</label>
+                <input type="text" class="form-control" id="rent_expDate" name="rent_expDate">
             </div>
 
 
@@ -234,17 +226,7 @@
     </div>
   </main>
   <!--/main-->
-  <!--EDITOR Mode-->
-  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-  <script type="text/javascript" src="js/popper.min.js"></script>
-  <script type="text/javascript" src="js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="js/mdb.min.js"></script>
-  <script type="text/javascript">
-    new WOW().init();
-  </script>
-  <!--Django Mode>
-  href="{% static 'main_app/css/style.min.css' %}"
-  </footer>
+
   <script type="text/javascript" src="{% static 'main_app/js/jquery-3.4.1.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'main_app/js/popper.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'main_app/js/bootstrap.min.js' %}"></script>
@@ -252,7 +234,7 @@
   <script type="text/javascript">
     new WOW().init();
   </script>
-  <!Django Mode END-->
+  <!--Django Mode END-->
 
 </body>
 
