@@ -160,9 +160,9 @@ class Products(models.Model):
 
 
 class Renttransaction(models.Model):
-    transid = models.IntegerField(db_column='transId', primary_key=True)  # Field name made lowercase.
-    rentid = models.ForeignKey('Rentad', models.DO_NOTHING, db_column='rentid', blank=True, null=True)
-    email = models.ForeignKey('Users', models.DO_NOTHING, db_column='email', blank=True, null=True)
+    transid = models.AutoField(db_column='transId', primary_key=True)  # Field name made lowercase.
+    rentid = models.ForeignKey('Rentad', models.CASCADE, db_column='rentid', blank=True, null=True)
+    email = models.ForeignKey('Users', models.CASCADE, db_column='email', blank=True, null=True)
     startdate = models.DateField(db_column='startDate', blank=True, null=True)  # Field name made lowercase.
     starttime = models.TimeField(db_column='startTime', blank=True, null=True)  # Field name made lowercase.
     enddate = models.DateField(db_column='endDate', blank=True, null=True)  # Field name made lowercase.

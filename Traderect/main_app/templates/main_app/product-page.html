@@ -47,7 +47,7 @@
         <!-- Left -->
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="#">Home
+            <a class="nav-link waves-effect" href="/home/">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
@@ -138,83 +138,89 @@
         <!-- S L I D E R-->
 
         <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:600px;height:500px;overflow:hidden;visibility:hidden;">
-                <!-- Loading Screen -->
-                <div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
-                    <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="{% static 'main_app/img/spin.svg' %}" />
-                </div>
-                <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:600px;height:500px;overflow:hidden;">
-                    <div>
-                        <img data-u="image" src="{% static 'main_app/img/002.jpg' %}" />
-                    </div>
-                    <div>
-                        <img data-u="image" src="{% static 'main_app/img/001.jpg' %}" />
-                    </div>
-                    <div>
-                        <img data-u="image" src="{% static 'main_app/img/001_1.jpg' %}" />
-                    </div>
-                    <div>
-                        <img data-u="image" src="{% static 'main_app/img/001_2.jpg' %}" />
-                    </div>
-                    <div>
-                        <img data-u="image" src="{% static 'main_app/img/005.jpg' %}" />
-                    </div>
-                    <div>
-                        <img data-u="image" src="{% static 'main_app/img/001.jpg' %}" />
-                    </div>
-                    <div>
-                        <img data-u="image" src="{% static 'main_app/img/002_1.jpg' %}" />
-                    </div>
-                    <div>
-                        <img data-u="image" src="{% static 'main_app/img/001_2.jpg' %}" />
-                    </div>
-                </div>
-                <!-- Bullet Navigator -->
-                <div data-u="navigator" class="jssorb072" style="position:absolute;bottom:12px;right:12px;" data-autocenter="1" data-scale="0.5" data-scale-bottom="0.75">
-                    <div data-u="prototype" class="i" style="width:24px;height:24px;font-size:12px;line-height:24px;">
-                        <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1;">
-                            <circle class="b" cx="8000" cy="8000" r="6666.7"></circle>
-                        </svg>
-                        <div data-u="numbertemplate" class="n"></div>
-                    </div>
-                </div>
-                <!-- Arrow Navigator -->
-                <div data-u="arrowleft" class="jssora073" style="width:40px;height:50px;top:0px;left:30px;" data-autocenter="2" data-scale="0.75" data-scale-left="0.75">
-                    <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
-                        <path class="a" d="M4037.7,8357.3l5891.8,5891.8c100.6,100.6,219.7,150.9,357.3,150.9s256.7-50.3,357.3-150.9 l1318.1-1318.1c100.6-100.6,150.9-219.7,150.9-357.3c0-137.6-50.3-256.7-150.9-357.3L7745.9,8000l4216.4-4216.4 c100.6-100.6,150.9-219.7,150.9-357.3c0-137.6-50.3-256.7-150.9-357.3l-1318.1-1318.1c-100.6-100.6-219.7-150.9-357.3-150.9 s-256.7,50.3-357.3,150.9L4037.7,7642.7c-100.6,100.6-150.9,219.7-150.9,357.3C3886.8,8137.6,3937.1,8256.7,4037.7,8357.3 L4037.7,8357.3z"></path>
-                    </svg>
-                </div>
-                <div data-u="arrowright" class="jssora073" style="width:40px;height:50px;top:0px;right:30px;" data-autocenter="2" data-scale="0.75" data-scale-right="0.75">
-                    <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
-                        <path class="a" d="M11962.3,8357.3l-5891.8,5891.8c-100.6,100.6-219.7,150.9-357.3,150.9s-256.7-50.3-357.3-150.9 L4037.7,12931c-100.6-100.6-150.9-219.7-150.9-357.3c0-137.6,50.3-256.7,150.9-357.3L8254.1,8000L4037.7,3783.6 c-100.6-100.6-150.9-219.7-150.9-357.3c0-137.6,50.3-256.7,150.9-357.3l1318.1-1318.1c100.6-100.6,219.7-150.9,357.3-150.9 s256.7,50.3,357.3,150.9l5891.8,5891.8c100.6,100.6,150.9,219.7,150.9,357.3C12113.2,8137.6,12062.9,8256.7,11962.3,8357.3 L11962.3,8357.3z"></path>
-                    </svg>
-                </div>
+          <!-- Loading Screen -->
+          <div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
+            <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="{% static 'main_app/img/spin.svg' %}" />
+          </div>
+          <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:600px;height:500px;overflow:hidden;">
+            <div>
+              <img data-u="image" src="{% static 'main_app/img/002.jpg' %}" />
             </div>
-            <script type="text/javascript">jssor_1_slider_init();</script>
-            <!-- #endregion Jssor Slider End -->
+            <div>
+              <img data-u="image" src="{% static 'main_app/img/001.jpg' %}" />
+            </div>
+            <div>
+              <img data-u="image" src="{% static 'main_app/img/001_1.jpg' %}" />
+            </div>
+            <div>
+              <img data-u="image" src="{% static 'main_app/img/001_2.jpg' %}" />
+            </div>
+            <div>
+              <img data-u="image" src="{% static 'main_app/img/005.jpg' %}" />
+            </div>
+            <div>
+              <img data-u="image" src="{% static 'main_app/img/001.jpg' %}" />
+            </div>
+            <div>
+              <img data-u="image" src="{% static 'main_app/img/002_1.jpg' %}" />
+            </div>
+            <div>
+              <img data-u="image" src="{% static 'main_app/img/001_2.jpg' %}" />
+            </div>
+          </div>
+          <!-- Bullet Navigator -->
+          <div data-u="navigator" class="jssorb072" style="position:absolute;bottom:12px;right:12px;" data-autocenter="1" data-scale="0.5" data-scale-bottom="0.75">
+            <div data-u="prototype" class="i" style="width:24px;height:24px;font-size:12px;line-height:24px;">
+              <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1;">
+                <circle class="b" cx="8000" cy="8000" r="6666.7"></circle>
+              </svg>
+              <div data-u="numbertemplate" class="n"></div>
+            </div>
+          </div>
+          <!-- Arrow Navigator -->
+          <div data-u="arrowleft" class="jssora073" style="width:40px;height:50px;top:0px;left:30px;" data-autocenter="2" data-scale="0.75" data-scale-left="0.75">
+            <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+              <path class="a"
+                d="M4037.7,8357.3l5891.8,5891.8c100.6,100.6,219.7,150.9,357.3,150.9s256.7-50.3,357.3-150.9 l1318.1-1318.1c100.6-100.6,150.9-219.7,150.9-357.3c0-137.6-50.3-256.7-150.9-357.3L7745.9,8000l4216.4-4216.4 c100.6-100.6,150.9-219.7,150.9-357.3c0-137.6-50.3-256.7-150.9-357.3l-1318.1-1318.1c-100.6-100.6-219.7-150.9-357.3-150.9 s-256.7,50.3-357.3,150.9L4037.7,7642.7c-100.6,100.6-150.9,219.7-150.9,357.3C3886.8,8137.6,3937.1,8256.7,4037.7,8357.3 L4037.7,8357.3z">
+              </path>
+            </svg>
+          </div>
+          <div data-u="arrowright" class="jssora073" style="width:40px;height:50px;top:0px;right:30px;" data-autocenter="2" data-scale="0.75" data-scale-right="0.75">
+            <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+              <path class="a"
+                d="M11962.3,8357.3l-5891.8,5891.8c-100.6,100.6-219.7,150.9-357.3,150.9s-256.7-50.3-357.3-150.9 L4037.7,12931c-100.6-100.6-150.9-219.7-150.9-357.3c0-137.6,50.3-256.7,150.9-357.3L8254.1,8000L4037.7,3783.6 c-100.6-100.6-150.9-219.7-150.9-357.3c0-137.6,50.3-256.7,150.9-357.3l1318.1-1318.1c100.6-100.6,219.7-150.9,357.3-150.9 s256.7,50.3,357.3,150.9l5891.8,5891.8c100.6,100.6,150.9,219.7,150.9,357.3C12113.2,8137.6,12062.9,8256.7,11962.3,8357.3 L11962.3,8357.3z">
+              </path>
+            </svg>
+          </div>
+        </div>
+        <script type="text/javascript">
+          jssor_1_slider_init();
+        </script>
+        <!-- #endregion Jssor Slider End -->
         <!-- E N D     S L I D E R-->
         <a class="col-md-12">
 
           <!--Content-->
 
-            <div class="mb-1 py-2">
-                <span class="badge purple mr-1">{{product.category}}</span>
-                <span class="badge blue mr-1">{{product.status}}</span>
-                {% if a == 0 %}
-                <span class="badge grey mr-1">Not For Sale</span>
-                {% endif %}
-                {% if b == 0 %}
-                <span class="badge grey mr-1">Not For Rent</span>
-                {% endif %}
-            </div>
+          <div class="mb-1 py-2">
+            <span class="badge purple mr-1">{{product.category}}</span>
+            <span class="badge blue mr-1">{{product.status}}</span>
+            {% if a == 0 %}
+            <span class="badge grey mr-1">Not For Sale</span>
+            {% endif %}
+            {% if b == 0 %}
+            <span class="badge grey mr-1">Not For Rent</span>
+            {% endif %}
+          </div>
 
-            <div class="row">
-              <div class="col-lg-12 ">
-                <span class="fa fa-star" id="star1"></span>
-                <span class="fa fa-star" id="star2"></span>
-                <span class="fa fa-star" id="star3"></span>
-                <span class="fa fa-star" id="star4"></span>
-                <span class="fa fa-star" id="star5"></span>
-                <h7 class="h7">(276)</h7>
+          <div class="row">
+            <div class="col-lg-12 ">
+              <span class="fa fa-star" id="star1"></span>
+              <span class="fa fa-star" id="star2"></span>
+              <span class="fa fa-star" id="star3"></span>
+              <span class="fa fa-star" id="star4"></span>
+              <span class="fa fa-star" id="star5"></span>
+              <h7 class="h7">(276)</h7>
               </div>
             </div>
             <div class="col-12">
@@ -243,7 +249,7 @@
             <br>
             {% if a == 1 %}
             <h5>Price : <span class="font-weight-bold" style="color: rgb(33, 22, 242)">{{sellad.price}}$</span></h5>
-            {% endif %}
+          {% endif %}
 
           <!--Content-->
       </div>
@@ -255,9 +261,30 @@
           <p>Price : <span style="color:rgb(25, 47, 242)">{{rentad.price}}$</span></p>
           <h6>Description: </h6>
           <pre>
-{{rentad.description}}
-</pre>
+          {{rentad.description}}
+          </pre>
           <p>Add Date: {{rentad.adddate}}</p>
+          {% endif %}
+        </div>
+        <div class="col-12">
+          {% if flag == 1 %}
+          <h5>Note this is not Available for time below</h5>
+          <table class="table table-bordered table-sm">
+            <thead>
+              <tr>
+                <th>start</th>
+                <th>End</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for i in t %}
+              <tr>
+                <td>{{ i.0 }}</td>
+                <td>{{ i.1 }}</td>
+              </tr>
+            </tbody>
+            {% endfor %}
+          </table>
           {% endif %}
         </div>
       </div>
