@@ -14,7 +14,7 @@
   <link href="{% static 'main_app/css/bootstrap.min.css' %}" rel="stylesheet">
   <link href="{% static 'main_app/css/mdb.min.css' %}" rel="stylesheet">
   <link href="{% static 'main_app/css/style.min.css' %}" rel="stylesheet">
-  <!-- !Django End-->
+  <!-- Django End-->
 
   <style>
     .thumb-post img {
@@ -23,7 +23,7 @@
       object-position: center;
       /* Center the image within the element */
       width: 100%;
-      height: 100%;
+      height: 350px;
       max-height: 300px;
       max-width: 300px;
       margin-bottom: 1rem;
@@ -80,8 +80,8 @@
 
         <!-- Left -->
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link waves-effect" href="/home/">Home
+          <li class="nav-item active">
+            <a class="nav-link waves-effect" href="#">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
@@ -91,7 +91,7 @@
           <!--li class="nav-item">
             <a class="nav-link waves-effect" href="/addNeed/">Add Need</a>
           </li-->
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link waves-effect" href="/allNeed/">Needs</a>
           </li>
           <li class="nav-item">
@@ -126,104 +126,69 @@
     </div>
   </nav>
   <!-- Navbar -->
-  <!-- The Modal -->
-  <div class="modal" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
+    <!-- Navbar -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
 
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h6 class="modal-title">Notifications</h6>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h6 class="modal-title">Notifications</h6>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
 
-        <!-- Modal body -->
-        <div class="modal-body">
-          <div class="container-fluid border my-2 text-center">
-            <div class="row">
-              <div class="col-8">
-                <p>review product #4847387</p>
-              </div>
-              <div class="col-4">
-                <button type="button" class="btn">review</button>
-              </div>
-            </div>
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="container-fluid border my-2 text-center">
+          <div class="row">
+          <div class="col-8">
+            <p>review product #4847387</p>
+          </div>
+          <div class="col-4">
+            <button type="button" class="btn">review</button>
           </div>
         </div>
-
       </div>
+      </div>
+
     </div>
   </div>
+</div>
   <!--main-->
-  <main><br><br><br><br>
+  <main><br><br><br>
     <div class="container">
-      <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3  mb-5">
-
-        <!-- Links -->
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'allNeed' %}">All Needs</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'myNeed' %}">My Needs
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-
-        </ul>
-        <!-- Links -->
-        <a href={% url 'addNeed' %}>
-          <button type="button" class="btn ml-2" style="color:rgb(245, 247, 246)">
-            + ADD NEED
-          </button>
-        </a>
-      </nav>
-
-      <div class="row">
-
-        <div class="row">
-          <!--Add elements-->
-          <!--An Element-->
-          {% for i in a %}
-          <div class="col-lg-4 col-md-6 sm-12 mb-1">
-            <div class=" card bg-transparent mb-1">
-              <div class="card-body thumb-post">
-                <h5>Product: {{ i.1 }}</h5>
-                <h5>Category: {{ i.2 }}</h5>
-                <div style="background: rgb(255,255,255)" align="center">
-                  <img src="https://image.shutterstock.com/image-photo/singapore-december-26-2017-minion-600w-1483265900.jpg" class="card-img-top mt-0 mb-0" style="background:rgb(255,255,255)" alt="">
-                </div>
-
-                <div class="container" align="center">
-                  <div class="row">
-                    <div class="col-4" align="center">
-                      <a href="{% url 'needDetail' i.0 %}">
-                      <button type="button" class="btn btn-success btn-sm  py-1">View</button>
-                    </a>
-                    </div>
-                    <div class="col-4" align="center">
-                      <a href="{% url 'editNeed' i.0 %}">
-                      <button type="button" class="btn btn-warning btn-sm py-1">Edit</button>
-                    </a>
-                    </div>
-                    <div class="col-4" align="center">
-                      <a href="{% url 'needDetail' i.0 %}">
-                      <button type="button" class="btn btn-danger btn-sm py-1">Delete</button>
-                    </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          {% endfor %}
-          <!--An Element ends here-->
-          <!--END Add elements-->
-        </div>
+      <div class="col-12">
+        <h4 class="h4" style="color:rgb(8, 65, 212);text-shadow: 2px 2px rgb(153, 238, 177)">Edit Need : {{ need.nid }}</h4>
       </div>
-  </main>
+      <div class="col-lg-6">
+        <hr>
+        <form method="post" action="{% url 'editNeed_post' %}">
+          {% csrf_token %}
+            <label for="productname">Product Needed :</label>
+            <input type="text" class="form-control" id="productname" name="productname" value="{{ need.productname }}">
+            <input type="hidden" name="nid" value="{{ need.nid }}"/>
 
-  <!--Django Mode -->
+
+            <label for="description">Description :</label>
+            <input type="textarea" name="description" class="form-control" id="description" rows="5" cols="30" value="{{ need.description }}"/>
+
+
+            <label for="category">Category :</label>
+            <select name="category" id="category" class="custom-select">
+              <option selected>Select category</option>
+              <option value="stationary">Stationary</option>
+              <option value="vehicle">Vehicle</option>
+              <option value="whatever">Whatever</option>
+            </select>
+
+
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </main>
+  <!--/main-->
+
   <script type="text/javascript" src="{% static 'main_app/js/jquery-3.4.1.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'main_app/js/popper.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'main_app/js/bootstrap.min.js' %}"></script>
@@ -231,7 +196,7 @@
   <script type="text/javascript">
     new WOW().init();
   </script>
-  <!-- Django Mode END-->
+  <!--Django Mode END-->
 
 </body>
 
