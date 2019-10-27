@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
-
+from datetime import datetime
 
 @login_required()
 def index(request):
@@ -48,7 +48,14 @@ def product(request, productID):
             print(flag)
         except Rentad.DoesNotExist:
             b=0
-        return render(request, 'main_app/product-page.html', {'product': product, 'sellad': sellad, 'rentad': rentad, 'a': a, 'b': b,'t':t,'flag':flag})
+        #for wish list
+        user = Users.objects.filter(email=request.user)[0]
+        my_products = Products.objects.filter(owner=user)[0]
+        wishes = Wishes.objects.filter(email=user, pid=my_products)
+        wished = 0
+        if wishes.exists():
+            wished = 1
+        return render(request, 'main_app/product-page.html', {'product': product, 'sellad': sellad, 'rentad': rentad, 'a': a, 'b': b,'t':t,'flag':flag, 'wished': wished})
 
 
 def login(request):
@@ -152,6 +159,7 @@ def product_page(request, productID):
     b=0
     return render(request, 'main_app/product-page.html', {'product': this_product,'b':b})
 
+
 def product_delete(request, productID):
     instance = Products.objects.get(pk=productID)
     instance.delete()
@@ -170,8 +178,77 @@ def edit_product_page_post(request):
     this_product.pname = request.POST['pname']
     this_product.description = request.POST['description']
     this_product.category = request.POST['category']
-    this_product.save()
+    print(this_product.pid)
+    check_var=1
+    #checks handling
+    try:
+        check_var = request.POST.getlist('checks[]')[0]
+        print(check_var)
+    except IndexError:
+        rentadinstance=Rentad.objects.filter(pid=this_product.pid)
+        try:
+            a=rentadinstance[0]
+            a.delete()
+        except IndexError:
+            pass
+        selladinstance=Sellad.objects.filter(pid=this_product.pid)
+        try:
+            a=selladinstance[0]
+            a.delete()
+        except IndexError:
+            pass
+        return redirect('/myProducts/')
 
+    if '1' in check_var:
+        selladinstance = Sellad.objects.filter(pk=this_product.pid)
+        if selladinstance.exists() == False:
+            last_id = Sellad.objects.last()
+            if last_id is None:
+                last_id = 1
+            else:
+                last_id = last_id.pid + 1
+
+            selladinstance = Sellad.objects.create(sellid=last_id, pid=this_product,
+                                                   price=request.POST['sell_price'],
+                                                   adddate=datetime.date(datetime.now()),
+                                                   expirydate=request.POST['sell_expDate'])
+            selladinstance.save()
+        else:
+            selladinstance2 = Sellad.objects.get(pk=this_product.pid)
+            selladinstance2.price = request.POST['sell_price']
+            selladinstance2.expirydate = request.POST['sell_expDate']
+            selladinstance2.save()
+
+        if '2' not in check_var:
+            rentadinstance = Rentad.objects.filter(pk=this_product.pid)
+            if rentadinstance.exists():
+                rentadinstance[0].delete()
+
+    if '2' in check_var:
+        rentadinstance = Rentad.objects.filter(pk=this_product.pid)
+        if rentadinstance.exists() == False:
+            last_id = Rentad.objects.last()
+            if last_id is None:
+                last_id = 1
+            else:
+                last_id = last_id.pid + 1
+
+            rentadinstance = Rentad.objects.create(rentid=last_id, pid=this_product, price=request.POST['rent_price'], description=request.POST['rent_description'],
+                                                   adddate=datetime.date(datetime.now()),
+                                                   expirydate=request.POST['rent_expDate'])
+            rentadinstance.save()
+        else:
+            rentadinstance2 = Rentad.objects.get(pk=this_product.pid)
+            rentadinstance2.price = request.POST['rent_price']
+            rentadinstance2.expirydate = request.POST['rent_expDate']
+            rentadinstance2.description = request.POST['rent_description']
+            rentadinstance2.save()
+
+        if '1' not in check_var:
+            selladinstance = Sellad.objects.filter(pk=this_product.pid)
+            if selladinstance.exists():
+                selladinstance[0].delete()
+    this_product.save()
     return redirect('/myProducts/')
 
 
@@ -189,8 +266,20 @@ def new_rent(request,productID):
     product= Products.objects.get(pk=productID)
     return render(request,'main_app/new_rent.html',{'rentad':rentad,'product':product})
 
+
 def new_rent_post(request):
     print(request.POST)
     str=request.POST['pid']+"+"+request.POST['startDate']+"+"+request.POST['startTime']+"+"+request.POST['endDate']+"+"+request.POST['endTime'];
     inst=Renttransaction.objects.create(rentid=Rentad.objects.get(pk=request.POST['pid']),email=Users.objects.get(pk=request.POST['email']),startdate=request.POST['startDate'],starttime=request.POST['startTime'],enddate=request.POST['endDate'],endtime=request.POST['endTime'])
     return redirect('/home')
+
+
+def addToWish(request, productID):
+    user = Users.objects.filter(email=request.user)[0]
+    my_product = Products.objects.filter(pid=productID)[0]
+    print(my_product)
+    wishlist1 = Wishes.objects.create(email=user, pid=my_product)
+    wishlist1.save()
+    return render(request, 'main_app/product-page.html')
+
+

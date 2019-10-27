@@ -198,7 +198,7 @@
         </script>
         <!-- #endregion Jssor Slider End -->
         <!-- E N D     S L I D E R-->
-        <div class="col-md-12">
+        <a class="col-md-12">
 
           <!--Content-->
 
@@ -221,28 +221,38 @@
               <span class="fa fa-star" id="star4"></span>
               <span class="fa fa-star" id="star5"></span>
               <h7 class="h7">(276)</h7>
+              </div>
             </div>
-          </div>
-          <br>
-          <p class="lead font-weight-bold">Description</p>
-          <p style="max-width: 500px;">{{product.description}}</p>
-          <p class="lead font-weight-bold">Contact</p>
-          {% if product.owner.whnumber %}
-          <h6><img style="height:30px;width:30px;" class="mr-2" src="{% static 'main_app/img/whatsapp.png' %}"> {{product.owner.whnumber}}</h6>
-          {% endif %}
-          {% if product.owner.email %}
-          <h6><img style="height:30px;width:30px;" class="mr-2" src="{% static 'main_app/img/email.png' %}"> {{product.owner.email}}</h6>
-          {% endif %}
-          {% if product.owner.phnumber %}
-          <h6><img style="height:30px;width:30px;" class="mr-2" src="{% static 'main_app/img/phone.png' %}"> {{product.owner.phnumber}}</h6>
-          {% endif %}
-          <br>
-          {% if a == 1 %}
-          <h5>Price : <span class="font-weight-bold" style="color: rgb(33, 22, 242)">{{sellad.price}}$</span></h5>
+            <div class="col-12">
+            <br>
+            {% if wished == 0 %}
+            <a href = "{% url 'addToWish' product.pid %}"><button type="button" class="btn">Add to WishList</button></a>
+            {% else %}
+            <button type="button" class="btn">Successfully Added to WishList</button>
+            {% endif %}
+            <br>
+            </div>
+            <div class="col-12">
+            <p class="lead font-weight-bold">Description</p>
+            <p style="max-width: 500px;">{{product.description}}</p>
+            <p class="lead font-weight-bold">Contact</p>
+            {% if product.owner.whnumber %}
+            <h6><img style="height:30px;width:30px;" class="mr-2" src="{% static 'main_app/img/whatsapp.png' %}">  {{product.owner.whnumber}}</h6>
+            {% endif %}
+            {% if product.owner.email %}
+            <h6><img style="height:30px;width:30px;" class="mr-2" src="{% static 'main_app/img/email.png' %}">  {{product.owner.email}}</h6>
+            {% endif %}
+            {% if product.owner.phnumber %}
+            <h6><img style="height:30px;width:30px;" class="mr-2" src="{% static 'main_app/img/phone.png' %}">  {{product.owner.phnumber}}</h6>
+            {% endif %}
+                </div>
+            <br>
+            {% if a == 1 %}
+            <h5>Price : <span class="font-weight-bold" style="color: rgb(33, 22, 242)">{{sellad.price}}$</span></h5>
           {% endif %}
 
           <!--Content-->
-        </div>
+      </div>
         <!--Grid column-->
         <div class="col-md-12">
           {% if b == 1 %}
