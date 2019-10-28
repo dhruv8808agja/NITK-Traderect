@@ -75,12 +75,12 @@ def home_category_sort(request, categoryID, sortID):
             pass
     print("its A: ", a)
 
-    # for i in a:
-    #     t = Photos.objects.select_related().filter(ownerid=i[3].pid)
-    #     if t.exists():
-    #         i.append('main_app/img/' + t.first().photofile.path.split('/')[-1])
-    #     else:
-    #         i.append('main_app/img/defendforault.jpeg')
+    for i in a:
+        t = Photos.objects.select_related().filter(ownerid=i[3])
+        if t.exists():
+            i.append(t.first().photofile.url)
+        else:
+            i.append('/home/saliakvihs/CSE/WEB/NITK-Traderect/Traderect/media/main_app/static/main_app/img/default.jpeg')
 
     for element in this_cat_products:
         try:
@@ -89,15 +89,13 @@ def home_category_sort(request, categoryID, sortID):
         except:
             pass
     print("its B: ", b)
-    # for i in b:
-    #     a.append(i)
-    #     t = Photos.objects.select_related().filter(ownerid=i[3].pid)
-    #     if t.exists():
-    #         i.append('main_app/img/' + t.first().photofile.path.split('/')[-1])
-    #     else:
-    #         i.append('main_app/img/default.jpeg')
     for i in b:
         a.append(i)
+        t = Photos.objects.select_related().filter(ownerid=i[3])
+        if t.exists():
+            i.append(t.first().photofile.url)
+        else:
+            i.append('/home/saliakvihs/CSE/WEB/NITK-Traderect/Traderect/media/main_app/static/main_app/img/default.jpeg')
     wow_a = a
     print("ITS ALL A: ", a)
     if sortID == 0:
@@ -126,7 +124,7 @@ def search_post(request):
         search_str = request.POST['search']
         all_product_q = Products.objects.all().exclude(owner=user)
         for element in all_product_q:
-            if search_str in element.pname:
+            if search_str.upper() in element.pname.upper():
                 product_matched_l.append(element)
 
          # product_matched_q = Products.objects.filter(pname=request.POST['search'])
@@ -178,17 +176,22 @@ def product(request, productID):
             b=0
 
         #for wish list
-        user = Users.objects.filter(email=request.user)[0]
-        my_products = Products.objects.filter(owner=user)[0]
-        wishes = Wishes.objects.filter(email=user, pid=my_products)
-        wished = 0
-        if wishes.exists():
-            wished = 1
-        photos_l1=Photos.objects.filter(ownerid=product.pid)
-        photos_l=[]
-        for i in photos_l1:
-            photos_l.append('main_app/img/'+i.photofile.path.split('/')[-1])
-        print(wished)
+        user = Users.objects.filter(email=request.user.email)[0]
+        wished=0
+        try:
+            my_products = Products.objects.filter(owner=user)[0]
+            wishes = Wishes.objects.filter(email=user, pid=my_products)
+            wished = 0
+            if wishes.exists():
+                wished = 1
+        except IndexError:
+            pass
+
+        photos_l=Photos.objects.filter(ownerid=product.pid)
+        # photos_l=[]
+        # for i in photos_l1:
+        #     photos_l.append('main_app/img/'+i.photofile.path.split('/')[-1])
+        # print(wished)
         return render(request, 'main_app/product-page.html', {'product': product, 'sellad': sellad, 'rentad': rentad, 'a': a, 'b': b,'t':t,'flag':flag, 'wished': wished,'photos_l':photos_l})
 
 
@@ -312,9 +315,16 @@ def wishlist(request):
     my_wished_products = []
     for element in my_wishes:
         my_wished_products.append(element)
-
+    l=[]
+    for i in my_wished_products:
+        k=Photos.objects.filter(ownerid=i.pid.pid)
+        d=k.first()
+        if d is not None:
+            l.append([i,d.photofile.url])
+        else:
+            l.append([i,'/home/saliakvihs/CSE/WEB/NITK-Traderect/Traderect/media/main_app/static/main_app/img/default.jpeg'])
     #print(my_wished_products[0].pid)
-    return render(request, 'main_app/wishlist.html', {'products': my_wished_products})
+    return render(request, 'main_app/wishlist.html', {'products': my_wished_products,'l':l})
 
 
 
@@ -329,6 +339,12 @@ def myProducts(request):
                 i.append(1)
             except Rentad.DoesNotExist:
                 i.append(0)
+        for i in a:
+            p=Photos.objects.filter(ownerid=i[0])
+            try:
+                i.append(p[0])
+            except IndexError:
+                pass
         return render(request, 'main_app/myProducts.html', {'a': a})
 
 
@@ -353,7 +369,11 @@ def product_page(request, productID):
         print(flag)
     except Rentad.DoesNotExist:
         b = 0
-    return render(request, 'main_app/product-page1.html', {'product': product, 'sellad': sellad, 'rentad': rentad, 'a': a, 'b': b,'t':t,'flag':flag})
+    photos_l=Photos.objects.filter(ownerid=product.pid)
+    # photos_l=[]
+    # for i in photos_l1:
+    #     photos_l.append('main_app/img/'+i.photofile.path.split('/')[-1])
+    return render(request, 'main_app/product-page1.html', {'product': product, 'sellad': sellad, 'rentad': rentad, 'a': a, 'b': b,'t':t,'flag':flag,'photos_l':photos_l})
 
 
 def product_delete(request, productID):
