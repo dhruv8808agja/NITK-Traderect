@@ -122,7 +122,7 @@
             </button>
           </li>
           <li class="nav-item">
-            <button type="button" class="btn btn-md border" style="box-shadow: none;">Login</button>
+            <a href="{% url 'logout' %}"><button type="button" class="btn btn-md border" style="box-shadow: none;">Logout</button></a>
           </li>
         </ul>
 
@@ -183,34 +183,38 @@
           <!-- Links -->
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">All
+<!--              give if else for sorting for each cat.-->
+              <a class="nav-link" href="/home/0/{{ sortID }}/">All
                 <span class="sr-only">(current)</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Shirts</a>
+              <a class="nav-link" href="/home/1/{{ sortID }}">Electronics</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Sport wears</a>
+              <a class="nav-link" href="/home/2/{{ sortID }}">Stationary</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Outwears</a>
+              <a class="nav-link" href="/home/3/{{ sortID }}">Others</a>
             </li>
 
           </ul>
-          <!-- Links -->
+          <!-- Links  Sort button-->
           <div class="dropdown" style="color: rgb(255, 255, 255);">
             <button type="button" class="btn dropdown-toggle ml-2" data-toggle="dropdown">
               Sort By
             </button>
             <div class="dropdown-menu">
-              <button class=" dropdown-item border-bottom">Decrising Price</button>
-              <button class=" dropdown-item">Increasing Price</button>
+              <a href="/home/{{ categoryID }}/2/"><button class=" dropdown-item border-bottom">Decreasing Price</button></a>
+              <a href="/home/{{ categoryID }}/1/"><button class=" dropdown-item">Increasing Price</button></a>
             </div>
           </div>
-          <form class="form-inline">
+          <form class="form-inline" method="post", action="/search_post/">
+            {% csrf_token %}
             <div class="md-form my-0">
-              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="search">
+              <input type="hidden" name="categoryID" value="{{ categoryID }}"/>
+              <input type="hidden" name="sortID" value="{{ sortID }}"/>
             </div>
           </form>
         </div>
@@ -228,7 +232,7 @@
           {% for e in a %}
           {% if e.0 > 0 %}
           <div class="col-lg-3 col-md-6 mb-4">
-            <a  href="{% url 'product' e.3.pid %}">
+            <a  href="{% url 'product' e.3 %}">
             <div class=" card bg-transparent mb-4">
               <div class="card-body thumb-post">
                 <h5> {{ e.4 }} <span <span class="badge badge-success">Rent</span></h5>
@@ -255,7 +259,7 @@
           </div>
           {% else %}
           <div class="col-lg-3 col-md-6 mb-4">
-            <a  href="{% url 'product' e.3.pid %}">
+            <a  href="{% url 'product' e.3 %}">
             <div class=" card bg-transparent mb-4">
               <div class="card-body thumb-post">
                 <h5>{{ e.4 }} <span class="badge badge-primary">Sale</span></h5>

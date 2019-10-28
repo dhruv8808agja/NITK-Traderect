@@ -3,30 +3,148 @@ from .models import *
 import random
 from django.contrib.auth.models import User
 from django.contrib.auth import login as auth_login
+from django.contrib.auth import logout as auth_logout
 from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
 from .forms import *
+from operator import itemgetter
 
 @login_required()
 def index(request):
-    a=[[1,e.rentid,e.price,e.pid,e.pid.pname,e.pid.owner.name,e.pid.avgrating] for e in Rentad.objects.all()]
-    for i in a:
-            t=Photos.objects.select_related().filter(ownerid=i[3].pid)
-            if t.exists():
-                i.append('main_app/img/'+t.first().photofile.path.split('/')[-1])
-            else:
-                i.append('main_app/img/default.jpeg')
-    b=[[0,e.sellid,e.price,e.pid,e.pid.pname,e.pid.owner.name] for e in Sellad.objects.all()]
+    # a=[[1,e.rentid,e.price,e.pid,e.pid.pname,e.pid.owner.name,e.pid.avgrating] for e in Rentad.objects.all()]
+    # for i in a:
+    #         t=Photos.objects.select_related().filter(ownerid=i[3].pid)
+    #         if t.exists():
+    #             i.append('main_app/img/'+t.first().photofile.path.split('/')[-1])
+    #         else:
+    #             i.append('main_app/img/default.jpeg')
+    # b=[[0,e.sellid,e.price,e.pid,e.pid.pname,e.pid.owner.name] for e in Sellad.objects.all()]
+    # for i in b:
+    #         a.append(i)
+    #         t=Photos.objects.select_related().filter(ownerid=i[3].pid)
+    #         if t.exists():
+    #             i.append('main_app/img/'+t.first().photofile.path.split('/')[-1])
+    #         else:
+    #             i.append('main_app/img/default.jpeg')
+    # random.shuffle(a)
+    categoryID = 0
+    sortID = 0
+    return home_category_sort(request, categoryID, sortID)
+    # return render(request, 'main_app/index.html', {'a': a})
+
+
+def home_category_sort(request, categoryID, sortID):
+    #make this variables global to project like cat1, cat2
+
+    if categoryID == 0:
+        mycategory = 'all'
+    elif categoryID == 1:
+        mycategory = 'electronics'
+    elif categoryID == 2:
+        mycategory = 'others'
+    elif categoryID == 3:
+        mycategory = 'stationary'
+    else:
+        mycategory = 'vehicles'
+
+    if categoryID == 0:
+        print('in first')
+        this_cat_products = Products.objects.all() #not handled for null
+    else:
+        print('in second')
+        this_cat_products = Products.objects.filter(category=mycategory)
+
+    print(this_cat_products)
+    # reference_products = [[p.pid, p.pname, p.category, p.description, p.owner.name, p.avgrating]
+    #                       for p in this_cat_products]
+    a=[]
+    b=[]
+    for element in this_cat_products:
+        try:
+            e=Rentad.objects.get(pk=element)
+            a.append([1, e.rentid, e.price, e.pid.pid, e.pid.pname, e.pid.owner.name, e.pid.avgrating])
+        except Rentad.DoesNotExist:
+            pass
+    print("its A: ", a)
+
+    # for i in a:
+    #     t = Photos.objects.select_related().filter(ownerid=i[3].pid)
+    #     if t.exists():
+    #         i.append('main_app/img/' + t.first().photofile.path.split('/')[-1])
+    #     else:
+    #         i.append('main_app/img/defendforault.jpeg')
+
+    for element in this_cat_products:
+        try:
+            ins=Sellad.objects.get(pk=element)
+            b.append([0,ins.sellid,ins.price,ins.pid.pid,ins.pid.pname,ins.pid.owner.name])
+        except:
+            pass
+    print("its B: ", b)
+    # for i in b:
+    #     a.append(i)
+    #     t = Photos.objects.select_related().filter(ownerid=i[3].pid)
+    #     if t.exists():
+    #         i.append('main_app/img/' + t.first().photofile.path.split('/')[-1])
+    #     else:
+    #         i.append('main_app/img/default.jpeg')
     for i in b:
-            a.append(i)
-            t=Photos.objects.select_related().filter(ownerid=i[3].pid)
-            if t.exists():
-                i.append('main_app/img/'+t.first().photofile.path.split('/')[-1])
-            else:
-                i.append('main_app/img/default.jpeg')
-    random.shuffle(a)
-    return render(request, 'main_app/index.html', {'a': a})
+        a.append(i)
+    wow_a = a
+    print("ITS ALL A: ", a)
+    if sortID == 0:
+        print('SORT 0')
+        random.shuffle(wow_a)
+    elif sortID == 1:
+        print('SORT 1')
+        wow_a = sorted(a, key=lambda x: x[2])
+    else:
+        print('SORT 2')
+        wow_a = sorted(a, key=lambda x: x[2], reverse=True)
+    print("ALL A SORTED: ", a)
+
+    return render(request, 'main_app/index.html', {'a': wow_a, 'sortID': sortID, 'categoryID': categoryID})
+
+
+def search_post(request):
+    if request.POST['search'] == '':
+        return redirect('/home/0/0')
+    else:
+        a = []
+        b = []
+        product_matched_l = []
+        search_str = request.POST['search']
+        all_product_q = Products.objects.all()
+        for element in all_product_q:
+            if search_str in element.pname:
+                product_matched_l.append(element)
+
+         # product_matched_q = Products.objects.filter(pname=request.POST['search'])
+        if len(product_matched_l) == 0:
+            return render(request, 'main_app/index.html', {'a': [], 'sortID': request.POST['sortID'], 'categoryID': request.POST['categoryID']})
+        else:
+            for element in product_matched_l:
+                try:
+                    e = Rentad.objects.get(pk=element)
+                    a.append([1, e.rentid, e.price, e.pid.pid, e.pid.pname, e.pid.owner.name, e.pid.avgrating])
+                except Rentad.DoesNotExist:
+                    pass
+
+            for element in product_matched_l:
+                try:
+                    ins = Sellad.objects.get(pk=element)
+                    b.append([0, ins.sellid, ins.price, ins.pid.pid, ins.pid.pname, ins.pid.owner.name])
+                except:
+                    pass
+
+            for i in b:
+                a.append(i)
+            return render(request, 'main_app/index.html', {'a': a})
+
+
+
+#redirect('/home/' + request.POST['categoryID'] + '/' + request.POST['sortID'] + '/')
 
 
 def product(request, productID):
@@ -72,6 +190,11 @@ def login(request):
             return redirect('/home/')
         else:
             return render(request, 'main_app/login.html')
+
+
+def logout(request):
+    auth_logout(request)
+    return redirect('/')
 
 
 def signup(request):
@@ -324,3 +447,10 @@ def addToWish(request, productID):
     wishlist1 = Wishes.objects.create(email=user, pid=my_product)
     wishlist1.save()
     return render(request, 'main_app/product-page.html')
+
+
+def deleteWish(request, productID):
+    product_o = Products.objects.get(pk = productID)
+    wish_o = Wishes.objects.filter(pid = product_o)
+    wish_o.delete()
+    return redirect('/wishlist/')

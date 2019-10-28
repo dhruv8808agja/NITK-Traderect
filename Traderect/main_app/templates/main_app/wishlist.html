@@ -122,7 +122,7 @@
             </button>
           </li>
           <li class="nav-item">
-            <button type="button" class="btn btn-md border" style="box-shadow: none;">Login</button>
+            <a href="{% url 'logout' %}"><button type="button" class="btn btn-md border" style="box-shadow: none;">Logout</button></a>
           </li>
         </ul>
 
@@ -184,10 +184,10 @@
               <div class="container" align="center">
               <div class="row">
                 <div class="col-6" align="center">
-                  <a  href="{% url 'product' p.pid.pid %}"><button type="button" class="btn btn-success py-1">View</button></a>
+                  <a href="{% url 'product' p.pid.pid %}"><button type="button" class="btn btn-success py-1">View</button></a>
                 </div>
                 <div class="col-6" align="center">
-                  <button type="button" class="btn btn-warning py-1">Delete</button>
+                  <a href="{% url 'deleteWish' p.pid.pid %}"><button type="button" class="btn btn-warning py-1">Delete</button></a>
                 </div>
               </div>
             </div>
