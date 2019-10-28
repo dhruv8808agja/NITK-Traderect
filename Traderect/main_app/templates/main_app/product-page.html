@@ -145,7 +145,7 @@
           <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:600px;height:500px;overflow:hidden;">
             {% for i in photos_l %}
             <div>
-              <img data-u="image" src="{% static i %}" />
+              <img data-u="image" src="{{ i.photofile.url }}" />
             </div>
             {% endfor %}
           </div>
@@ -229,7 +229,7 @@
                 </div>
             <br>
             {% if a == 1 %}
-            <h5>Price : <span class="font-weight-bold" style="color: rgb(33, 22, 242)">{{sellad.price}}$</span></h5>
+            <h5>Price : <span class="font-weight-bold" style="color: rgb(33, 22, 242)">{{sellad.price}}&#x20b9;</span></h5>
           {% endif %}
 
           <!--Content-->
@@ -239,7 +239,7 @@
           {% if b == 1 %}
           <hr>
           <h5>Available for <span class="font-weight-bold" style="color:rgb(17, 71, 236); ">RENT</span></h5>
-          <p>Price : <span style="color:rgb(25, 47, 242)">{{rentad.price}}$</span></p>
+          <p>Price : <span style="color:rgb(25, 47, 242)">{{rentad.price}}&#x20b9;</span></p>
           <h6>Description: </h6>
           <pre>
           {{rentad.description}}

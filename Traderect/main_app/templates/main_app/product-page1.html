@@ -143,30 +143,12 @@
             <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="{% static 'main_app/img/spin.svg' %}" />
           </div>
           <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:600px;height:500px;overflow:hidden;">
+            {% for i in photos_l %}
             <div>
-              <img data-u="image" src="{% static 'main_app/img/002.jpg' %}" />
+              <img data-u="image" src="{{ i.photofile.url }}" />
+              <p>{{ i.description }}</p>
             </div>
-            <div>
-              <img data-u="image" src="{% static 'main_app/img/001.jpg' %}" />
-            </div>
-            <div>
-              <img data-u="image" src="{% static 'main_app/img/001_1.jpg' %}" />
-            </div>
-            <div>
-              <img data-u="image" src="{% static 'main_app/img/001_2.jpg' %}" />
-            </div>
-            <div>
-              <img data-u="image" src="{% static 'main_app/img/005.jpg' %}" />
-            </div>
-            <div>
-              <img data-u="image" src="{% static 'main_app/img/001.jpg' %}" />
-            </div>
-            <div>
-              <img data-u="image" src="{% static 'main_app/img/002_1.jpg' %}" />
-            </div>
-            <div>
-              <img data-u="image" src="{% static 'main_app/img/001_2.jpg' %}" />
-            </div>
+            {% endfor %}
           </div>
           <!-- Bullet Navigator -->
           <div data-u="navigator" class="jssorb072" style="position:absolute;bottom:12px;right:12px;" data-autocenter="1" data-scale="0.5" data-scale-bottom="0.75">
@@ -239,7 +221,7 @@
                 </div>
             <br>
             {% if a == 1 %}
-            <h5>Price : <span class="font-weight-bold" style="color: rgb(33, 22, 242)">{{sellad.price}}$</span></h5>
+            <h5>Price : <span class="font-weight-bold" style="color: rgb(33, 22, 242)">{{sellad.price}}&#x20b9;</span></h5>
           {% endif %}
 
           <!--Content-->
@@ -249,7 +231,7 @@
           {% if b == 1 %}
           <hr>
           <h5>Available for <span class="font-weight-bold" style="color:rgb(17, 71, 236); ">RENT</span></h5>
-          <p>Price : <span style="color:rgb(25, 47, 242)">{{rentad.price}}$</span></p>
+          <p>Price : <span style="color:rgb(25, 47, 242)">{{rentad.price}}&#x20b9;</span></p>
           <h6>Description: </h6>
           <pre>
           {{rentad.description}}
