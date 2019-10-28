@@ -8,7 +8,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
 from django.db import IntegrityError
-
+from .forms import 
 from operator import itemgetter
 
 @login_required()
@@ -253,14 +253,44 @@ def editNeed_post(request):
 
 def addProduct(request):
     if request.method == 'GET':
-        return render(request, 'main_app/addProduct.html')
+        last_id = Products.objects.last()
+        if last_id is None:
+            last_id = 1
+        else:
+            last_id = last_id.pid + 1
+        last_id_1 = Photos.objects.last()
+        if last_id_1 is None:
+            last_id_1 = 1
+        else:
+            last_id_1 = last_id_1.photoid + 1
+        form = PhotoForm(initial={'photoid':last_id_1,'ownerid':last_id})
+        form.fields['photoid'].widget = forms.HiddenInput()
+        form.fields['ownerid'].widget = forms.HiddenInput()
+        return render(request, 'main_app/addProduct.html',{'form':form})
     if request.method == 'POST':
         last_id = Products.objects.last()
         if last_id is None:
             last_id = 1
         else:
             last_id = last_id.pid + 1
-
+        print(request.FILES)
+        print(type(request.FILES.get('myFile')))
+        print(dir(request.FILES.get('myFile')))
+        #request.POST['ownerid']=last_id
+        last_id_1 = Photos.objects.last()
+        if last_id_1 is None:
+            last_id_1 = 1
+        else:
+            last_id_1 = last_id_1.photoid + 1
+        #request.POST['photoid']=last_id_1
+        form=PhotoForm(request.POST,request.FILES,{'ownerid':last_id,'photoid':last_id_1})
+        if form.is_valid():
+            form.save()
+        else:
+            print("ERROR IS THERE")
+            form.fields['photoid'].widget = forms.HiddenInput()
+            form.fields['ownerid'].widget = forms.HiddenInput()
+            return render(request, 'main_app/addProduct.html', {'form': form})
         user = Users.objects.filter(email=request.user)[0]
         product = Products.objects.create(pid=last_id, pname=request.POST['pname'], category=request.POST['category'], description=request.POST['description'], owner=user)
         product.save()
