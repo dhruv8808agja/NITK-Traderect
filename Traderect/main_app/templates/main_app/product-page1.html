@@ -46,7 +46,7 @@
 
         <!-- Left -->
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link waves-effect" href="/home/">Home
               <span class="sr-only">(current)</span>
             </a>
@@ -60,7 +60,7 @@
           <li class="nav-item">
             <a class="nav-link waves-effect" href="/allNeed/">Needs</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link waves-effect" href="/myProducts/">My Products </a>
           </li>
           <li class="nav-item">
@@ -222,15 +222,6 @@
               <span class="fa fa-star" id="star5"></span>
               <h7 class="h7">(276)</h7>
               </div>
-            </div>
-            <div class="col-12">
-            <br>
-            {% if wished == 0 %}
-            <a href = "{% url 'addToWish' product.pid %}"><button type="button" class="btn">Add to WishList</button></a>
-            {% else %}
-            <button type="button" class="btn">Successfully Added to WishList</button>
-            {% endif %}
-            <br>
             </div>
             <div class="col-12">
             <p class="lead font-weight-bold">Description</p>
