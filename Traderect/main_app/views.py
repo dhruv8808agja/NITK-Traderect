@@ -48,6 +48,7 @@ def product(request, productID):
             print(flag)
         except Rentad.DoesNotExist:
             b=0
+
         #for wish list
         user = Users.objects.filter(email=request.user)[0]
         my_products = Products.objects.filter(owner=user)[0]
@@ -55,6 +56,8 @@ def product(request, productID):
         wished = 0
         if wishes.exists():
             wished = 1
+
+        print(wished)
         return render(request, 'main_app/product-page.html', {'product': product, 'sellad': sellad, 'rentad': rentad, 'a': a, 'b': b,'t':t,'flag':flag, 'wished': wished})
 
 
@@ -137,7 +140,16 @@ def addProduct(request):
 
 
 def wishlist(request):
-    return render(request,'main_app/wishlist.html')
+    user = Users.objects.filter(email=request.user)[0]
+    my_wishes = Wishes.objects.filter(email=user)
+    print(my_wishes)
+    my_wished_products = []
+    for element in my_wishes:
+        my_wished_products.append(element)
+
+    #print(my_wished_products[0].pid)
+    return render(request, 'main_app/wishlist.html', {'products': my_wished_products})
+
 
 
 def myProducts(request):

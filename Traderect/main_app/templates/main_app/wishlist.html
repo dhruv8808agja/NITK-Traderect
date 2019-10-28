@@ -170,66 +170,21 @@
       <br>
       <div class="row">
         <!--Add elements-->
-        <!--An Element-->
-        <div class="col-lg-4 col-md-6 sm-12 mb-1">
-          <div class=" card bg-transparent mb-1">
-            <div class="card-body thumb-post">
-              <h5>Product Name</h5>
-              <h7>By <span style="color:rgb(37, 113, 201)" class="font-weight-bold">@Owner_name<span></h7>
-              <div style="background: rgb(255,255,255)">
-                <img src="https://image.shutterstock.com/image-photo/singapore-december-26-2017-minion-600w-1483265900.jpg" class="card-img-top mt-0 mb-0" style="background:rgb(255,255,255)" alt="">
-              </div>
-              <div class="container" align="center">
-              <div class="row">
-                <div class="col-6" align="center">
-                  <button type="button" class="btn btn-success py-1">View</button>
-                </div>
-                <div class="col-6" align="center">
-                  <button type="button" class="btn btn-warning py-1">Delete</button>
-                </div>
-              </div>
-            </div>
-            </div>
-          </div>
-        </div>
-        <!--An Element ends here-->
 
         <!--An Element-->
+        {% for p in products %}
         <div class="col-lg-4 col-md-6 sm-12 mb-1">
           <div class=" card bg-transparent mb-1">
             <div class="card-body thumb-post">
-              <h5>Product Name</h5>
-              <h7>By <span style="color:rgb(37, 113, 201)" class="font-weight-bold">@Owner_name<span></h7>
-              <div style="background: rgb(255,255,255)">
-                <img src="https://image.shutterstock.com/image-photo/singapore-december-26-2017-minion-600w-1483265900.jpg" class="card-img-top mt-0 mb-0" style="background:rgb(255,255,255)" alt="">
-              </div>
-              <div class="container" align="center">
-              <div class="row">
-                <div class="col-6" align="center">
-                  <button type="button" class="btn btn-success py-1">View</button>
-                </div>
-                <div class="col-6" align="center">
-                  <button type="button" class="btn btn-warning py-1">Delete</button>
-                </div>
-              </div>
-            </div>
-            </div>
-          </div>
-        </div>
-        <!--An Element ends here-->
-        <!--An Element-->
-        <div class="col-lg-4 col-md-6 sm-12 mb-1">
-          <div class=" card bg-transparent mb-1">
-            <div class="card-body thumb-post">
-              <h5>Product Name</h5>
-              <h7>By <span style="color:rgb(37, 113, 201)" class="font-weight-bold">@Owner_name<span></h7>
+              <h5>{{ p.pid.pname }}</h5>
+              <h7>By <span style="color:rgb(37, 113, 201)" class="font-weight-bold">@ {{ p.email.name }} <span></h7>
               <div style="background: rgb(255,255,255)">
                 <img src="https://image.shutterstock.com/image-photo/kiev-ukraine-september-28-2017-600w-725087752.jpg" class="card-img-top mt-0 mb-0" style="background:rgb(255,255,255)" alt="">
               </div>
               <div class="container" align="center">
               <div class="row">
                 <div class="col-6" align="center">
-                  <button type="button" class="btn btn-success py-1">View</button>
+                  <a  href="{% url 'product' p.pid.pid %}"><button type="button" class="btn btn-success py-1">View</button></a>
                 </div>
                 <div class="col-6" align="center">
                   <button type="button" class="btn btn-warning py-1">Delete</button>
@@ -240,29 +195,7 @@
           </div>
         </div>
         <!--An Element ends here-->
-        <!--An Element-->
-        <div class="col-lg-4 col-md-6 sm-12 mb-1">
-          <div class=" card bg-transparent mb-1">
-            <div class="card-body thumb-post">
-              <h5>Product Name</h5>
-              <h7>By <span style="color:rgb(37, 113, 201)" class="font-weight-bold">@Owner_name<span></h7>
-              <div style="background: rgb(255,255,255)">
-                <img src="https://image.shutterstock.com/image-photo/singapore-december-26-2017-minion-600w-1483265900.jpg" class="card-img-top mt-0 mb-0" style="background:rgb(255,255,255)" alt="">
-              </div>
-              <div class="container" align="center">
-              <div class="row">
-                <div class="col-6" align="center">
-                  <button type="button" class="btn btn-success py-1">View</button>
-                </div>
-                <div class="col-6" align="center">
-                  <button type="button" class="btn btn-warning py-1">Delete</button>
-                </div>
-              </div>
-            </div>
-            </div>
-          </div>
-        </div>
-        <!--An Element ends here-->
+        {% endfor %}
 
         <!--END Add elements-->
       </div>
