@@ -168,18 +168,18 @@
             <input type="text" class="form-control" id="pname" name="pname" value="{{ product.pname }}">
             <input type="hidden" name="pid" value="{{ product.pid }}"/>
 
-
             <label for="description">Description :</label>
             <input type="textarea" name="description" class="form-control" id="description" rows="5" cols="30" value="{{ product.description }}"/>
 
 
             <label for="category">Category :</label>
-            <select name="category" id="category" class="custom-select">
-              <option selected>Select category</option>
-              <option value="stationary">Stationary</option>
-              <option value="vehicle">Vehicle</option>
-              <option value="whatever">Whatever</option>
-            </select>
+            <select name="category" id="Category" class="custom-select">
+            <option selected>{{ product.category }}</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Stationary">Stationary</option>
+            <option value="Vehicles">Vehicles</option>
+            <option value="Others">Other</option>
+          </select>
 
             <label for="photo">Photo :</label>
             <div class="custom-file" id="photo">

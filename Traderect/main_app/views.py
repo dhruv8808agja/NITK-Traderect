@@ -8,7 +8,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
 from django.db import IntegrityError
-from .forms import 
+from .forms import *
 from operator import itemgetter
 
 @login_required()
@@ -40,15 +40,15 @@ def home_category_sort(request, categoryID, sortID):
     user = Users.objects.filter(email=request.user)[0]
 
     if categoryID == 0:
-        mycategory = 'all'
+        mycategory = 'All'
     elif categoryID == 1:
-        mycategory = 'electronics'
+        mycategory = 'Electronics'
     elif categoryID == 2:
-        mycategory = 'stationary'
+        mycategory = 'Stationary'
     elif categoryID == 3:
-        mycategory = 'vehicles'
+        mycategory = 'Vehicles'
     else:
-        mycategory = 'others'
+        mycategory = 'Others'
 
     if categoryID == 0:
         print('in first')
@@ -60,8 +60,13 @@ def home_category_sort(request, categoryID, sortID):
     print(this_cat_products)
     # reference_products = [[p.pid, p.pname, p.category, p.description, p.owner.name, p.avgrating]
     #                       for p in this_cat_products]
-    a=[]
-    b=[]
+    a = []
+    b = []
+    #for need marquee in index.html
+    need = [[n.productname, n.email.email] for n in Need.objects.all() if n.email.email!=request.user.email]
+    t=[]
+    need=[tt[0]+"("+tt[1]+")" for tt in need]
+    st=' | '.join(need)
     for element in this_cat_products:
         try:
             e=Rentad.objects.get(pk=element)
@@ -107,7 +112,7 @@ def home_category_sort(request, categoryID, sortID):
     print("ALL A SORTED: ", a)
 
 
-    return render(request, 'main_app/index.html', {'a': wow_a, 'sortID': sortID, 'categoryID': categoryID})
+    return render(request, 'main_app/index.html', {'a': wow_a, 'sortID': sortID, 'categoryID': categoryID, 'st':st})
 
 
 def search_post(request):
@@ -365,12 +370,12 @@ def edit_product_page(request, productID):
 
 def edit_product_page_post(request):
     print(request.POST)
-    this_product = Products.objects.get(pk=request.POST['pid'])
+    this_product = Products.objects.filter(pk=request.POST['pid'])[0]
     this_product.pname = request.POST['pname']
     this_product.description = request.POST['description']
     this_product.category = request.POST['category']
-    print(this_product.pid)
-    check_var=1
+    this_product.save()
+    check_var=[]
     #checks handling
     try:
         check_var = request.POST.getlist('checks[]')[0]
@@ -388,7 +393,7 @@ def edit_product_page_post(request):
             a.delete()
         except IndexError:
             pass
-        return redirect('/myProducts/')
+            return redirect('/myProducts/')
 
     if '1' in check_var:
         selladinstance = Sellad.objects.filter(pk=this_product.pid)
@@ -439,8 +444,9 @@ def edit_product_page_post(request):
             selladinstance = Sellad.objects.filter(pk=this_product.pid)
             if selladinstance.exists():
                 selladinstance[0].delete()
-    this_product.save()
-    return redirect('/myProducts/')
+    print('madar',this_product)
+
+    return redirect('/home/')
 
 
 def needDetail(request,nid):
