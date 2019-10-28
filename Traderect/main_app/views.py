@@ -137,6 +137,12 @@ def search_post(request):
                     a.append([1, e.rentid, e.price, e.pid.pid, e.pid.pname, e.pid.owner.name, e.pid.avgrating])
                 except Rentad.DoesNotExist:
                     pass
+            for i in a:
+                t = Photos.objects.select_related().filter(ownerid=i[3])
+                if t.exists():
+                    i.append(t.first().photofile.url)
+                else:
+                    i.append('/home/saliakvihs/CSE/WEB/NITK-Traderect/Traderect/media/main_app/static/main_app/img/default.jpeg')
 
             for element in product_matched_l:
                 try:
@@ -144,10 +150,16 @@ def search_post(request):
                     b.append([0, ins.sellid, ins.price, ins.pid.pid, ins.pid.pname, ins.pid.owner.name])
                 except:
                     pass
-
             for i in b:
                 a.append(i)
-            return render(request, 'main_app/index.html', {'a': a})
+                t = Photos.objects.select_related().filter(ownerid=i[3])
+                if t.exists():
+                    i.append(t.first().photofile.url)
+                else:
+                    i.append('/home/saliakvihs/CSE/WEB/NITK-Traderect/Traderect/media/main_app/static/main_app/img/default.jpeg')
+            for i in b:
+                a.append(i)
+            return render(request, 'main_app/index.html', {'a': a,'sortID':0})
 
 
 
@@ -231,7 +243,7 @@ def addNeed(request):
         print(request.POST)
         print(request.FILES)
         user = Users.objects.filter(email=request.user)[0]
-        need = Need.objects.create(productname=request.POST['productname'], description=request.POST['description'], category=request.POST['Category'], email=user)
+        need = Need.objects.create(productname=request.POST['productname'], description=request.POST['description'], category=request.POST['category'], email=user)
         need.save()
         return redirect('/myNeed/')
 
@@ -464,7 +476,6 @@ def edit_product_page_post(request):
             selladinstance = Sellad.objects.filter(pk=this_product.pid)
             if selladinstance.exists():
                 selladinstance[0].delete()
-    print('madar',this_product)
 
     return redirect('/home/')
 
