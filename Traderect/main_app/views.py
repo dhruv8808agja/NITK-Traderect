@@ -398,7 +398,7 @@ def edit_product_page_post(request):
     check_var=[]
     #checks handling
     try:
-        check_var = request.POST.getlist('checks[]')[0]
+        check_var = request.POST.getlist('checks[]')
         print(check_var)
     except IndexError:
         rentadinstance=Rentad.objects.filter(pid=this_product.pid)
