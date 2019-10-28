@@ -191,8 +191,8 @@ def product(request, productID):
         user = Users.objects.filter(email=request.user.email)[0]
         wished=0
         try:
-            my_products = Products.objects.filter(owner=user)[0]
-            wishes = Wishes.objects.filter(email=user, pid=my_products)
+            #my_products = Products.objects.filter(owner=user)
+            wishes = Wishes.objects.filter(email=user, pid=productID)
             wished = 0
             if wishes.exists():
                 wished = 1
@@ -477,7 +477,7 @@ def edit_product_page_post(request):
             if selladinstance.exists():
                 selladinstance[0].delete()
 
-    return redirect('/home/')
+    return redirect('/myProducts/')
 
 
 def needDetail(request,nid):
