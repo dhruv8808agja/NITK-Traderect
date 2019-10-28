@@ -7,7 +7,8 @@ from django.contrib.auth import logout as auth_logout
 from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
-from .forms import *
+from django.db import IntegrityError
+from .forms import 
 from operator import itemgetter
 
 @login_required()
@@ -36,24 +37,25 @@ def index(request):
 
 def home_category_sort(request, categoryID, sortID):
     #make this variables global to project like cat1, cat2
+    user = Users.objects.filter(email=request.user)[0]
 
     if categoryID == 0:
         mycategory = 'all'
     elif categoryID == 1:
         mycategory = 'electronics'
     elif categoryID == 2:
-        mycategory = 'others'
-    elif categoryID == 3:
         mycategory = 'stationary'
-    else:
+    elif categoryID == 3:
         mycategory = 'vehicles'
+    else:
+        mycategory = 'others'
 
     if categoryID == 0:
         print('in first')
-        this_cat_products = Products.objects.all() #not handled for null
+        this_cat_products = Products.objects.all().exclude(owner=user) #not handled for null
     else:
         print('in second')
-        this_cat_products = Products.objects.filter(category=mycategory)
+        this_cat_products = Products.objects.filter(category=mycategory).exclude(owner=user)
 
     print(this_cat_products)
     # reference_products = [[p.pid, p.pname, p.category, p.description, p.owner.name, p.avgrating]
@@ -104,10 +106,12 @@ def home_category_sort(request, categoryID, sortID):
         wow_a = sorted(a, key=lambda x: x[2], reverse=True)
     print("ALL A SORTED: ", a)
 
+
     return render(request, 'main_app/index.html', {'a': wow_a, 'sortID': sortID, 'categoryID': categoryID})
 
 
 def search_post(request):
+    user = Users.objects.filter(email=request.user)[0]
     if request.POST['search'] == '':
         return redirect('/home/0/0')
     else:
@@ -115,7 +119,7 @@ def search_post(request):
         b = []
         product_matched_l = []
         search_str = request.POST['search']
-        all_product_q = Products.objects.all()
+        all_product_q = Products.objects.all().exclude(owner=user)
         for element in all_product_q:
             if search_str in element.pname:
                 product_matched_l.append(element)
@@ -321,9 +325,27 @@ def myProducts(request):
 
 
 def product_page(request, productID):
-    this_product = Products.objects.filter(pid=productID)[0]
-    b=0
-    return render(request, 'main_app/product-page.html', {'product': this_product,'b':b})
+    product = get_object_or_404(Products, pk=productID)
+    a = 1
+    b = 1
+    sellad = 0
+    rentad = 0
+    flag = 0
+    t = 1
+    try:
+        sellad = Sellad.objects.get(pk=product)
+    except Sellad.DoesNotExist:
+        a = 0
+    try:
+        rentad = Rentad.objects.get(pk=product)
+        t = [[str(i.startdate) + " " + str(i.starttime), str(i.enddate) + " " + str(i.endtime)] for i in
+             Renttransaction.objects.select_related().filter(rentid=rentad)]
+        if len(t) != 0:
+            flag = 1
+        print(flag)
+    except Rentad.DoesNotExist:
+        b = 0
+    return render(request, 'main_app/product-page1.html', {'product': product, 'sellad': sellad, 'rentad': rentad, 'a': a, 'b': b,'t':t,'flag':flag})
 
 
 def product_delete(request, productID):
@@ -445,8 +467,12 @@ def addToWish(request, productID):
     my_product = Products.objects.filter(pid=productID)[0]
     print(my_product)
     wishlist1 = Wishes.objects.create(email=user, pid=my_product)
-    wishlist1.save()
-    return render(request, 'main_app/product-page.html')
+
+    try:
+        wishlist1.save()
+    except IntegrityError:
+        pass
+    return redirect('/product/' + str(productID))
 
 
 def deleteWish(request, productID):
