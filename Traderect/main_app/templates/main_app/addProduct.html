@@ -151,11 +151,16 @@
 <!--main-->
 <main><br><br><br><br>
   <div class="container">
-    <div class="col-12">
-      <h4 class="h4" style="color:rgb(8, 65, 212);text-shadow: 2px 2px rgb(153, 238, 177)">Add Product</h4>
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3  mb-5">
+
+      <!-- Links -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link">ADD product</a>
+        </li>
+      </ul>
+    </nav>
     <div class="col-lg-6">
-      <hr>
       <form method = "POST" action="{% url 'addProduct' %}" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="form-group">
@@ -203,7 +208,7 @@
   <script type="text/javascript">
     new WOW().init();
   </script>
-  <!Django Mode END-->
+  <!--Django Mode END-->
 
   </body>
 
