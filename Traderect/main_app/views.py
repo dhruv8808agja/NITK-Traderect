@@ -3,6 +3,7 @@ from .models import *
 import random
 from django.contrib.auth.models import User
 from django.contrib.auth import login as auth_login
+from django.contrib.auth import logout as auth_logout
 from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
@@ -188,6 +189,11 @@ def login(request):
             return redirect('/home/')
         else:
             return render(request, 'main_app/login.html')
+
+
+def logout(request):
+    auth_logout(request)
+    return redirect('/')
 
 
 def signup(request):
@@ -410,3 +416,10 @@ def addToWish(request, productID):
     wishlist1 = Wishes.objects.create(email=user, pid=my_product)
     wishlist1.save()
     return render(request, 'main_app/product-page.html')
+
+
+def deleteWish(request, productID):
+    product_o = Products.objects.get(pk = productID)
+    wish_o = Wishes.objects.filter(pid = product_o)
+    wish_o.delete()
+    return redirect('/wishlist/')
