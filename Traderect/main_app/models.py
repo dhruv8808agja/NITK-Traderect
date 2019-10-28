@@ -123,7 +123,7 @@ class Need(models.Model):
     productname = models.CharField(db_column='productName', max_length=50, blank=True, null=True)  # Field name made lowercase.
     description = models.TextField(blank=True, null=True)
     category = models.CharField(max_length=20, blank=True, null=True)
-    email = models.ForeignKey('Users', models.DO_NOTHING, db_column='email', blank=True, null=True)
+    email = models.ForeignKey('Users', models.CASCADE, db_column='email', blank=True, null=True)
     photofile = models.ImageField(upload_to='main_app/static/main_app/img/need',db_column='photoFile', blank=True, null=True)
     class Meta:
         managed = True
@@ -149,7 +149,7 @@ class Products(models.Model):
     status = models.CharField(max_length=20, blank=True, null=True)
     noofratings = models.IntegerField(db_column='noOfRatings', blank=True, null=True)  # Field name made lowercase.
     avgrating = models.FloatField(db_column='avgRating', blank=True, null=True)  # Field name made lowercase.
-    owner = models.ForeignKey('Users', models.DO_NOTHING, db_column='owner', blank=True, null=True)
+    owner = models.ForeignKey('Users', models.CASCADE, db_column='owner', blank=True, null=True)
 
     class Meta:
         managed = True
@@ -177,7 +177,7 @@ class Renttransaction(models.Model):
 
 class Rentad(models.Model):
     rentid = models.IntegerField()
-    pid = models.ForeignKey(Products, models.DO_NOTHING, db_column='pid', primary_key=True, blank=False, null=False)
+    pid = models.ForeignKey(Products, models.CASCADE, db_column='pid', primary_key=True, blank=False, null=False)
     price = models.IntegerField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     adddate = models.DateField(db_column='addDate', blank=True, null=True)  # Field name made lowercase.
@@ -190,7 +190,7 @@ class Rentad(models.Model):
 
 class Sellad(models.Model):
     sellid = models.IntegerField()
-    pid = models.ForeignKey(Products, models.DO_NOTHING, db_column='pid', primary_key=True, blank=False, null=False)
+    pid = models.ForeignKey(Products, models.CASCADE, db_column='pid', primary_key=True, blank=False, null=False)
     price = models.IntegerField(blank=True, null=True)
     adddate = models.DateField(db_column='addDate', blank=True, null=True)  # Field name made lowercase.
     expirydate = models.DateField(blank=True, null=True)
@@ -214,8 +214,8 @@ class Users(models.Model):
 
 
 class Wishes(models.Model):
-    email = models.ForeignKey(Users, models.DO_NOTHING, db_column='email', primary_key=True)
-    pid = models.ForeignKey(Products, models.DO_NOTHING, db_column='pid')
+    email = models.ForeignKey(Users, models.CASCADE, db_column='email', primary_key=True)
+    pid = models.ForeignKey(Products, models.CASCADE, db_column='pid')
 
     class Meta:
         managed = True
