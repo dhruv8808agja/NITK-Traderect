@@ -175,9 +175,12 @@ def product(request, productID):
         wished = 0
         if wishes.exists():
             wished = 1
-
+        photos_l1=Photos.objects.filter(ownerid=product.pid)
+        photos_l=[]
+        for i in photos_l1:
+            photos_l.append('main_app/img/'+i.photofile.path.split('/')[-1])
         print(wished)
-        return render(request, 'main_app/product-page.html', {'product': product, 'sellad': sellad, 'rentad': rentad, 'a': a, 'b': b,'t':t,'flag':flag, 'wished': wished})
+        return render(request, 'main_app/product-page.html', {'product': product, 'sellad': sellad, 'rentad': rentad, 'a': a, 'b': b,'t':t,'flag':flag, 'wished': wished,'photos_l':photos_l})
 
 
 def login(request):
