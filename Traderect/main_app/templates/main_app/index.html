@@ -67,12 +67,12 @@
 <body>
 
   <!-- Navbar -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark mdb-color lighten-3 scrolling-navbar">
     <div class="container">
 
       <!-- Brand -->
       <a class="navbar-brand waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">
-        <strong class="blue-text">T R A D E R E C T</strong>
+        <strong class="white-text">T R A D E R E C T</strong>
       </a>
 
       <!-- Collapse -->
@@ -117,7 +117,7 @@
             </a>
           </li-->
           <li class="nav-item">
-            <a href="{% url 'logout' %}"><button type="button" class="btn btn-md border" style="box-shadow: none;">Logout</button></a>
+            <a href="{% url 'logout' %}"><button type="button" class="btn btn-md btn-dark mdb-color lighten-3" style=font-size:100%;">Logout</button></a>
           </li>
         </ul>
 
@@ -157,16 +157,16 @@
   <br><br><br>
   <div class="alert" role="alert">
     <marquee>
-      <p style="font-family: sans serif font-size:18pt;">{{ st }}</p>
+      <p style="font-family: Comic Sans MS; font-size:150% ; color: rgb(146,159,200)">{{ st }}</p>
     </marquee>
   </div>
   <!--Main layout-->
   <main>
     <div class="container">
       <!--Navbar-->
-      <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3  mb-5">
+      <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3">
         <!-- Navbar brand -->
-        <span class="navbar-brand">Categories:</span>
+        <span class="navbar-brand">Categories</span>
 
         <!-- Collapse button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -176,23 +176,50 @@
         <div class="collapse navbar-collapse" id="basicExampleNav">
 
           <!-- Links -->
-          <ul class="navbar-nav mr-auto">
+          <ul class="navbar-nav mr-auto"><!--              give if else for sorting for each cat.-->
+
+            {% if categoryID == 0 %}
             <li class="nav-item active">
-<!--              give if else for sorting for each cat.-->
+            {% else %}
+            <li class="nav-item">
+            {% endif %}
               <a class="nav-link" href="/home/0/{{ sortID }}/">All
                 <span class="sr-only">(current)</span>
               </a>
             </li>
+
+            {% if categoryID == 1 %}
+            <li class="nav-item active">
+            {% else %}
             <li class="nav-item">
+            {% endif %}
               <a class="nav-link" href="/home/1/{{ sortID }}">Electronics</a>
             </li>
+
+
+            {% if categoryID == 2 %}
+            <li class="nav-item active">
+            {% else %}
             <li class="nav-item">
+            {% endif %}
               <a class="nav-link" href="/home/2/{{ sortID }}">Stationary</a>
             </li>
+
+
+            {% if categoryID == 3 %}
+            <li class="nav-item active">
+            {% else %}
             <li class="nav-item">
+            {% endif %}
               <a class="nav-link" href="/home/3/{{ sortID }}">Vehicles</a>
             </li>
+
+
+            {% if categoryID == 4 %}
+            <li class="nav-item active">
+            {% else %}
             <li class="nav-item">
+            {% endif %}
               <a class="nav-link" href="/home/4/{{ sortID }}">Others</a>
             </li>
 
@@ -204,13 +231,15 @@
             </button>
             <div class="dropdown-menu">
               <a href="/home/{{ categoryID }}/2/"><button class=" dropdown-item border-bottom">Decreasing Price</button></a>
+
               <a href="/home/{{ categoryID }}/1/"><button class=" dropdown-item">Increasing Price</button></a>
             </div>
           </div>
+<!--          search is here-->
           <form class="form-inline" method="post", action="/search_post/">
             {% csrf_token %}
             <div class="md-form my-0">
-              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="search">
+              <input class="form-control mr-sm-2" type="text" placeholder="Search for any Product !" aria-label="Search" name="search">
               <input type="hidden" name="categoryID" value="{{ categoryID }}"/>
               <input type="hidden" name="sortID" value="{{ sortID }}"/>
             </div>

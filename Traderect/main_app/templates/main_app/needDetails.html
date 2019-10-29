@@ -65,12 +65,12 @@
 <body>
 
   <!-- Navbar -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark mdb-color lighten-3 scrolling-navbar">
     <div class="container">
 
       <!-- Brand -->
       <a class="navbar-brand waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">
-        <strong class="blue-text">T R A D E R E C T</strong>
+        <strong class="white-text">T R A D E R E C T</strong>
       </a>
 
       <!-- Collapse -->
@@ -115,7 +115,7 @@
             </a>
           </li-->
           <li class="nav-item">
-            <a href="{% url 'logout' %}"><button type="button" class="btn btn-md border" style="box-shadow: none;">Logout</button></a>
+            <a href="{% url 'logout' %}"><button type="button" class="btn btn-md btn-dark mdb-color lighten-3" style=font-size:100%;">Logout</button></a>
           </li>
         </ul>
 
@@ -240,7 +240,6 @@
     new WOW().init();
   </script-->
   <!--Django Mode-->
-  href="{% static 'main_app/css/style.min.css' %}"
   </footer>
   <script type="text/javascript" src="{% static 'main_app/js/jquery-3.4.1.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'main_app/js/popper.min.js' %}"></script>
