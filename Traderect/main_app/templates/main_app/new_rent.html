@@ -70,12 +70,12 @@
   <body>
 
     <!-- Navbar -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark mdb-color lighten-3 scrolling-navbar">
       <div class="container">
 
         <!-- Brand -->
-        <a class="navbar-brand waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">
-          <strong class="blue-text">T R A D E R E C T</strong>
+        <a class="navbar-brand waves-effect" href="/home/">
+          <strong class="white-text">T R A D E R E C T</strong>
         </a>
 
         <!-- Collapse -->
@@ -120,7 +120,7 @@
               </a>
             </li-->
             <li class="nav-item">
-              <a href="{% url 'logout' %}"><button type="button" class="btn btn-md border" style="box-shadow: none;">Logout</button></a>
+              <a href="{% url 'logout' %}"><button type="button" class="btn btn-md btn-dark mdb-color lighten-3" style=font-size:100%;">Logout</button></a>
             </li>
           </ul>
 
@@ -160,12 +160,18 @@
     <!--main-->
     <main><br><br><br><br>
       <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3  mb-5">
+
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link">New Rent</a>
+          </li>
+        </ul>
+      </nav>
         <div class="row">
-          <div class="col-12 border border-info rounded" style="box-shadow: 2px 2px rgb(161, 240, 225)">
-            <h3 class="h3" style="text-align: center;color: rgb(21, 58, 171);text-shadow: 2px 2px rgb(218, 176, 233);">New Rent Transaction</h3>
-          </div>
           <div class="col-12">
-          <h4 class="h4 mt-5" style="color: rgb(16, 7, 120)">product :<span class="font-weight-bold"> {{ product.pname }}</span></h4>
+          <h4 class="h4 mt-1" style="color: rgb(146,159,186)">Product :<span class="font-weight-bold"> {{ product.pname }}</span></h4>
           <br>
           </div>
           <div class="col-12">
@@ -174,15 +180,15 @@
               {% csrf_token %}
               <input type = "hidden" name = "pid" value = "{{ product.pid }}" />
               <label for="email">Enter User's Email ID:</label>
-              <input type="text" name="email" class="form-control" id="email" placeholder="Email" value=""/>
+              <input type="text" name="email" class="form-control" id="email" placeholder="Email" value="" required/>
               <label for="startDate">start date:</label>
-              <input type="text" name="startDate" class="form-control" id="startDate" placeholder="YYYY-MM-DD" value=""/>
+              <input type="text" name="startDate" class="form-control" id="startDate" placeholder="YYYY-MM-DD" value="" required/>
               <label for="startTime">start time:</label>
-              <input type="text" name="startTime" class="form-control" id="startTime" placeholder="HH:MM" value=""/>
+              <input type="text" name="startTime" class="form-control" id="startTime" placeholder="HH:MM" value="" required/>
               <label for="endDate">end date:</label>
-              <input type="text" name="endDate" class="form-control" id="endDate" placeholder="YYYY-MM-DD" value=""/>
+              <input type="text" name="endDate" class="form-control" id="endDate" placeholder="YYYY-MM-DD" value="" required/>
               <label for="endTime">end time:</label>
-              <input type="text" name="endTime" class="form-control" id="endTime" placeholder="HH:MM" value=""/>
+              <input type="text" name="endTime" class="form-control" id="endTime" placeholder="HH:MM" value="" required/>
               <br>
               <br>
               <button type="submit" class="btn btn-primary">Submit</button>

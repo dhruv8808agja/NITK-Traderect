@@ -62,12 +62,12 @@
 <body>
 
   <!-- Navbar -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark mdb-color lighten-3 scrolling-navbar">
     <div class="container">
 
       <!-- Brand -->
-      <a class="navbar-brand waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">
-        <strong class="blue-text">T R A D E R E C T</strong>
+      <a class="navbar-brand waves-effect" href="/home/">
+        <strong class="white-text">T R A D E R E C T</strong>
       </a>
 
       <!-- Collapse -->
@@ -112,7 +112,7 @@
             </a>
           </li-->
           <li class="nav-item">
-            <a href="{% url 'logout' %}"><button type="button" class="btn btn-md border" style="box-shadow: none;">Logout</button></a>
+            <a href="{% url 'logout' %}"><button type="button" class="btn btn-md btn-dark mdb-color lighten-3" style=font-size:100%;">Logout</button></a>
           </li>
         </ul>
 
@@ -152,24 +152,30 @@
   <!--main-->
   <main><br><br><br><br>
     <div class="container">
-      <div class="col-12">
-        <h4 class="h4" style="color:rgb(8, 65, 212);text-shadow: 2px 2px rgb(153, 238, 177)">Edit Need : {{ need.nid }}</h4>
-      </div>
+      <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3  mb-5">
+
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link">Edit Need : {{ need.nid }}</a>
+          </li>
+        </ul>
+      </nav>
       <div class="col-lg-6">
         <hr>
         <form method="post" action="{% url 'editNeed_post' %}">
           {% csrf_token %}
             <label for="productname">Product Needed :</label>
-            <input type="text" class="form-control" id="productname" name="productname" value="{{ need.productname }}">
+            <input type="text" class="form-control" id="productname" name="productname" value="{{ need.productname }}" required>
             <input type="hidden" name="nid" value="{{ need.nid }}"/>
 
 
             <label for="description">Description :</label>
-            <input type="textarea" name="description" class="form-control" id="description" rows="5" cols="30" value="{{ need.description }}"/>
+            <input type="textarea" name="description" class="form-control" id="description" rows="5" cols="30" value="{{ need.description }}" required/>
 
 
             <label for="category">Category :</label>
-            <select name="category" id="Category" class="custom-select">
+            <select name="category" id="Category" class="custom-select" required>
             <option selected>{{ need.category }}</option>
             <option value="Electronics">Electronics</option>
             <option value="Stationary">Stationary</option>

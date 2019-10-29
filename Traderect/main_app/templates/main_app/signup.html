@@ -39,13 +39,13 @@
       <!-- Login Form -->
       <form method="POST" action="{% url 'signup' %}">
         {% csrf_token %}
-        <input type="text" id="name" class="fadeIn second" name="name" placeholder="name">
-        <input type="text" id="login" class="fadeIn second" name="email" placeholder="email">
-        <input type="password" id="password" class="fadeIn third" name="password" placeholder="new password">
-        <input type="password" id="confirmpass" class="fadeIn third" name="confirmpass" placeholder="confirm new password">
-        <input type="text" id="name" class="fadeIn second" name="whnumber" placeholder="WhatsApp number">
-        <input type="text" id="name" class="fadeIn second" name="phnumber" placeholder="Phone Number">
-        <input type="textarea" id="name" class="fadeIn second" name="address" placeholder="address">
+        <input type="text" id="name" class="fadeIn second" name="name" placeholder="name" required>
+        <input type="text" id="login" class="fadeIn second" name="email" placeholder="email" required>
+        <input type="password" id="password" class="fadeIn third" name="password" placeholder="new password" required>
+        <input type="hidden" id="confirmpass" class="fadeIn third" name="confirmpass" placeholder="confirm new password" value="dhruvisbaap">
+        <input type="text" id="name" class="fadeIn second" name="whnumber" placeholder="WhatsApp number" required>
+        <input type="text" id="name" class="fadeIn second" name="phnumber" placeholder="Phone Number" required>
+        <input type="textarea" id="name" class="fadeIn second" name="address" placeholder="address" required>
         <input type="submit" class="fadeIn fourth" value="SIGN UP">
       </form>
 
