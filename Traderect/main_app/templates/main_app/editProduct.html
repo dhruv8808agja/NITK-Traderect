@@ -152,23 +152,29 @@
   <!--main-->
   <main><br><br><br><br>
     <div class="container">
-      <div class="col-12">
-        <h4 class="h4" style="color:rgb(8, 65, 212);text-shadow: 2px 2px rgb(153, 238, 177)">Edit Product  <small>#{{ product.pid }}</small></h4>
-      </div>
+      <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3  mb-5">
+
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link">Edit Product : {{ product.pid }}</a>
+          </li>
+        </ul>
+      </nav>
       <div class="col-lg-6">
         <hr>
         <form method="post" action="{% url 'edit_product_page_post' %}">
           {% csrf_token %}
             <label for="pname">Product Name :</label>
-            <input type="text" class="form-control" id="pname" name="pname" value="{{ product.pname }}">
+            <input type="text" class="form-control" id="pname" name="pname" value="{{ product.pname }}" required>
             <input type="hidden" name="pid" value="{{ product.pid }}"/>
 
             <label for="description">Description :</label>
-            <input type="textarea" name="description" class="form-control" id="description" rows="5" cols="30" value="{{ product.description }}"/>
+            <input type="textarea" name="description" class="form-control" id="description" rows="5" cols="30" value="{{ product.description }}" required/>
 
 
             <label for="category">Category :</label>
-            <select name="category" id="Category" class="custom-select">
+            <select name="category" id="Category" class="custom-select" required>
             <option selected>{{ product.category }}</option>
             <option value="Electronics">Electronics</option>
             <option value="Stationary">Stationary</option>
@@ -178,7 +184,7 @@
 
             <label for="photo">Photo :</label>
             <div class="custom-file" id="photo">
-              <input type="file" class="custom-file-input" id="customFile">
+              <input type="file" class="custom-file-input" id="customFile" required>
               <label class="custom-file-label" for="customFile">Choose photo file</label>
             </div>
           <hr><br>
