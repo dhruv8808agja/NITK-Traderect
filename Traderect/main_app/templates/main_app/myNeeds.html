@@ -112,7 +112,7 @@
             </a>
           </li-->
           <li class="nav-item">
-            <a href="{% url 'logout' %}"><button type="button" class="btn btn-md btn-dark mdb-color lighten-3" style=font-size:100%;">Logout</button></a>
+            <a href="{% url 'logout' %}"><button type="button" class="btn btn-md btn-dark mdb-color lighten-3" style="font-size:100%;">Logout</button></a>
           </li>
         </ul>
 
@@ -180,9 +180,11 @@
           {% for i in a %}
           <div class="col-lg-4 col-md-6 sm-12 mb-1">
             <div class=" card bg-transparent mb-1">
-              <div class="card-body thumb-post">
-                <h5>Product: {{ i.1 }}</h5>
-                <h5>Category: {{ i.2 }}</h5>
+              <div class="card-body thumb-post" align="center">
+                <!-- <h5>Product: {{ i.1 }}</h5>
+                <h5>Category: {{ i.2 }}</h5> -->
+                <h5 style="color:rgb(37, 113, 201)">{{ i.1 }}</h5>
+                <small style="color:rgb(146,159,186)">Category: {{ i.2 }}</small><br>
                 <!-- <div style="background: rgb(255,255,255)" align="center">
                   <img src="https://image.shutterstock.com/image-photo/singapore-december-26-2017-minion-600w-1483265900.jpg" class="card-img-top mt-0 mb-0" style="background:rgb(255,255,255)" alt="">
                 </div> -->

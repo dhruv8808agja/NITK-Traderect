@@ -157,8 +157,6 @@ def search_post(request):
                     i.append(t.first().photofile.url)
                 else:
                     i.append('/home/saliakvihs/CSE/WEB/NITK-Traderect/Traderect/media/main_app/static/main_app/img/default.jpeg')
-            for i in b:
-                a.append(i)
             return render(request, 'main_app/index.html', {'a': a,'sortID':0})
 
 
@@ -315,7 +313,7 @@ def addProduct(request):
             form.fields['ownerid'].widget = forms.HiddenInput()
             return render(request, 'main_app/addProduct.html', {'form': form})
         user = Users.objects.filter(email=request.user)[0]
-        product = Products.objects.create(pid=last_id, pname=request.POST['pname'], category=request.POST['category'], description=request.POST['description'], owner=user)
+        product = Products.objects.create(pid=last_id, pname=request.POST['pname'], category=request.POST['category'], description=request.POST['description1'], owner=user)
         product.save()
         return redirect('/myProducts/')
 
