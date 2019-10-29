@@ -78,7 +78,7 @@
             </a>
           </li-->
           <li class="nav-item">
-            <a href="{% url 'logout' %}"><button type="button" class="btn btn-md btn-dark mdb-color lighten-3" style=font-size:100%;">Logout</button></a>
+            <a href="{% url 'logout' %}"><button type="button" class="btn btn-md btn-dark mdb-color lighten-3" style="font-size:100%;">Logout</button></a>
           </li>
         </ul>
 
@@ -180,12 +180,15 @@
 
           <div class="mb-1 py-2">
             <span class="badge purple mr-1">{{product.category}}</span>
-            <span class="badge blue mr-1">Available</span>
             {% if a == 0 %}
             <span class="badge grey mr-1">Not For Sale</span>
+            {% else %}
+            <span class="badge green mr-1">For Sale</span>
             {% endif %}
             {% if b == 0 %}
             <span class="badge grey mr-1">Not For Rent</span>
+            {% else %}
+            <span class="badge green mr-1">For Rent</span>
             {% endif %}
           </div>
 

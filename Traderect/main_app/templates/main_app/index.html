@@ -117,7 +117,7 @@
             </a>
           </li-->
           <li class="nav-item">
-            <a href="{% url 'logout' %}"><button type="button" class="btn btn-md btn-dark mdb-color lighten-3" style=font-size:100%;">Logout</button></a>
+            <a href="{% url 'logout' %}"><button type="button" class="btn btn-md btn-dark mdb-color lighten-3" style="font-size:100%;">Logout</button></a>
           </li>
         </ul>
 
@@ -251,7 +251,7 @@
       <!--/.Navbar-->
 
       <!--Section: Products v.3-->
-      <section class="text-center mb-4">
+      <section class="text-center mb-4 mt-5">
 
         <!--Grid row-->
         <div class="row wow fadeIn">
@@ -270,14 +270,9 @@
               <!--p>Here is some description about this product writen by writer, I don't want to write this but for just checking purpose i am writting this much long.</p-->
 
               <div class=" row">
-                <div class="col-4">
-                  <h6 class="font-weight-bold text-center ml-1" style="color: rgb(31, 82, 157)">
-                    <strong>{{ e.2 }}&#x20b9;</strong>
-                  </h6>
-                </div>
-                <div class="col-8">
-                  <h6 class="font-weight-bold text-center" style="color:rgb(54, 9, 119)">
-                    <strong><img src="https://image.flaticon.com/icons/svg/616/616489.svg" style="width:20px;height:20px;"> (4.5/5)</strong>
+                <div class="col-12">
+                  <h6 class="text-center ml-3" style="color: rgb(31, 82, 157)">
+                    Rent price:<strong class="font-weight-bold">{{ e.2 }}&#x20b9;</strong>
                   </h6>
                 </div>
               </div>
@@ -298,8 +293,8 @@
 
               <div class=" row">
                 <div class="col-12">
-                  <h6 class="font-weight-bold text-center ml-3" style="color: rgb(31, 82, 157)">
-                    <strong>{{ e.2 }}&#x20b9;</strong>
+                  <h6 class="text-center ml-3" style="color: rgb(31, 82, 157)">
+                    Sell price:<strong class="font-weight-bold">{{ e.2 }}&#x20b9;</strong>
                   </h6>
                 </div>
               </div>
@@ -324,7 +319,6 @@
 
 
 
-    <hr class="my-4">
 
 
 
